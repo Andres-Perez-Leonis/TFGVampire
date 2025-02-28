@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cditphs3j1pf4"]
+
+[ext_resource type="Script" path="res://Scripts/Vampire.cs" id="1_oosox"]
+[ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_yly6p"]
+[ext_resource type="Script" path="res://Scripts/VampireMovement.cs" id="3_w6kl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
+size = Vector2(108, 106)
+
+[node name="Vampire" type="CharacterBody2D"]
+script = ExtResource("1_oosox")
+JumpForce = 2.0
+_health = 1
+Speed = 3.0
+Force = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_n63uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yly6p")
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("_vampire")]
+script = ExtResource("3_w6kl1")
+_vampire = NodePath("..")
