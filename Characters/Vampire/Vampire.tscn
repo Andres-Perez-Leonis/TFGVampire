@@ -8,6 +8,8 @@
 size = Vector2(108, 106)
 
 [node name="Vampire" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 65
 script = ExtResource("1_oosox")
 JumpForce = 2.0
 _health = 1
