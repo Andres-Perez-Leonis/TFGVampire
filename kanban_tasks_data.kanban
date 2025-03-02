@@ -1,0 +1,235 @@
+{
+	"categories": [
+		{
+			"uuid": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "e883d5c6-5f22-4ca0-b7c9-279d2d58739f",
+			"title": "Todo",
+			"tasks": [
+				"7c95cadf-31b7-4bdb-8bdf-3fee57c281d8",
+				"29374d6c-8a85-4bec-8027-03bf3fd49de4",
+				"e05bd60d-158d-40b1-b313-f2062be8b0ea",
+				"85c6eb94-72f9-4158-b854-e5b60cbd0619",
+				"9e4d38f0-2577-4484-8d2f-56ba12f998f2",
+				"312215e2-66f4-42ac-aaf4-7a251bb87c05",
+				"be37402b-4a8e-4aeb-9db3-7147b56edb28",
+				"51d29774-423f-4240-9885-f976e9baeac7",
+				"ad7816d9-af57-406b-a72c-0ab0b94e8dcd",
+				"ac9b5bb1-fa16-45c0-91fe-0aedaaf082af",
+				"60ac1408-d316-45e2-91d7-f8a793874611",
+				"ca756b87-141b-4632-a4f5-d5a3551e4070",
+				"bcd5e6a6-9b01-4291-b840-97ebf7b47dc3",
+				"10a41172-a151-4d9f-a728-9e0b8e1b966c",
+				"3134caa9-e97f-466e-a837-aea70c1c3973",
+				"c2cf1f99-12e6-492f-8744-769ff800bfdb",
+				"bbbe7ac9-2eaf-44fd-a86c-168a4bde1553",
+				"9ddcece3-e461-4915-974f-68675d7b2267",
+				"4e60ae25-62c4-41e5-886c-c769f4884917",
+				"8798ca50-817d-4a08-b0a1-a62babd1bf29",
+				"6ee7d487-2d3e-4b83-af8e-506a305cc0c8"
+			]
+		},
+		{
+			"uuid": "639c34ec-88a1-4ea9-9a1d-9afd6b17a171",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "f4eb4c4e-496e-4b5d-b281-c3165972755b",
+			"title": "Done",
+			"tasks": [
+				"ba344b4f-c957-4794-9f06-f8ab9744987b",
+				"eed46c4d-08ab-468e-931c-468b73164088",
+				"f0b92466-4905-482d-b7a2-c913b8323449"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "ba344b4f-c957-4794-9f06-f8ab9744987b",
+			"title": "Sistema Movimiento Vampiro - Implementar salto",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "7c95cadf-31b7-4bdb-8bdf-3fee57c281d8",
+			"title": "Sistema Movimiento Vampiro - Implementar escalada",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "f0b92466-4905-482d-b7a2-c913b8323449",
+			"title": "Sistema Movimiento Vampiro - Implementar carrera",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "eed46c4d-08ab-468e-931c-468b73164088",
+			"title": "Sistema Movimiento Vampiro - Implementar movimiento derecha-izquierda",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "29374d6c-8a85-4bec-8027-03bf3fd49de4",
+			"title": "Sistema de Control de NPCs - Diseñar rutinas de NPCs",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "e05bd60d-158d-40b1-b313-f2062be8b0ea",
+			"title": "Sistema de Control de NPCs - Implementar opciones alternativas en rutinas",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "85c6eb94-72f9-4158-b854-e5b60cbd0619",
+			"title": "Sistema de Control de NPCs - Implementar movimiento de NPCs",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "9e4d38f0-2577-4484-8d2f-56ba12f998f2",
+			"title": "Sistema de Control de NPCs - Lineas de Seguimiento",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "312215e2-66f4-42ac-aaf4-7a251bb87c05",
+			"title": "Sistema de Control de NPCs - Implementar aviso a guardias",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "be37402b-4a8e-4aeb-9db3-7147b56edb28",
+			"title": "Sistema de Control de NPCs - Implementar guardas recogen cadaver",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "51d29774-423f-4240-9885-f976e9baeac7",
+			"title": "Sistema de Ataques Vampiro - Morder",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "ad7816d9-af57-406b-a72c-0ab0b94e8dcd",
+			"title": "Sistema de Ataques Vampiro - Implementar generación de cadáveres",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "ac9b5bb1-fa16-45c0-91fe-0aedaaf082af",
+			"title": "Sistema de Ataques NPCs - Implementar ataque de guardias al vampiro",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "60ac1408-d316-45e2-91d7-f8a793874611",
+			"title": "Sistema de Ataques - Implementar persecución del vampiro por guardias",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "ca756b87-141b-4632-a4f5-d5a3551e4070",
+			"title": "Sistema de Detección Cadáveres NPCs - Implementar detección de cadáveres cercanos",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "bcd5e6a6-9b01-4291-b840-97ebf7b47dc3",
+			"title": "Sistema de Esconder Cadáveres - Implementar arrastre de cadáveres",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "10a41172-a151-4d9f-a728-9e0b8e1b966c",
+			"title": "istema de Esconder Cadáveres - Diseñar escondites",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "3134caa9-e97f-466e-a837-aea70c1c3973",
+			"title": "Sistema de Esconder Cadáveres - Implementar interacción con escondites",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "c2cf1f99-12e6-492f-8744-769ff800bfdb",
+			"title": "Sistema de Detección de Cadáveres - Implementar aumento de probabilidad de detección con el tiempo",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "bbbe7ac9-2eaf-44fd-a86c-168a4bde1553",
+			"title": "Sistema de Detección de Cadáveres - Implementar probabilidad de detección de cadáveres",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "9ddcece3-e461-4915-974f-68675d7b2267",
+			"title": "Sistema de Sospecha - Implementar aumento de sospecha tras encontrar varios cadáveres",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "4e60ae25-62c4-41e5-886c-c769f4884917",
+			"title": "Sistema de Sospecha - Implementar acusaciones/teorías sobre el asesino",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "8798ca50-817d-4a08-b0a1-a62babd1bf29",
+			"title": "Sistema de Escondites - Diseñar lugares de emboscada",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		},
+		{
+			"uuid": "6ee7d487-2d3e-4b83-af8e-506a305cc0c8",
+			"title": "Sistema de Escondites - Implementar interacción con escondites para emboscadas",
+			"description": "",
+			"category": "12f25673-9d61-4a30-85d3-739c9269325d",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"e883d5c6-5f22-4ca0-b7c9-279d2d58739f"
+			],
+			[
+				"639c34ec-88a1-4ea9-9a1d-9afd6b17a171"
+			],
+			[
+				"f4eb4c4e-496e-4b5d-b281-c3165972755b"
+			]
+		]
+	}
+}
