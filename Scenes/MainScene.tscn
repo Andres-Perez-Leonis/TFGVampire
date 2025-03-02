@@ -19,6 +19,8 @@ Speed = 300.0
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(889, 398)
 scale = Vector2(1.89672, 2.73215)
+collision_layer = 64
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(-0.707306, 1.6123)
@@ -31,6 +33,7 @@ texture = ExtResource("2_mee5d")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(633, 566)
 scale = Vector2(13.535, 2.54)
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.707306, 1.6123)
