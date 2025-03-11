@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cditphs3j1pf4"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
+[ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_yly6p"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="4_wa8dt"]
+[ext_resource type="Script" path="res://Scripts/States/CharactersState/Vampire/IdleState.cs" id="5_3swxl"]
+[ext_resource type="Script" path="res://Scripts/States/CharactersState/Vampire/MovingState.cs" id="6_crw70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
+size = Vector2(108, 106)
+
+[node name="Vampire" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 65
+script = ExtResource("1_oosox")
+_health = 1
+Speed = 3.0
+Force = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_n63uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yly6p")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
+script = ExtResource("4_wa8dt")
+_defaultState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("5_3swxl")
+
+[node name="MovingState" type="Node" parent="StateMachine"]
+script = ExtResource("6_crw70")

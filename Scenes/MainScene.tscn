@@ -1,19 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4aurc32a3148"]
+[gd_scene load_steps=7 format=3 uid="uid://c4aurc32a3148"]
 
-[ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
+[ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
 [ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_mee5d"]
+[ext_resource type="PackedScene" uid="uid://bvkwkx1hkss5t" path="res://Scenes/Characters/NPCs/npc_prototipe.tscn" id="3_kug2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swa6a"]
 size = Vector2(126.9, 127.051)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8gm7w"]
 
+[sub_resource type="Curve2D" id="Curve2D_0d16h"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1003, 201, 0, 0, 0, 0, 549, 197, 0, 0, 0, 0, 334, 234, 0, 0, 0, 0, 122, 204, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_3wo0x")]
 position = Vector2(242, 397)
 scale = Vector2(1, 0.993852)
-JumpForce = 400.0
 Speed = 300.0
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -43,3 +49,11 @@ shape = SubResource("WorldBoundaryShape2D_8gm7w")
 position = Vector2(0.49999, 32.5)
 scale = Vector2(1.00781, 0.492188)
 texture = ExtResource("2_mee5d")
+
+[node name="NPC_Prototipe" parent="." instance=ExtResource("3_kug2k")]
+texture_filter = 1
+position = Vector2(5, -71)
+scale = Vector2(8.835, 8.835)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0d16h")
