@@ -35,11 +35,6 @@ public partial class VampireMovement : Node
         }
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -50,7 +45,7 @@ public partial class VampireMovement : Node
 		} 
 		
 		if(Input.IsActionJustPressed("ui_select") && _vampire.IsOnFloor()) {
-			_velocity.Y = -_vampire.JumpForce;
+			_velocity.Y = -6;
 		}
 
 		_direction = Input.GetAxis("ui_left", "ui_right");
