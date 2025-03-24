@@ -4,7 +4,7 @@ using Godot;
 
 	- To avoid the magic string
 
-*/
+*/ 
 
 public partial class AnimationNameVampire : Resource
 {
