@@ -75,17 +75,23 @@ public partial class StateBase : Node
     /***
      * Gets or sets the node controlled by this state.
      */
-    public Node ControlledNode {
-        get { return _controlledNode; }
-        set { _controlledNode = value; }
+    public Node ControlledNode
+    {
+        get => _controlledNode;
+
+        set => _controlledNode = value;
+
     }
 
     /***
      * Gets or sets the state machine associated with this state.
      */
-    public StateMachine StateMachine {
-        get { return _stateMachine; }
-        set { _stateMachine = value; }
+    public StateMachine StateMachine
+    {
+        get => _stateMachine;
+
+        set => _stateMachine = value;
+
     }
 
     #endregion
