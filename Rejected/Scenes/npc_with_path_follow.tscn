@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://iv2ki4wos24r"]
+
+[ext_resource type="PackedScene" uid="uid://bvkwkx1hkss5t" path="res://Scenes/Characters/NPCs/npc_prototipe.tscn" id="1_xjec3"]
+
+[node name="NPC_with_PathFollow" type="PathFollow2D"]
+rotates = false
+loop = false
+
+[node name="NPC_Prototipe" parent="." instance=ExtResource("1_xjec3")]
