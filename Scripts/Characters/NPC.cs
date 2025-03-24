@@ -1,7 +1,48 @@
 using Godot;
-using System;
+using Godot.Collections;
+
+/**
+    NPC class represents a Non-Playable character
+        Will follow a routine
+
+    Extends the Entity class
+*/
 
 public partial class NPC : Entity
 {
-	
+
+    // Array which contein the routine. The routine are spiciefied by a sequence of Waypoints
+    [Export] private Array<MarkerPathSwitch> _routine;
+    // Index to track the current Waypoint/Task of the routine
+    private int _indexRoutine = 0;
+
+    // Waypoint which indicate the NPC workplace
+    [Export] private MarkerPathSwitch _workPlace;
+
+
+    #region Getters and Setters
+
+        // Get the current action of Routine
+        public MarkerPathSwitch CurrentAction {
+            get => _routine[_indexRoutine];
+        }
+
+        // Get - Set all routine (routine Array)
+        public Array<MarkerPathSwitch> Routine {
+            get => _routine;
+            set => _routine = value;
+        }
+
+        // Get NPC Workplace Marker
+        public MarkerPathSwitch WorkPlace {
+            get => _workPlace;
+        }
+        
+        // Get the current index of routine
+        public int IndexRoutine {
+            get => _indexRoutine;
+        }
+
+    #endregion
+
 }
