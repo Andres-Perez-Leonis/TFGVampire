@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfrg7j7t1n4jk"]
+[gd_scene load_steps=5 format=3 uid="uid://dfrg7j7t1n4jk"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/MarkerPathSwitch.cs" id="1_hvpht"]
+[ext_resource type="PackedScene" uid="uid://bvkwkx1hkss5t" path="res://Scenes/Characters/NPCs/npc_prototipe.tscn" id="2_py4x8"]
+[ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="3_q403w"]
 
 [sub_resource type="Curve2D" id="Curve2D_vckry"]
 _data = {
@@ -10,109 +12,120 @@ point_count = 5
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Path2D" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Node" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 scale = Vector2(0.7, 1)
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D2" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D2" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(245.322, -183.5)
 scale = Vector2(0.453947, 1.5)
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D3" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D3" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(802, 99)
 rotation = 1.5708
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D4" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D4" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(251.414, -589)
 scale = Vector2(0.440789, 2)
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D5" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D5" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(640, 93)
 rotation = 1.5708
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D6" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D6" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(531, 93)
 rotation = 1.5708
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D7" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D7" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(18, -222)
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D8" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D8" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(720, 89)
 rotation = 1.5708
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D9" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D9" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(111, -8)
 scale = Vector2(0.705, 1)
 curve = SubResource("Curve2D_vckry")
 
-[node name="Marker2D" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(79, 364)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D")]
 _markersAdjacent = [NodePath("../Marker2D6")]
 
-[node name="Marker2D2" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D2" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(257, 364)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D9"), NodePath("../Path2D2"), NodePath("../Path2D5")]
 _markersAdjacent = [NodePath("../Marker2D6"), NodePath("../Marker2D8"), NodePath("../Marker2D5")]
 
-[node name="Marker2D3" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D3" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(438, 353)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D10"), NodePath("../Path2D3")]
 _markersAdjacent = [NodePath("../Marker2D8"), NodePath("../Marker2D4")]
 
-[node name="Marker2D4" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D4" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(454, 158)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D3"), NodePath("../Path2D4")]
 _markersAdjacent = [NodePath("../Marker2D3"), NodePath("../Marker2D9")]
 
-[node name="Marker2D5" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D5" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(276, 112)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D4"), NodePath("../Path2D7"), NodePath("../Path2D5")]
 _markersAdjacent = [NodePath("../Marker2D4"), NodePath("../Marker2D7"), NodePath("../Marker2D2")]
 
-[node name="Marker2D6" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D6" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(163, 380)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D"), NodePath("../Path2D6"), NodePath("../Path2D9")]
 _markersAdjacent = [NodePath("../Marker2D"), NodePath("../Marker2D7"), NodePath("../Marker2D2")]
 
-[node name="Marker2D7" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D7" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(116, 157)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D7"), NodePath("../Path2D6")]
 _markersAdjacent = [NodePath("../Marker2D5"), NodePath("../Marker2D6")]
 
-[node name="Marker2D8" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D8" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(354, 340)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D2"), NodePath("../Path2D8"), NodePath("../Path2D10")]
 _markersAdjacent = [NodePath("../Marker2D2"), NodePath("../Marker2D9"), NodePath("../Marker2D3")]
 
-[node name="Marker2D9" type="Marker2D" parent="." node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
+[node name="Marker2D9" type="Marker2D" parent="Node" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 position = Vector2(370, 160)
 script = ExtResource("1_hvpht")
 _pathInterconectedByMe = [NodePath("../Path2D4"), NodePath("../Path2D8"), NodePath("../Path2D11")]
 _markersAdjacent = [NodePath("../Marker2D5"), NodePath("../Marker2D8"), NodePath("../Marker2D4")]
 
-[node name="Path2D10" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D10" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(324, -183)
 scale = Vector2(0.453947, 1.5)
 curve = SubResource("Curve2D_vckry")
 
-[node name="Path2D11" type="Path2D" parent="." groups=["NPCsRoutes"]]
+[node name="Path2D11" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
 position = Vector2(333, -588)
 scale = Vector2(0.440789, 2)
 curve = SubResource("Curve2D_vckry")
+
+[node name="NPC_Prototipe" parent="." instance=ExtResource("2_py4x8")]
+position = Vector2(354, 79)
+
+[node name="Vampire" parent="." instance=ExtResource("3_q403w")]
+position = Vector2(250, 77)
+
+[node name="NPC_Prototipe2" parent="." instance=ExtResource("2_py4x8")]
+position = Vector2(326, 76)

@@ -26,12 +26,12 @@ public partial class StateBase : Node
     /***
      * Starts the state. This method can be overridden to initialize state-specific logic.
      */
-    public void Start() {}
+    public virtual void Start() {}
 
     /***
      * Ends the state. This method can be overridden to handle cleanup or transition logic.
      */
-    public void End() {}
+    public virtual void End() {}
 
     /***
      * Called during the process step.
