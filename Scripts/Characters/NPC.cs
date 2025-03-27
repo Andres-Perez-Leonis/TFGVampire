@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using Godot;
 using Godot.Collections;
 
@@ -19,8 +20,23 @@ public partial class NPC : Entity
     // Waypoint which indicate the NPC workplace
     [Export] private MarkerPathSwitch _workPlace;
 
+    [Export] private Control _actionInterface;
+
+    [Signal] public delegate void IamOnAttackEventHandler();
+    [Signal] public delegate void IamOnTargetEventHandler(bool onTarget);
+
+
+    public void EmitIamOnAttackSignal() {
+        EmitSignal(SignalName.IamOnAttack);
+    }
+
+    public void EmitIamOnTargetSignal(bool onTarget) {
+        EmitSignal(SignalName.IamOnTarget, onTarget);
+    }
 
     #region Getters and Setters
+
+        public Control ActionInterface { get => _actionInterface; }
 
         // Get the current action of Routine
         public MarkerPathSwitch CurrentAction {
