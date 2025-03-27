@@ -22,6 +22,7 @@ public partial class NpcStateBase : StateBase
         base._Ready();
         _pathFollow = ControlledNode.GetParent<NpcPathFollow>();
         _npc = (NPC) ControlledNode;
+        _npc.IamOnAttack += OnAttack;
     }
 
     /***
@@ -32,5 +33,10 @@ public partial class NpcStateBase : StateBase
     {
         base.OnPhysicsProcess(delta);
         GD.Print("I am " + Name + " my state is : " + StateMachine.CurrentState.Name);
+    }
+
+
+    private void OnAttack() {
+        StateMachine.ChangeState(NpcStateNames.Death);
     }
 }
