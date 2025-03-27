@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvkwkx1hkss5t"]
+[gd_scene load_steps=8 format=3 uid="uid://bvkwkx1hkss5t"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2h5l3c0hfo" path="res://Assests/VillagerPrototipe/MiniGatherer.png" id="1_121g8"]
+[ext_resource type="Script" path="res://Scripts/Characters/NPC.cs" id="1_xkiir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
 
@@ -72,9 +73,11 @@ _data = {
 "walk": SubResource("Animation_va0pm")
 }
 
-[node name="NPC_Prototipe" type="CharacterBody2D"]
+[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine")]
 collision_layer = 4
 collision_mask = 65
+script = ExtResource("1_xkiir")
+_routine = []
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tvjq2")
