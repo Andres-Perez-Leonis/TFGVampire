@@ -54,11 +54,11 @@ public partial class StateMachine : Node
      */
     public void ChangeState(string newState)
     {
-        if (_currentState != null && _currentState.HasMethod("End"))
+        if (_currentState != null)
             _currentState.End();
 
-        _currentState = (StateBase)GetNode<Node>(newState);
         GD.Print("Estado cambiado a: " + newState + " desde " + _currentState.Name);
+        _currentState = (StateBase)GetNode<Node>(newState);
         _startState();
     }
 
