@@ -5,7 +5,7 @@ public partial class VampireMovingState : VampireStateBase
     /***
      * The current speed of the vampire while moving.
      */
-    private float _currentSpeed;
+    protected float _currentSpeed;
 
     /***
      * The direction the vampire is moving in (left or right).
@@ -15,7 +15,7 @@ public partial class VampireMovingState : VampireStateBase
     /***
      * The velocity vector representing the vampire's movement.
      */
-    private Vector2 _velocity;
+    protected Vector2 _velocity;
 
     /***
      * Whether the vampire is running or walking.

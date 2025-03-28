@@ -12,8 +12,10 @@ public partial class VampireIdleState : VampireStateBase
         // If the left or right input action is pressed, change to the moving state
         if (Input.IsActionPressed("ui_left") || Input.IsActionPressed("ui_right"))
             StateMachine.ChangeState(VampireStateNames.Moving);
-        if(Input.IsKeyPressed(Key.F))
+        if(Input.IsPhysicalKeyPressed(Key.F))
             StateMachine.ChangeState(VampireStateNames.Attack);
+        if(Input.IsPhysicalKeyPressed(Key.E))
+            StateMachine.ChangeState(VampireStateNames.Dragging);
     }
 
     public override void Start()

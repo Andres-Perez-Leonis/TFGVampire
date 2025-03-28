@@ -16,6 +16,7 @@ public partial class Entity : CharacterBody2D
 	[Export] private float _force;
 	// Entity animation player object (for animations)
     [Export] private AnimationPlayer _animationPlayer;
+	private bool _iDeath = false;
 
 	#region Getters y Setters
 		// Get - Set entity health value
@@ -40,6 +41,8 @@ public partial class Entity : CharacterBody2D
 		public AnimationPlayer AnimationPlayer {
 			get => _animationPlayer;
 		}
+
+		public bool IsDeath { get => _iDeath; set => _iDeath = value;}
 	#endregion
 
 	

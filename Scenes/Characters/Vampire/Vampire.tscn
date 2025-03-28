@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cditphs3j1pf4"]
+[gd_scene load_steps=11 format=3 uid="uid://cditphs3j1pf4"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
 [ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_yly6p"]
@@ -7,12 +7,13 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="6_crw70"]
 [ext_resource type="Script" path="res://Scripts/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="6_nja1v"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_trts0"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_yoa4b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
 size = Vector2(108, 106)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r7h65"]
-radius = 97.3499
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lh7f"]
+size = Vector2(129, 135)
 
 [node name="Vampire" type="CharacterBody2D" node_paths=PackedStringArray("_animationPlayer")]
 collision_layer = 2
@@ -42,18 +43,33 @@ script = ExtResource("6_crw70")
 
 [node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
 script = ExtResource("6_trts0")
-_detector = NodePath("../../RayCast2D")
+_detector = NodePath("../../DetectorNPC")
+
+[node name="DraggingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_hiddingPointDetector")]
+script = ExtResource("7_yoa4b")
+_detector = NodePath("../../DetectorCorpse")
+_hiddingPointDetector = NodePath("../../HiddingPointsDetector")
+
+[node name="Node2" type="Node" parent="StateMachine"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="NPCDetector" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCDetector"]
-shape = SubResource("CircleShape2D_r7h65")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="DetectorNPC" type="RayCast2D" parent="."]
 target_position = Vector2(100, 0)
 collision_mask = 4
 script = ExtResource("6_nja1v")
+
+[node name="DetectorCorpse" type="RayCast2D" parent="."]
+position = Vector2(0, 62)
+target_position = Vector2(80, 0)
+collision_mask = 8
+script = ExtResource("6_nja1v")
+
+[node name="HiddingPointsDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 128
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_0lh7f")
