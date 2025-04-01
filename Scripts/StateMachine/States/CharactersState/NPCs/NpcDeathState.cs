@@ -1,6 +1,4 @@
 using Godot;
-using System;
-
 public partial class NpcDeathState : NpcStateBase
 {
     public override void Start()
