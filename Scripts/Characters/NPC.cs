@@ -34,6 +34,8 @@ public partial class NPC : Entity
         EmitSignal(SignalName.IamOnTarget, onTarget);
     }
 
+    public void NextTask() { _indexRoutine++; }
+
     #region Getters and Setters
 
         public Control ActionInterface { get => _actionInterface; }
@@ -57,6 +59,7 @@ public partial class NPC : Entity
         // Get the current index of routine
         public int IndexRoutine {
             get => _indexRoutine;
+            set => _indexRoutine++;
         }
 
     #endregion
