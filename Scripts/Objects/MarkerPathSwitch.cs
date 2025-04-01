@@ -61,7 +61,6 @@ public partial class MarkerPathSwitch : Marker2D
             MarkerSignals.EmitCommunicateMarkerSignal();
         }
 
-
     }
 
     /** SendRoutes Method - Runs when the CommunicateMarkerSignal has been emited 
@@ -88,6 +87,7 @@ public partial class MarkerPathSwitch : Marker2D
         foreach(MarkerPathSwitch marker in directions.Keys) {
             AddRoute(marker, _pathInterconectedByMe[index]);
         }
+        //PrintRoutes();
     }
     
     /** AddRoute Method - Runs when it need to add a route to his table
@@ -108,21 +108,23 @@ public partial class MarkerPathSwitch : Marker2D
     */
     public void ChangeTheNPCRoute(NpcPathFollow npcPathFollow, MarkerPathSwitch destination) {
         
-        if(destination == this) npcPathFollow.EmitInMyDestinationSignal();
+        if(destination == this) {
+            npcPathFollow.EmitInMyDestinationSignal();
+            return;
+        }
         //PrintRoutes();
-        //GD.Print("I want to find: " + destination.Name);
+        GD.Print("I want to find: " + destination.Name);
         Path2D nextPath = _redirectionDictionary[destination];
-        Path2D currentPath = npcPathFollow.GetParent<Path2D>();
+        npcPathFollow.EmitOnChangePathSignal(nextPath.ToGlobal(nextPath.Curve.GetPointPosition(nextPath.Curve.PointCount - 1)));
         npcPathFollow.GetParent<Path2D>().RemoveChild(npcPathFollow);
         npcPathFollow.LastPassMarker = this;
         nextPath.AddChild(npcPathFollow);
-        npcPathFollow.EmitOnChangePathSignal(currentPath.Curve.GetPointPosition(0), nextPath.Curve.GetPointPosition(nextPath.Curve.PointCount - 1));
     }
 
     private void PrintRoutes() {
-        GD.Print("My dictionary: ");
+        GD.Print($"My dictionary {Name}: ");
         foreach(var node in _redirectionDictionary) {
-            GD.Print($"Key: {node.Key} - Value: {node.Value}");
+            GD.Print($"Key: {node.Key.Name} - Value: {node.Value.Name}");
         }
     }
 
