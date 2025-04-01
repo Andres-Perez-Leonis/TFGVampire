@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx3ste55c3hp4"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/MarkerPathSwitch.cs" id="1_1icot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awefx"]
+
+[node name="MarkerConnector" type="Marker2D" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent")]
+script = ExtResource("1_1icot")
+_pathInterconectedByMe = []
+_markersAdjacent = []
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_awefx")
