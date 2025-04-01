@@ -2,7 +2,7 @@ using Godot;
 
 public partial class RayCastNPCDetector : RayCastDetector
 {
-	protected NPC _npcDetected;
+	protected NPC _npcDetected = null;
 
 
     public override void _PhysicsProcess(double delta)
@@ -12,8 +12,9 @@ public partial class RayCastNPCDetector : RayCastDetector
 			//GD.Print((GetCollider() as Node2D).Name);
 			_npcDetected = (NPC)GetCollider();
 			_npcDetected.EmitIamOnTargetSignal(true);
+			GD.Print("Estoy colisionando soy: " +  Name);
 			
-		}
+		} else _npcDetected = null;
 		
     }
 

@@ -7,16 +7,15 @@ public partial class VampireDraggingState : VampireMovingState
 	private NPC _corpseNPC;
     public override void OnInput(InputEvent @event)
     {
-		if(Input.IsPhysicalKeyPressed(Key.E)) {
-			string state = _hiddingPointDetector.HasOverlappingAreas() ? VampireStateNames.HidingCorpse : VampireStateNames.Idle;
-			
-			StateMachine.ChangeState(state);
-		}
+		if(!Input.IsPhysicalKeyPressed(Key.E)) StateMachine.ChangeState(VampireStateNames.Idle);
     }
 
     public override void Start()
     {
-		if(!_detector.IsColliding()) StateMachine.ChangeState(VampireStateNames.Idle);
+		if(!_detector.IsColliding()) { 
+			StateMachine.ChangeState(VampireStateNames.Idle); 
+			//GD.Print("NO COLISIONA");
+		}
 
 		_corpseNPC = _detector.NPCDetected;
     }
