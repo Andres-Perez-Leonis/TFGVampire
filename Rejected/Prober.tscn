@@ -25,8 +25,8 @@ script = ExtResource("1_bvrqr")
 
 [node name="NPC_Prototipe" parent="Node/Path2D/PathFollow2D" node_paths=PackedStringArray("_routine") instance=ExtResource("2_py4x8")]
 texture_filter = 1
-position = Vector2(645.732, -295)
-scale = Vector2(6.22143, 4.355)
+position = Vector2(588.589, -266)
+scale = Vector2(12.291, 8.605)
 _routine = [NodePath("../../../Marker2D5"), NodePath("../../../Marker2D2"), NodePath("../../../Marker2D7")]
 
 [node name="Path2D2" type="Path2D" parent="Node" groups=["NPCsRoutes"]]
