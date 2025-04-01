@@ -26,7 +26,8 @@ public partial class NpcMovingState : NpcStateBase
     {
         base._Ready();
         _interconectionDetector.AreaEntered += MarkerSwitchDetected;
-        _pathFollow.OnChangePath += CheckOrientation;
+        _pathFollow.OnChangedPath += CheckOrientation;
+        _pathFollow.InMyDestination += InMyDestination;
     }
 
     /***
@@ -39,11 +40,12 @@ public partial class NpcMovingState : NpcStateBase
         base.OnPhysicsProcess(delta);
 
 
-        if(_npc.CurrentAction == _pathFollow.LastPassMarker) StateMachine.ChangeState(NpcStateNames.Idle);
+        //if(_npc.CurrentAction == _pathFollow.LastPassMarker) StateMachine.ChangeState(NpcStateNames.Idle);
 
         // Calculate the progress in the path
         float progress = (float)delta * _npc.Speed;
         _pathFollow.ProgressRatio += (_progressInDown) ? -progress : progress;
+        //GD.Print("Proogress Ratio: " + _pathFollow.ProgressRatio);
 
         // Check if the NPC has reached the end or start of the path to trigger the next path
         if (_pathFollow.ProgressRatio == 1 || _pathFollow.ProgressRatio == 0) 
@@ -72,9 +74,12 @@ public partial class NpcMovingState : NpcStateBase
      * @param intialPointOfCurrentPath The starting point of the current path.
      * @param finalPointOfNextPath The endpoint of the next path.
      */
-    private void CheckOrientation(Vector2 intialPointOfCurrentPath, Vector2 finalPointOfNextPath)
+    private void CheckOrientation(Vector2 finalPointOfNextPath)
     {
-        float distance = intialPointOfCurrentPath.DistanceTo(finalPointOfNextPath);
+        float distanceFinal = _npc.GlobalPosition.DistanceTo(finalPointOfNextPath);
+        //GD.Print($"Distacia desde {_npc.GlobalPosition} al punto final {finalPointOfNextPath}: {distanceFinal}");
+
+
         float angle, direction;
 
         angle = _npc.GlobalPosition.AngleToPoint(_npc.CurrentAction.GlobalPosition);
@@ -86,8 +91,10 @@ public partial class NpcMovingState : NpcStateBase
             rotate();
         }
 
-        _progressInDown = distance > 0.5f;
+        _progressInDown = distanceFinal < 50;
+        //GD.Print("InDown: " + _progressInDown);
         _pathFollow.ProgressRatio = _progressInDown ? 1 : 0;
+        //GD.Print("Proogress Ratio on Change: " + _pathFollow.ProgressRatio);
     }
 
     /***
@@ -119,5 +126,7 @@ public partial class NpcMovingState : NpcStateBase
     private void InMyDestination()
     {
         // Transition to connected states based on destination
+        _npc.NextTask();
+        //StateMachine.ChangeState(NpcStateNames.Idle);
     }
 }
