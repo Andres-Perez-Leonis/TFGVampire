@@ -15,6 +15,7 @@ public partial class VampireAttackState : VampireStateBase
   {
     //_vampire.AnimationPlayer.Play(AnimationNameVampire.Attacking);
     NPC npc = _detector.NPCDetected;
+    if(npc == null) { StateMachine.ChangeState(VampireStateNames.Idle); return;}
     npc.EmitIamOnAttackSignal();
     _vampire.GlobalPosition = npc.GlobalPosition;
     StateMachine.ChangeState(VampireStateNames.Idle);
