@@ -15,7 +15,7 @@ public partial class VampireMovingState : VampireStateBase
     /***
      * The velocity vector representing the vampire's movement.
      */
-    protected Vector2 _velocity;
+    protected Vector2 _velocity = Vector2.Zero;
 
     /***
      * Whether the vampire is running or walking.
@@ -41,7 +41,6 @@ public partial class VampireMovingState : VampireStateBase
      */
     public override void OnPhysicsProcess(double delta)
     {
-        _velocity = _vampire.Velocity;
 
         // Gets the direction based on player input (left or right arrow keys)
         _direction = Input.GetAxis("ui_left", "ui_right");
