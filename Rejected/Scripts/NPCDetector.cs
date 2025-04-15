@@ -1,5 +1,5 @@
 using Godot;
-
+/*
 public partial class NPCDetector : AreaDetector
 {
 
@@ -35,3 +35,4 @@ public partial class NPCDetector : AreaDetector
  
 	public Node2D NearestNPC { get => _nearestNPC; }   
 }
+*/
