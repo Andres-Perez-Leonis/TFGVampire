@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cditphs3j1pf4"]
+[gd_scene load_steps=12 format=3 uid="uid://cditphs3j1pf4"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
 [ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_yly6p"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="4_wa8dt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireIdleState.cs" id="5_3swxl"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="6_crw70"]
-[ext_resource type="Script" path="res://Scripts/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="6_nja1v"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="6_nja1v"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_trts0"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_yoa4b"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="9_5burq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
 size = Vector2(108, 106)
@@ -20,7 +21,7 @@ collision_layer = 2
 collision_mask = 65
 script = ExtResource("1_oosox")
 _health = 1
-_speed = 20.0
+_speed = 200.0
 _force = 10.0
 _animationPlayer = NodePath("AnimationPlayer")
 
@@ -45,10 +46,10 @@ script = ExtResource("6_crw70")
 script = ExtResource("6_trts0")
 _detector = NodePath("../../DetectorNPC")
 
-[node name="DraggingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_hiddingPointDetector")]
+[node name="DraggingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_corpseHidingPointDetector")]
 script = ExtResource("7_yoa4b")
 _detector = NodePath("../../DetectorCorpse")
-_hiddingPointDetector = NodePath("../../HiddingPointsDetector")
+_corpseHidingPointDetector = NodePath("../../HiddingPointsDetector")
 
 [node name="Node2" type="Node" parent="StateMachine"]
 
@@ -66,9 +67,10 @@ collision_mask = 8
 script = ExtResource("6_nja1v")
 
 [node name="HiddingPointsDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 128
 collision_mask = 32
+input_pickable = false
+script = ExtResource("9_5burq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
 position = Vector2(-0.5, 0.5)
