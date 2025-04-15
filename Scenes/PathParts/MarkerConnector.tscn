@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx3ste55c3hp4"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/MarkerPathSwitch.cs" id="1_1icot"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Roots/MarkerPathSwitch.cs" id="1_1icot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awefx"]
 
-[node name="MarkerConnector" type="Marker2D" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent")]
+[node name="MarkerConnector" type="Marker2D" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["InterconnectionRoute"]]
 script = ExtResource("1_1icot")
 _pathInterconectedByMe = []
 _markersAdjacent = []
