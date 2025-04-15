@@ -9,7 +9,7 @@ using Godot.Collections;
     Extends the Entity class
 */
 
-public partial class NPC : Entity
+public partial class NPC : Entity, IFading
 {
 
     // Array which contein the routine. The routine are spiciefied by a sequence of Waypoints
@@ -21,9 +21,21 @@ public partial class NPC : Entity
     [Export] private MarkerPathSwitch _workPlace;
 
     [Export] private Control _actionInterface;
-
     [Signal] public delegate void IamOnAttackEventHandler();
     [Signal] public delegate void IamOnTargetEventHandler(bool onTarget);
+
+
+    public override void _Ready()
+    {
+        base._Ready();
+        GetNode<Area2D>("VisionCone2D/VisionConeArea").BodyEntered += OnBodyEnteredInVisionCone;
+    }
+
+    private void OnBodyEnteredInVisionCone(Node2D node) {
+        //Emitir señal de haber encontrado un cuerpo
+        if(node == this) return;
+        GD.Print("He visto un cadaver");
+    }
 
 
     public void EmitIamOnAttackSignal() {
@@ -36,9 +48,19 @@ public partial class NPC : Entity
 
     public void NextTask() { _indexRoutine++; }
 
+    public void Fading(bool iVanishing, double process)
+    { 
+        Color controlModulate = Modulate;
+
+        controlModulate.A += (float)((!iVanishing) ? process : -process);
+        
+        Modulate = controlModulate;
+    }
+
+
     #region Getters and Setters
 
-        public Control ActionInterface { get => _actionInterface; }
+    public Control ActionInterface { get => _actionInterface; }
 
         // Get the current action of Routine
         public MarkerPathSwitch CurrentAction {
