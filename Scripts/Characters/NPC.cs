@@ -16,26 +16,13 @@ public partial class NPC : Entity, IFading
     [Export] private Array<MarkerPathSwitch> _routine;
     // Index to track the current Waypoint/Task of the routine
     private int _indexRoutine = 0;
-
+    private bool _isHide = false;
     // Waypoint which indicate the NPC workplace
     [Export] private MarkerPathSwitch _workPlace;
 
     [Export] private Control _actionInterface;
     [Signal] public delegate void IamOnAttackEventHandler();
     [Signal] public delegate void IamOnTargetEventHandler(bool onTarget);
-
-
-    public override void _Ready()
-    {
-        base._Ready();
-        GetNode<Area2D>("VisionCone2D/VisionConeArea").BodyEntered += OnBodyEnteredInVisionCone;
-    }
-
-    private void OnBodyEnteredInVisionCone(Node2D node) {
-        //Emitir señal de haber encontrado un cuerpo
-        if(node == this) return;
-        GD.Print("He visto un cadaver");
-    }
 
 
     public void EmitIamOnAttackSignal() {
@@ -55,6 +42,7 @@ public partial class NPC : Entity, IFading
         controlModulate.A += (float)((!iVanishing) ? process : -process);
         
         Modulate = controlModulate;
+        _isHide = true;
     }
 
 
@@ -62,10 +50,10 @@ public partial class NPC : Entity, IFading
 
     public Control ActionInterface { get => _actionInterface; }
 
+    public bool IsHide { get => _isHide;  set => _isHide = value; }
+
         // Get the current action of Routine
-        public MarkerPathSwitch CurrentAction {
-            get => _routine[_indexRoutine];
-        }
+        public MarkerPathSwitch CurrentAction { get => _routine[_indexRoutine]; }
 
         // Get - Set all routine (routine Array)
         public Array<MarkerPathSwitch> Routine {
