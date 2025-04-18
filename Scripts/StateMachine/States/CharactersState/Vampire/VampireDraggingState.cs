@@ -43,7 +43,10 @@ public partial class VampireDraggingState : VampireStateBase
     //GD.Print("Comienzo de estado: ", _isStatingState);
     if(!Input.IsPhysicalKeyPressed(Key.E) || _isStatingState) return;
 
-    _corpseHidingPointDetector.CorpseHidingPoint?.HideCorpse(_corpseNPC);
+    CorpseHidingPoint hidingPoint = (_corpseHidingPointDetector.HidingPoint is CorpseHidingPoint) ? (CorpseHidingPoint)_corpseHidingPointDetector.HidingPoint : null;
+    
+    if(_corpseHidingPointDetector.HidingPoint != null)
+      hidingPoint.HideCorpse(_corpseNPC);
     StateMachine.ChangeState(VampireStateNames.Idle);
   }
 
