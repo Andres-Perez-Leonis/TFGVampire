@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="1_p54u0"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/UserInterface/UserInterface.cs" id="2_2827s"]
-[ext_resource type="Script" path="res://Scripts/ScenaryObjects/HidingPoints/CorpseHidingPoint/CorpseHidingPoint.cs" id="4_fp5gd"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/ScenaryElements/CorpseHidingPoint/CorpseHidingPoint.cs" id="4_fp5gd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qxyq"]
 size = Vector2(40, 39)

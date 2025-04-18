@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
 [ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_mee5d"]
 [ext_resource type="PackedScene" uid="uid://bvkwkx1hkss5t" path="res://Scenes/Characters/NPCs/npc_prototipe.tscn" id="3_kug2k"]
-[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/NpcPathFollow.cs" id="3_mkp2x"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Paths/Path/NpcPathFollow.cs" id="3_mkp2x"]
 [ext_resource type="PackedScene" uid="uid://dx3ste55c3hp4" path="res://Scenes/PathParts/MarkerConnector.tscn" id="4_rjsdd"]
 [ext_resource type="PackedScene" uid="uid://c6nhv8rgmny24" path="res://Scenes/hiding_place.tscn" id="6_rjyhp"]
 
@@ -42,20 +42,14 @@ scale = Vector2(3, 3)
 
 [node name="Markers" type="Node" parent="."]
 
-[node name="MarkerConnector" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="MarkerConnector" parent="Markers" instance=ExtResource("4_rjsdd")]
 position = Vector2(2, 207)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D")]
-_markersAdjacent = [NodePath("../MarkerConnector2")]
 
-[node name="MarkerConnector2" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="MarkerConnector2" parent="Markers" instance=ExtResource("4_rjsdd")]
 position = Vector2(506, 198)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D"), NodePath("../../Paths/Path2D2")]
-_markersAdjacent = [NodePath("../MarkerConnector"), NodePath("../MarkerConnector3")]
 
-[node name="MarkerConnector3" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="MarkerConnector3" parent="Markers" instance=ExtResource("4_rjsdd")]
 position = Vector2(1010, 206)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D2")]
-_markersAdjacent = [NodePath("../MarkerConnector2")]
 
 [node name="Paths" type="Node" parent="."]
 

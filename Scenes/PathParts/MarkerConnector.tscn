@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx3ste55c3hp4"]
 
-[ext_resource type="Script" path="res://Scripts/GeneralObjects/Roots/MarkerPathSwitch.cs" id="1_1icot"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Paths/Interconnections/MarkerPathSwitch.cs" id="1_1icot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awefx"]
 
