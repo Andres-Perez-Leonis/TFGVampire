@@ -25,6 +25,7 @@ public partial class NPC : Entity, IFading
     [Signal] public delegate void IamOnTargetEventHandler(bool onTarget);
 
 
+
     public void EmitIamOnAttackSignal() {
         EmitSignal(SignalName.IamOnAttack);
     }
