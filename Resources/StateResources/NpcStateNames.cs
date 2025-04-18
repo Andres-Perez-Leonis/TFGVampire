@@ -14,6 +14,7 @@ public partial class NpcStateNames : Resource
     public const string Working = "WorkingState";
     public const string Moving = "MovingState";
     public const string MovingScared = "MovingScaredState";
+    public const string Weird = "WeirdState";
     public const string Attack = "AttackState";
     public const string Death = "DeathState";
     public const string Talking = "TalkingState";
