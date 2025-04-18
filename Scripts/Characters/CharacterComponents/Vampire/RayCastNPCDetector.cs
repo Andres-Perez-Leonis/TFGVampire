@@ -12,7 +12,7 @@ public partial class RayCastNPCDetector : RayCastDetector
 			//GD.Print((GetCollider() as Node2D).Name);
 			_npcDetected = (NPC)GetCollider();
 			_npcDetected.EmitIamOnTargetSignal(true);
-			GD.Print("Estoy colisionando soy: " +  Name);
+			//GD.Print("Estoy colisionando soy: " +  Name);
 			
 		} else _npcDetected = null;
 		
