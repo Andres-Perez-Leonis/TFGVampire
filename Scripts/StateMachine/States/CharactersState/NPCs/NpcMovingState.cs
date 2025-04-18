@@ -8,6 +8,8 @@ public partial class NpcMovingState : NpcStateBase
     [Export]
     protected Area2D _interconectionDetector;
 
+    [Export] protected HidingPointDetector _hidingPointDetector;
+
     /***
      * The MarkerPathSwitch used to change the NPC's path when needed.
      */
@@ -26,8 +28,19 @@ public partial class NpcMovingState : NpcStateBase
     {
         base._Ready();
         _interconectionDetector.AreaEntered += MarkerSwitchDetected;
-        _pathFollow.OnChangedPath += CheckOrientation;
+        _pathFollow.OnChangePath += CheckOrientation;
         _pathFollow.InMyDestination += InMyDestination;
+        
+        GetNode<Area2D>("../../VisionCone2D/VisionConeArea").BodyEntered += OnBodyEnteredInVisionCone;
+    }
+
+    private void OnBodyEnteredInVisionCone(Node2D node) {
+        //Emitir señal de haber encontrado un cuerpo
+        if(node == _npc) return;
+        if(node is not NPC) return;
+        if(((NPC) node).IsHide) return;
+        GD.Print("He visto un cadaver");
+        StateMachine.ChangeState(NpcStateNames.GivingAlarmRunning);
     }
 
     /***
@@ -39,9 +52,13 @@ public partial class NpcMovingState : NpcStateBase
     {
         base.OnPhysicsProcess(delta);
 
+        int nodeFounded = 0;
 
         //if(_npc.CurrentAction == _pathFollow.LastPassMarker) StateMachine.ChangeState(NpcStateNames.Idle);
 
+        
+        if(_hidingPointDetector.HidingPoint != null) nodeFounded = _hidingPointDetector.HidingPoint.Interact();
+        if(nodeFounded != 0) StateMachine.ChangeState( nodeFounded == 1 ? NpcStateNames.GivingAlarmRunning : NpcStateNames.Weird); 
         // Calculate the progress in the path
         float progress = (float)delta * _npc.Speed;
         _pathFollow.ProgressRatio += (_progressInDown) ? -progress : progress;
@@ -53,6 +70,8 @@ public partial class NpcMovingState : NpcStateBase
 
             
     }
+
+
 
     /***
      * Changes the NPC's path when the current path is completed.
