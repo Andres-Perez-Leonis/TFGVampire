@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class NpcStateBase : StateBase
+public abstract partial class NpcStateBase : StateBase
 {
     /***
      * Reference to the NPC node that this state controls.
