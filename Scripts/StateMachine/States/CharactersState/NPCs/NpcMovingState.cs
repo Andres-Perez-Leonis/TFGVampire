@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class NpcMovingState : MovingStateBase
+public partial class NpcMovingState : NPCMovingStateBase
 {
 
     [Export] private HidingPointDetector _hidingPointDetector;

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class GivingAlarmState : MovingStateBase
+public partial class GivingAlarmState : NPCMovingStateBase
 {
     [Export] private MarkerPathSwitch _guardPoint;
 
