@@ -116,8 +116,9 @@ script = ExtResource("4_o3w1k")
 
 [node name="WorkingState" type="Node" parent="StateMachine"]
 
-[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_hidingPointDetector", "_interconectionDetector")]
 script = ExtResource("5_e8j52")
+_hidingPointDetector = NodePath("../../HiddingPointsDetector")
 _interconectionDetector = NodePath("../../InterconnectionDetector")
 
 [node name="DeathState" type="Node" parent="StateMachine"]
