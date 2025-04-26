@@ -13,16 +13,26 @@ public partial class NpcMovingState : NPCMovingStateBase
     {
         base._Ready();
         
-        GetNode<Area2D>("../../VisionCone2D/VisionConeArea").BodyEntered += OnBodyEnteredInVisionCone;
+        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered += OnBodyEnteredInCorpseVisionCone;
+        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered += OnBodyEnteredInVampireDetector;
     }
 
-    private void OnBodyEnteredInVisionCone(Node2D node) {
+    private void OnBodyEnteredInCorpseVisionCone(Node2D node) {
         //Emitir señal de haber encontrado un cuerpo
         if(node == _npc) return;
         if(node is not NPC) return;
         if(((NPC) node).IsHide) return;
         GD.Print("He visto un cadaver");
         StateMachine.ChangeState(NpcStateNames.GivingAlarm);
+    }
+
+     private void OnBodyEnteredInVampireDetector(Node2D node) {
+        
+        if(node is not Vampire) return;
+        Vampire vampire = (Vampire) node;
+        StateMachine stateMachine = vampire.GetNode<StateMachine>(".");
+        if(stateMachine.CurrentState.Name != VampireStateNames.Attack) return;
+        StateMachine.ChangeState(NpcStateNames.GivingAlarmRunning);
     }
 
     /***
