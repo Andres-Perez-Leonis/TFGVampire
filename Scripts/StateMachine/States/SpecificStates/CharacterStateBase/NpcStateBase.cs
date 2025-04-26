@@ -11,7 +11,6 @@ public abstract partial class NpcStateBase : StateBase
     /***
      * Reference to the NpcPathFollow node that controls the NPC's path.
      */
-    protected NpcPathFollow _pathFollow;
 
     /***
      * Called when the node enters the scene tree for the first time.
@@ -20,7 +19,6 @@ public abstract partial class NpcStateBase : StateBase
     public override void _Ready()
     {
         base._Ready();
-        _pathFollow = ControlledNode.GetParent<NpcPathFollow>();
         _npc = (NPC) ControlledNode;
         _npc.IamOnAttack += OnAttack;
     }
@@ -39,4 +37,6 @@ public abstract partial class NpcStateBase : StateBase
     private void OnAttack() {
         StateMachine.ChangeState(NpcStateNames.Death);
     }
+
+
 }
