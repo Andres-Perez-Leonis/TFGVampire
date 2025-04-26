@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Runtime.Serialization;
 using Godot;
 using Godot.Collections;
 
@@ -17,10 +15,13 @@ public partial class NPC : Entity, IFading
     [Export] private Array<MarkerPathSwitch> _routine;
     // Index to track the current Waypoint/Task of the routine
     private int _indexRoutine = 0;
-    private MarkerPathSwitch _destination;
+    protected MarkerPathSwitch _destination;
+    
+    protected NpcPathFollow _pathFollow;
     private bool _isHide = false;
     // Waypoint which indicate the NPC workplace
     [Export] private MarkerPathSwitch _workPlace;
+    [Export] private MarkerPathSwitch _house;
 
     [Export] private Control _actionInterface;
     [Signal] public delegate void IamOnAttackEventHandler();
@@ -30,6 +31,7 @@ public partial class NPC : Entity, IFading
     {
         base._Ready();
         _destination = _routine[0];
+        _pathFollow = GetParent<NpcPathFollow>();
     }
 
 
@@ -60,9 +62,11 @@ public partial class NPC : Entity, IFading
     public Control ActionInterface { get => _actionInterface; }
 
     public bool IsHide { get => _isHide;  set => _isHide = value; }
+    public NpcPathFollow PathFollow { get => _pathFollow;}
 
         // Get the current action of Routine
         public MarkerPathSwitch CurrentAction { get => _destination; }
+        public MarkerPathSwitch House { get => _house; }
 
         // Get - Set all routine (routine Array)
         public Array<MarkerPathSwitch> Routine {
