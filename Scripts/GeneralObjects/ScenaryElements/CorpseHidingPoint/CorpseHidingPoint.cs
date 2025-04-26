@@ -24,7 +24,7 @@ public partial class CorpseHidingPoint : HidingPoint
     public override int Interact()
     {
         int corpseFounded = 0;
-        if(_deathNPC == null) return corpseFounded;
+        //if(_deathNPC == null) return corpseFounded;
 
         float foundedCorpseDice = GD.Randf();
 
