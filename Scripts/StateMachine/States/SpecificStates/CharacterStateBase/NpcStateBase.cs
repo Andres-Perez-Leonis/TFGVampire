@@ -30,11 +30,12 @@ public abstract partial class NpcStateBase : StateBase
     public override void OnPhysicsProcess(double delta)
     {
         base.OnPhysicsProcess(delta);
-        //GD.Print("I am " + _npc.Name + " my state is : " + StateMachine.CurrentState.Name);
+        //if(_npc.Name == "NPC2")GD.Print("I am " + _npc.Name + " my state is : " + StateMachine.CurrentState.Name);
     }
 
 
     private void OnAttack() {
+        if(StateMachine == null) return;
         StateMachine.ChangeState(NpcStateNames.Death);
     }
 

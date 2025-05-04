@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvkwkx1hkss5t"]
+[gd_scene load_steps=17 format=3 uid="uid://bvkwkx1hkss5t"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2h5l3c0hfo" path="res://Assests/VillagerPrototipe/MiniGatherer.png" id="1_121g8"]
 [ext_resource type="Script" path="res://Scripts/Characters/NPC.cs" id="1_xkiir"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcIdleState.cs" id="4_o3w1k"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcMovingState.cs" id="5_e8j52"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_1818n"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmState.cs" id="7_ik3ko"]
 [ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="7_u4ft1"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="8_btwrq"]
 
@@ -85,11 +86,16 @@ size = Vector2(8, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
 size = Vector2(19, 20)
 
-[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine")]
+[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine", "_animationPlayer")]
+position = Vector2(0, -20)
+scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_xkiir")
 _routine = []
+_health = 20
+_speed = 0.2
+_animationPlayer = NodePath("Sprite2D/AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tvjq2")
@@ -125,6 +131,9 @@ _interconectionDetector = NodePath("../../InterconnectionDetector")
 script = ExtResource("6_1818n")
 
 [node name="TalkingState" type="Node" parent="StateMachine"]
+
+[node name="GivingAlarmState" type="Node" parent="StateMachine"]
+script = ExtResource("7_ik3ko")
 
 [node name="InterconnectionDetector" type="Area2D" parent="."]
 collision_layer = 128

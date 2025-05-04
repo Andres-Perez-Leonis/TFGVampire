@@ -56,8 +56,8 @@ public partial class StateMachine : Node
     {
         if (_currentState != null)
             _currentState.End();
-
-        GD.Print("Estado cambiado a: " + newState + " desde " + _currentState.Name);
+        if(_currentState.Name == newState) return;
+        GD.Print("Soy " + Owner.Name + " Estado cambiado a: " + newState + " desde " + _currentState.Name);
         _currentState = (StateBase)GetNode<Node>(newState);
         _startState();
     }

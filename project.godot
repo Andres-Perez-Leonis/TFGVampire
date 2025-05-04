@@ -26,6 +26,7 @@ enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 [global_group]
 
 InterconnectionRoute=""
+Guards=""
 
 [input]
 

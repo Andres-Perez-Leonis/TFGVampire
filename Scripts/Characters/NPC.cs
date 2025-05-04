@@ -30,8 +30,10 @@ public partial class NPC : Entity, IFading
     public override void _Ready()
     {
         base._Ready();
-        _destination = _routine[0];
+        if(_routine?.Count > 0) _destination = _routine[0];
         _pathFollow = GetParent<NpcPathFollow>();
+        GD.Print("Mi padre es: " + GetParent().Name);
+        GD.Print("Este es mi path Follow: " + _pathFollow.Name);
     }
 
 
@@ -44,7 +46,7 @@ public partial class NPC : Entity, IFading
         EmitSignal(SignalName.IamOnTarget, onTarget);
     }
 
-    public void NextTask() { _indexRoutine++; }
+    public void NextTask() {  IndexRoutine = 0; GD.Print("Mi tarea actual: " + CurrentAction.Name); }
 
     public void Fading(bool iVanishing, double process)
     { 
