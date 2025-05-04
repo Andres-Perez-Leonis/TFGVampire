@@ -24,9 +24,13 @@ public abstract partial class NPCMovingStateBase : NpcStateBase
     public override void _Ready()
     {
         base._Ready();
+        CallDeferred("CallDeferredReady");
+    }
+
+    private void CallDeferredReady() {
         _interconectionDetector.AreaEntered += MarkerSwitchDetected;
-        _pathFollow.OnChangePath += CheckOrientation;
-        _pathFollow.InMyDestination += InMyDestination;
+        _npc.PathFollow.OnChangePath += CheckOrientation;
+        _npc.PathFollow.InMyDestination += InMyDestination;
     }
 
 
@@ -35,11 +39,11 @@ public abstract partial class NPCMovingStateBase : NpcStateBase
         base.OnPhysicsProcess(delta);
         // Calculate the progress in the path
         float progress = (float)delta * _npc.Speed;
-        _pathFollow.ProgressRatio += (_progressInDown) ? -progress : progress;
-        //GD.Print("Proogress Ratio: " + _pathFollow.ProgressRatio);
+        _npc.PathFollow.ProgressRatio += (_progressInDown) ? -progress : progress;
+        //GD.Print("Proogress Ratio: " + _npc.PathFollow.ProgressRatio);
 
         // Check if the NPC has reached the end or start of the path to trigger the next path
-        if (_pathFollow.ProgressRatio == 1 || _pathFollow.ProgressRatio == 0) 
+        if (_npc.PathFollow.ProgressRatio == 1 || _npc.PathFollow.ProgressRatio == 0) 
             NextPath();
     }
 
@@ -54,7 +58,7 @@ public abstract partial class NPCMovingStateBase : NpcStateBase
             GD.Print("Error: Path Interconnector Undetected");
             return;
         }
-        _markerPathSwitch.ChangeTheNPCRoute(_pathFollow, _npc.CurrentAction);
+        _markerPathSwitch.ChangeTheNPCRoute(_npc.PathFollow, _npc.CurrentAction);
     }
 
 
@@ -92,8 +96,8 @@ public abstract partial class NPCMovingStateBase : NpcStateBase
 
         _progressInDown = distanceFinal < 50;
         //GD.Print("InDown: " + _progressInDown);
-        _pathFollow.ProgressRatio = _progressInDown ? 1 : 0;
-        //GD.Print("Proogress Ratio on Change: " + _pathFollow.ProgressRatio);
+        _npc.PathFollow.ProgressRatio = _progressInDown ? 1 : 0;
+        //GD.Print("Proogress Ratio on Change: " + _npc.PathFollow.ProgressRatio);
     }
 
     /***
