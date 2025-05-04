@@ -1,0 +1,160 @@
+[gd_scene load_steps=16 format=3 uid="uid://bcvsdw3kouwf7"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/NPCs/Guard.cs" id="1_rtvgo"]
+[ext_resource type="Texture2D" uid="uid://dxj2y3u7srotj" path="res://Assests/VillagerPrototipe/MiniHunter.png" id="2_r1o27"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_cmvpa"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardIdleState.cs" id="5_1cypj"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcMovingState.cs" id="5_fu6d6"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_fqqah"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="7_xsusl"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="8_jb6kk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
+
+[sub_resource type="Animation" id="Animation_toy81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_nkp60"]
+resource_name = "idle"
+length = 0.12
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_va0pm"]
+resource_name = "walk"
+length = 0.19
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_utmdg"]
+_data = {
+"RESET": SubResource("Animation_toy81"),
+"idle": SubResource("Animation_nkp60"),
+"walk": SubResource("Animation_va0pm")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2dl"]
+size = Vector2(8, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
+size = Vector2(19, 20)
+
+[node name="Guard" type="CharacterBody2D" node_paths=PackedStringArray("_routine", "_animationPlayer") groups=["Guards"]]
+position = Vector2(0, -20)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 65
+script = ExtResource("1_rtvgo")
+_routine = []
+_speed = 0.02
+_animationPlayer = NodePath("Sprite2D/AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tvjq2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_r1o27")
+offset = Vector2(0, 6)
+hframes = 10
+vframes = 7
+frame = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_utmdg")
+}
+speed_scale = 0.4
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
+script = ExtResource("3_cmvpa")
+_defaultState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("5_1cypj")
+
+[node name="WorkingState" type="Node" parent="StateMachine"]
+
+[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_hidingPointDetector", "_interconectionDetector")]
+script = ExtResource("5_fu6d6")
+_hidingPointDetector = NodePath("../../HiddingPointsDetector")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("6_fqqah")
+
+[node name="TalkingState" type="Node" parent="StateMachine"]
+
+[node name="InterconnectionDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterconnectionDetector"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_xb2dl")
+
+[node name="CorpseDetector" parent="." instance=ExtResource("7_xsusl")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+
+[node name="HiddingPointsDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+input_pickable = false
+script = ExtResource("8_jb6kk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+shape = SubResource("RectangleShape2D_vvmd3")
+
+[node name="VampireDetector" parent="." instance=ExtResource("7_xsusl")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+collision_layer_mask = 2
