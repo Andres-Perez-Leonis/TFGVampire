@@ -61,6 +61,7 @@ public partial class NpcMovingState : NPCMovingStateBase
     {
         // Transition to connected states based on destination
         _npc.NextTask();
+        //NextPath();
         //StateMachine.ChangeState(NpcStateNames.Idle);
     }
 
