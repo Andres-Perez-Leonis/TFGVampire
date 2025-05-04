@@ -10,18 +10,17 @@ public partial class GivingAlarmState : NpcStateBase
     public override void Start()
     {
         base.Start();
-        _npc.AnimationPlayer.Play(AnimationNameNPC.Shout);
+        //_npc.AnimationPlayer.Play(AnimationNameNPC.Shout);
         List<Node> guards = GetTree().GetNodesInGroup(NameGroups.GuardGroup).ToList();
         List<Node2D> nearestGuards = guards.OfType<Node2D>().OrderBy(guard => _npc.GlobalPosition.DistanceSquaredTo(guard.GlobalPosition)).Take(2).ToList();
         foreach(Guard guard in nearestGuards) {
-            guard.NotifyOfCorpseFounded(_corpseFounded);
+            guard.EmitNotifyCorpseFoundSignal(_corpseFounded);
         }
     }
 
     public override void _Ready()
     {
         base._Ready();
-        
     }
 
     private void OnCorpseFounded(Node2D corpse) {
