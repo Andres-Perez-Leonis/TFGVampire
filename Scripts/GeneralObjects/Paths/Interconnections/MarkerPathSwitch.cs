@@ -109,6 +109,8 @@ public partial class MarkerPathSwitch : Marker2D
     */
     public void ChangeTheNPCRoute(NpcPathFollow npcPathFollow, MarkerPathSwitch destination) {
         
+        npcPathFollow.LastPassMarker = this;
+        
         if(destination == this) {
             npcPathFollow.EmitInMyDestinationSignal();
             return;
@@ -118,9 +120,9 @@ public partial class MarkerPathSwitch : Marker2D
         Path2D nextPath = _redirectionDictionary[destination];
         npcPathFollow.EmitOnChangePathSignal(nextPath.ToGlobal(nextPath.Curve.GetPointPosition(nextPath.Curve.PointCount - 1)));
         npcPathFollow.GetParent<Path2D>().RemoveChild(npcPathFollow);
-        npcPathFollow.LastPassMarker = this;
         nextPath.AddChild(npcPathFollow);
     }
+
 
     private void PrintRoutes() {
         GD.Print($"My dictionary {Name}: ");
