@@ -60,7 +60,10 @@ public partial class NpcMovingState : NPCMovingStateBase
         if (node == _npc) return;
         if (node is not NPC) return;
         if (((NPC)node).IsHide) return;
-        if (_vampire == null) GD.Print("Es nulo");
+
+
+
+        
         if (_vampire != null)
         {
             StateMachine stateMachine = _vampire.GetNode<StateMachine>("./StateMachine");
