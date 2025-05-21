@@ -58,6 +58,8 @@ public partial class NPC : Entity, IFading
         _isHide = true;
     }
 
+    public void ToHome() { _destination = _house; }
+
 
     #region Getters and Setters
 
