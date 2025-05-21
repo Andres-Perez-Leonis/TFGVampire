@@ -7,7 +7,9 @@ public partial class HideOutPlace : HidingPoint
 
     public override int Interact()
     {
-        throw new NotImplementedException();
+        int vampireFounded = 0;
+        if (_vampire != null) vampireFounded = 1;
+        return vampireFounded;
     }
 
 
