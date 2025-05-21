@@ -13,7 +13,7 @@ size = Vector2(126.9, 127.051)
 
 [sub_resource type="Curve2D" id="Curve2D_0d16h"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1003, 201, 0, 0, 0, 0, 549, 197, 0, 0, 0, 0, 408, 207, 0, 0, 0, 0, 328, 206, 0, 0, 0, 0, 122, 204, 0, 0, 0, 0, 4, 204)
+"points": PackedVector2Array(0, 0, 0, 0, 1003, 201, 0, 0, 0, 0, 549, 197, 0, 0, 0, 0, 408, 207, 0, 0, 0, 0, 328, 206, 0, 0, 0, 0, 104, 204, 0, 0, 0, 0, 4, 198.73)
 }
 point_count = 6
 
@@ -44,12 +44,14 @@ scale = Vector2(3, 3)
 [node name="Markers" type="Node" parent="."]
 
 [node name="MarkerConnector" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
-position = Vector2(2, 207)
+position = Vector2(6, 202)
 _pathInterconectedByMe = [NodePath("../../Paths/Path2D")]
 _markersAdjacent = [NodePath("../MarkerConnector2")]
 
 [node name="MarkerConnector2" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+modulate = Color(0.932801, 0.0204863, 0.272322, 1)
 position = Vector2(506, 198)
+gizmo_extents = 41.4
 _pathInterconectedByMe = [NodePath("../../Paths/Path2D"), NodePath("../../Paths/Path2D2")]
 _markersAdjacent = [NodePath("../MarkerConnector"), NodePath("../MarkerConnector3")]
 
@@ -69,16 +71,18 @@ curve = SubResource("Curve2D_0d16h")
 position = Vector2(1003, 201)
 _lastPassMarker = NodePath("../../../Markers/MarkerConnector2")
 
-[node name="NPC1" parent="Paths/Path2D/NpcPathFollow" node_paths=PackedStringArray("_routine") instance=ExtResource("3_kug2k")]
+[node name="NPC1" parent="Paths/Path2D/NpcPathFollow" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("3_kug2k")]
 _routine = [NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3"), NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3"), NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3"), NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3")]
+_house = NodePath("../../../../Markers/MarkerConnector3")
 
 [node name="NpcPathFollow2" parent="Paths/Path2D" node_paths=PackedStringArray("_lastPassMarker") instance=ExtResource("4_tv5px")]
-position = Vector2(4, 204)
+position = Vector2(4.0726, 198.734)
 progress = 999.388
 _lastPassMarker = NodePath("../../../Markers/MarkerConnector2")
 
-[node name="NPC2" parent="Paths/Path2D/NpcPathFollow2" node_paths=PackedStringArray("_routine") instance=ExtResource("3_kug2k")]
+[node name="NPC2" parent="Paths/Path2D/NpcPathFollow2" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("3_kug2k")]
 _routine = [NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3"), NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3"), NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3"), NodePath("../../../../Markers/MarkerConnector"), NodePath("../../../../Markers/MarkerConnector3")]
+_house = NodePath("../../../../Markers/MarkerConnector3")
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
 position = Vector2(505, 3)
@@ -92,4 +96,4 @@ _lastPassMarker = NodePath("../../../Markers/MarkerConnector3")
 [node name="Guard" parent="Paths/Path2D2/NpcPathFollow" instance=ExtResource("6_jpbrm")]
 
 [node name="AreaHidingPoint" parent="." instance=ExtResource("6_rjyhp")]
-position = Vector2(650, -89)
+position = Vector2(766, 191)
