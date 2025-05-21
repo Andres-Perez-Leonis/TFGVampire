@@ -108,10 +108,9 @@ public partial class MarkerPathSwitch : Marker2D
         @param destination -> The destionation of the NPC
     */
     public void ChangeTheNPCRoute(NpcPathFollow npcPathFollow, MarkerPathSwitch destination) {
-        
         npcPathFollow.LastPassMarker = this;
-        
-        if(destination == this) {
+        if (destination == this)
+        {
             npcPathFollow.EmitInMyDestinationSignal();
             return;
         }

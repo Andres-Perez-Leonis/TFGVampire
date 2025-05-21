@@ -27,7 +27,15 @@ public abstract partial class NPCMovingStateBase : NpcStateBase
         CallDeferred("CallDeferredReady");
     }
 
-    private void CallDeferredReady() {
+    public override void Start()
+    {
+        base.Start();
+        CheckOrientation(_npc.CurrentAction.GlobalPosition);
+    }
+
+
+    private void CallDeferredReady()
+    {
         _interconectionDetector.AreaEntered += MarkerSwitchDetected;
         _npc.PathFollow.OnChangePath += CheckOrientation;
         _npc.PathFollow.InMyDestination += InMyDestination;
@@ -106,6 +114,8 @@ public abstract partial class NPCMovingStateBase : NpcStateBase
     public void rotate()
     {
         _npc.Scale = new Vector2(_npc.Scale.X * -1, _npc.Scale.Y);
+        _npc.GetNode<Node2D>("CorpseDetector").RotationDegrees *= -1;
+        _npc.GetNode<Node2D>("VampireDetector").RotationDegrees *= -1;
     }
 
     

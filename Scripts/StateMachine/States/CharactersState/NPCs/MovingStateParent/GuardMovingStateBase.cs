@@ -72,6 +72,7 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
             GD.Print("Error: Path Interconnector Undetected");
             return;
         }
+        //GD.Print("Pido que me cambien de path");
         _markerPathSwitch.ChangeTheNPCRoute(_npc.PathFollow, _npc.CurrentAction);
     }
 
@@ -84,22 +85,23 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
     protected abstract void InMyDestination();
 
 
-    
+
     /***
      * Checks and updates the NPC's orientation based on the current and next path's direction.
      * This adjusts the NPC's scale to reflect the correct orientation for movement.
-     * @param intialPointOfCurrentPath The starting point of the current path.
      * @param finalPointOfNextPath The endpoint of the next path.
      */
     private void CheckOrientation(Vector2 finalPointOfNextPath)
     {
+
+        if (GetParent<StateMachine>().CurrentState != this) return;
         float distanceFinal = _npc.GlobalPosition.DistanceTo(finalPointOfNextPath);
-        GD.Print($"Soy {_npc.Name} -> Distacia desde {_npc.GlobalPosition} al punto final {finalPointOfNextPath}: {distanceFinal}");
+        //GD.Print($"Soy {_npc.Name} -> Distacia desde {_npc.GlobalPosition} al punto final {finalPointOfNextPath}: {distanceFinal}");
 
 
         float angle, direction;
 
-        angle = _npc.GlobalPosition.AngleToPoint(_npc.CurrentAction.GlobalPosition);   
+        angle = _npc.GlobalPosition.AngleToPoint(_npc.CurrentAction.GlobalPosition);
         direction = Mathf.Sign(Mathf.Cos(angle));
 
         float scaleFactor = Mathf.Abs(_npc.Scale.X);
@@ -112,6 +114,7 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
         //GD.Print("InDown: " + _progressInDown);
         _npc.PathFollow.ProgressRatio = _progressInDown ? 1 : 0;
         //GD.Print("Proogress Ratio on Change: " + _npc.PathFollow.ProgressRatio);
+        return;
     }
 
     /***

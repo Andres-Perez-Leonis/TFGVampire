@@ -4,7 +4,7 @@ using Godot;
 
 public partial class GivingAlarmState : NpcStateBase
 {
-    [Signal] public delegate void CorpseFoundedEventHandler(Node2D node2D);
+    //[Signal] public delegate void CorpseFoundedEventHandler(Node2D node2D);
 
     private NPC _corpseFounded;
     public override void Start()
@@ -21,13 +21,17 @@ public partial class GivingAlarmState : NpcStateBase
     public override void _Ready()
     {
         base._Ready();
+        //CorpseFounded += OnCorpseFounded;
     }
 
     private void OnCorpseFounded(Node2D corpse) {
         _corpseFounded = (NPC) corpse;
     }
 
-
+    public void CorpseFounded(NPC npcCorpse)
+    {
+        _corpseFounded = npcCorpse;
+    }
 
     public override void OnPhysicsProcess(double delta)
     {

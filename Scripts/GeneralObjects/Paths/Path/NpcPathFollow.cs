@@ -20,6 +20,7 @@ public partial class NpcPathFollow : PathFollow2D
 	}
 	// Method for emit InMyDestination signal
 	public void EmitOnChangePathSignal(Vector2 finalPointOfNextPath) {
+		//GD.Print("El punto que me han enviado es: " + finalPointOfNextPath);
 		EmitSignal(SignalName.OnChangePath, finalPointOfNextPath);
 	}
 
