@@ -6,12 +6,17 @@ public partial class GuardMovingState : GuardMovingStateBase
     [Export] RayCast2D _corpseDetector;
     
     private bool _inTheSamePath = false;
+
+
+
     public override void OnPhysicsProcess(double delta)
     {
         base.OnPhysicsProcess(delta);
 
         bool nextToTheCorpse = _corpseDetector.IsColliding();
-        if(nextToTheCorpse && _inTheSamePath)
+
+        if (!_inTheSamePath) CheckPath();
+        if (nextToTheCorpse && _inTheSamePath)
             StateMachine.ChangeState(GuardStateNames.Drag);
     }
 
@@ -23,21 +28,19 @@ public partial class GuardMovingState : GuardMovingStateBase
 
     private void CheckPath() {
         _inTheSamePath = _guard.CorpseToCheck.PathFollow.GetParent<Path2D>() == _guard.PathFollow.GetParent<Path2D>();
-        if(_inTheSamePath)
-            InMyDestination();
     }
+    
+    
 
 
-    protected override void NextPath()
+
+    private void InTheSamePath()
     {
-        base.NextPath();
-        CheckPath();
+
     }
 
     protected override void InMyDestination()
     {
-        if(_inTheSamePath) return;
-        _inTheSamePath = true;
         Path2D nextPath = _guard.CorpseToCheck.PathFollow.GetParent<Path2D>();
         _guard.PathFollow.EmitOnChangePathSignal(nextPath.ToGlobal(nextPath.Curve.GetPointPosition(nextPath.Curve.PointCount - 1)));
         _guard.PathFollow.GetParent<Path2D>().RemoveChild(_guard.PathFollow);
