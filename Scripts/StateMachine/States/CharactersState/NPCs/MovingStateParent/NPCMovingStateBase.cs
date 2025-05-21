@@ -87,6 +87,7 @@ public abstract partial class NPCMovingStateBase : NpcStateBase
      */
     private void CheckOrientation(Vector2 finalPointOfNextPath)
     {
+        if (GetParent<StateMachine>().CurrentState != this) return;
         float distanceFinal = _npc.GlobalPosition.DistanceTo(finalPointOfNextPath);
         //GD.Print($"Distacia desde {_npc.GlobalPosition} al punto final {finalPointOfNextPath}: {distanceFinal}");
 
