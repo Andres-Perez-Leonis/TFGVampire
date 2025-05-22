@@ -41,8 +41,6 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
         _guard = (Guard) _npc;
         _interconectionDetector.AreaEntered += MarkerSwitchDetected;
         _npc.PathFollow.OnChangePath += CheckOrientation;
-
-
         _npc.PathFollow.InMyDestination += InMyDestination;
     }
 
