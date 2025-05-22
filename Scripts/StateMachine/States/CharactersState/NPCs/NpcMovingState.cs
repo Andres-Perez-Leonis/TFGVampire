@@ -15,7 +15,7 @@ public partial class NpcMovingState : NPCMovingStateBase
      */
 
 
-    static int i = 0;
+    //static int i = 0;
     public override void _Ready()
     {
         /*
@@ -30,12 +30,30 @@ public partial class NpcMovingState : NPCMovingStateBase
         */
 
         base._Ready();
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered += OnBodyEnteredInVampireDetector;
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyExited += OnBodyExitedInVampireDetector;
         GetNode<Area2D>("../../VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
-        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered += OnBodyEnteredInCorpseVisionCone;
         GetNode<Area2D>("../../CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
     }
+
+
+    public override void Start()
+    {
+        base.Start();
+        
+        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered += OnBodyEnteredInVampireDetector;
+        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyExited += OnBodyExitedInVampireDetector;
+        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered += OnBodyEnteredInCorpseVisionCone;
+    }
+
+    public override void End()
+    {
+        base.End();
+        
+        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInVampireDetector;
+        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyExited -= OnBodyExitedInVampireDetector;
+        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInCorpseVisionCone;
+    }
+
+
 
 
     private void OnBodyEnteredInVampireDetector(Node2D node)
@@ -60,14 +78,10 @@ public partial class NpcMovingState : NPCMovingStateBase
         if (node == _npc) return;
         if (node is not NPC) return;
         if (((NPC)node).IsHide) return;
-
-
-
         
         if (_vampire != null)
         {
             StateMachine stateMachine = _vampire.GetNode<StateMachine>("./StateMachine");
-            GD.Print("Estado del vampiro: " + stateMachine.CurrentState.Name);
             if (stateMachine.CurrentState.Name == VampireStateNames.Attack)
             {
                 StateMachine.ChangeState(NpcStateNames.GivingAlarmRunning);
@@ -75,6 +89,7 @@ public partial class NpcMovingState : NPCMovingStateBase
             }
 
         }
+
         GetNode<GivingAlarmState>("../GivingAlarmState").CorpseFounded((NPC)node);
         StateMachine.ChangeState(NpcStateNames.GivingAlarm);
     }
