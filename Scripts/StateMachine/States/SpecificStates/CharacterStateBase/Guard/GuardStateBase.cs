@@ -7,7 +7,13 @@ public partial class GuardStateBase : NpcStateBase
     public override void _Ready()
     {
         base._Ready();
-        _guard = (Guard) _npc;
+        _guard = (Guard)_npc;
+        _guard.VampireDetected += VampireDetected;
+    }
+
+    private void VampireDetected()
+    {
+        StateMachine.ChangeState(GuardStateNames.Attack);
     }
 
 }
