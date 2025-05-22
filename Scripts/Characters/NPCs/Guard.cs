@@ -5,9 +5,17 @@ public partial class Guard : NPC
     private NPC _corpseToCheck;
 
     [Signal] public delegate void NotifyCorpseFoundEventHandler();
+    [Signal] public delegate void VampireDetectedEventHandler();
 
-    public void EmitNotifyCorpseFoundSignal(NPC corpse) {
-        if(corpse == null) GD.Print("En la llamada al guardía se pierde el corpse");  // IS NOT NULL
+    public void EmitVampireDetectedSignal()
+    {
+        EmitSignal(SignalName.VampireDetected);
+    }
+
+
+    public void EmitNotifyCorpseFoundSignal(NPC corpse)
+    {
+        if (corpse == null) GD.Print("En la llamada al guardía se pierde el corpse");  // IS NOT NULL
         _corpseToCheck = corpse;
         EmitSignal(SignalName.NotifyCorpseFound);
     }
