@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcvsdw3kouwf7"]
+[gd_scene load_steps=18 format=3 uid="uid://bcvsdw3kouwf7"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/NPCs/Guard.cs" id="1_rtvgo"]
 [ext_resource type="Texture2D" uid="uid://dxj2y3u7srotj" path="res://Assests/VillagerPrototipe/MiniHunter.png" id="2_r1o27"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardMovingState.cs" id="6_j3m6a"]
 [ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="7_xsusl"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="8_jb6kk"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardAttackState.cs" id="8_wn5av"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
 
@@ -132,7 +133,8 @@ _interconectionDetector = NodePath("../../InterconnectionDetector")
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("6_fqqah")
 
-[node name="TalkingState" type="Node" parent="StateMachine"]
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("8_wn5av")
 
 [node name="InterconnectionDetector" type="Area2D" parent="."]
 collision_layer = 128
