@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cditphs3j1pf4"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
-[ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_yly6p"]
+[ext_resource type="Texture2D" uid="uid://c06sghlk86wyo" path="res://icon.svg" id="2_yly6p"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="4_wa8dt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireIdleState.cs" id="5_3swxl"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="6_crw70"]

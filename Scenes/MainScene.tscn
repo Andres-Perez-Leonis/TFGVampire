@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c4aurc32a3148"]
 
 [ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
-[ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="2_mee5d"]
+[ext_resource type="Texture2D" uid="uid://c06sghlk86wyo" path="res://icon.svg" id="2_mee5d"]
 [ext_resource type="PackedScene" uid="uid://bvkwkx1hkss5t" path="res://Scenes/Characters/NPCs/npc_prototipe.tscn" id="3_kug2k"]
 [ext_resource type="PackedScene" uid="uid://dx3ste55c3hp4" path="res://Scenes/PathParts/MarkerConnector.tscn" id="4_rjsdd"]
 [ext_resource type="PackedScene" uid="uid://7ym8wmqplqom" path="res://Scenes/Characters/CharacterComponents/NPC/NPCPathFollow.tscn" id="4_tv5px"]
@@ -96,4 +96,4 @@ _lastPassMarker = NodePath("../../../Markers/MarkerConnector3")
 [node name="Guard" parent="Paths/Path2D2/NpcPathFollow" instance=ExtResource("6_jpbrm")]
 
 [node name="AreaHidingPoint" parent="." instance=ExtResource("6_rjyhp")]
-position = Vector2(766, 191)
+position = Vector2(767, 191)
