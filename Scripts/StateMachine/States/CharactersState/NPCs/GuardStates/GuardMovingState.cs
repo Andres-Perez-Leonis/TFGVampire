@@ -23,10 +23,19 @@ public partial class GuardMovingState : GuardMovingStateBase
     public override void Start()
     {
         base.Start();
+        _corpseDetector.ProcessMode = ProcessModeEnum.Inherit;
         CheckPath();
     }
 
-    private void CheckPath() {
+    public override void End()
+    {
+        base.End();
+        _corpseDetector.ProcessMode = ProcessModeEnum.Disabled;
+    }
+
+
+    private void CheckPath()
+    {
         _inTheSamePath = _guard.CorpseToCheck.PathFollow.GetParent<Path2D>() == _guard.PathFollow.GetParent<Path2D>();
     }
     
