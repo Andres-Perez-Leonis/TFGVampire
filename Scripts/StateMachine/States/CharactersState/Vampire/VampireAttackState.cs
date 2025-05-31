@@ -19,7 +19,7 @@ public partial class VampireAttackState : VampireStateBase
     if(npc.IsDeath) return;
     npc.EmitIamOnAttackSignal();
     _vampire.GlobalPosition = npc.GlobalPosition;
-    GetTree().CreateTimer(10).Timeout += ReturnToIdleState;
+    GetTree().CreateTimer(1).Timeout += ReturnToIdleState;
   }
 
   private void ReturnToIdleState() {
