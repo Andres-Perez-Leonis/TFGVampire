@@ -8,11 +8,31 @@ public partial class GuardIdleState : GuardStateBase
         base._Ready();
         _guard.NotifyCorpseFound += GoToCorpse;
     }
-
-    private void GoToCorpse() {
-        //_guard.Destination = _corpseToCheck.PathFollow.LastPassMarker;
-        StateMachine.ChangeState(NpcStateNames.Moving);
+    public override void Start()
+    {
+        base.Start();
+        _guard.VampireDetected += VampireDetected;
     }
 
-    public override void OnPhysicsProcess(double delta) {}
+    public override void End()
+    {
+        base.End();
+        _guard.VampireDetected -= VampireDetected;
+    }
+
+
+
+    private void VampireDetected()
+    {
+        StateMachine.ChangeState(GuardStateNames.Attack);
+    }
+
+    private void GoToCorpse()
+    {
+        //_guard.Destination = _corpseToCheck.PathFollow.LastPassMarker;
+        StateMachine.ChangeState(GuardStateNames.Moving);
+    }
+
+
+    public override void OnPhysicsProcess(double delta) { }
 }
