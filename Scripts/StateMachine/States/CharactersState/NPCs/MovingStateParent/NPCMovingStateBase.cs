@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class NPCMovingStateBase : NpcStateBase
+public abstract partial class NPCMovingStateBase : VillagerStateBase
 {
 
     

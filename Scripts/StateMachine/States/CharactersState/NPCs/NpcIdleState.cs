@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class NpcIdleState : NpcStateBase
+public partial class NpcIdleState : VillagerStateBase
 {
     public override void Start()
     {
