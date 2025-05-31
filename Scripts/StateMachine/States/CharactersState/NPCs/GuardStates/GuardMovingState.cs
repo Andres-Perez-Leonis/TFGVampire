@@ -8,7 +8,6 @@ public partial class GuardMovingState : GuardMovingStateBase
     private bool _inTheSamePath = false;
 
 
-
     public override void OnPhysicsProcess(double delta)
     {
         base.OnPhysicsProcess(delta);
@@ -23,6 +22,7 @@ public partial class GuardMovingState : GuardMovingStateBase
     public override void Start()
     {
         base.Start();
+        _guard.VampireDetected += VampireDetected;
         _corpseDetector.ProcessMode = ProcessModeEnum.Inherit;
         CheckPath();
     }
@@ -31,6 +31,7 @@ public partial class GuardMovingState : GuardMovingStateBase
     {
         base.End();
         _corpseDetector.ProcessMode = ProcessModeEnum.Disabled;
+        _guard.VampireDetected -= VampireDetected;
     }
 
 
@@ -39,9 +40,10 @@ public partial class GuardMovingState : GuardMovingStateBase
         _inTheSamePath = _guard.CorpseToCheck.PathFollow.GetParent<Path2D>() == _guard.PathFollow.GetParent<Path2D>();
     }
     
-    
-
-
+    private void VampireDetected()
+    {
+        StateMachine.ChangeState(GuardStateNames.Attack);
+    }
 
     private void InTheSamePath()
     {
