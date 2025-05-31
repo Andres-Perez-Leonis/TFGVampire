@@ -24,6 +24,9 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
     public override void _Ready()
     {
         base._Ready();
+        
+        GetNode<Area2D>("../../VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
+        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
         CallDeferred("CallDeferredReady");
     }
 
@@ -89,7 +92,7 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
      * This adjusts the NPC's scale to reflect the correct orientation for movement.
      * @param finalPointOfNextPath The endpoint of the next path.
      */
-    private void CheckOrientation(Vector2 finalPointOfNextPath)
+    protected void CheckOrientation(Vector2 finalPointOfNextPath)
     {
 
         if (GetParent<StateMachine>().CurrentState != this) return;
