@@ -14,4 +14,5 @@ public partial class NameGroups : Resource
 	public const string NPCsRoutes = "NPCsRoutes";
 	public const string GuardGroup = "Guards";
 	public const string CorpsePoint = "CorpsePoint";
+	public const string Vampire = "Vampire";
 }
