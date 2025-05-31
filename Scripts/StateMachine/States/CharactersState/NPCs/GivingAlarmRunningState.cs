@@ -15,7 +15,7 @@ public partial class GivingAlarmRunningState : NPCMovingStateBase
         List<Node2D> nearestGuards = guards.OfType<Node2D>()
             .OrderBy(guard => _npc.GlobalPosition.DistanceSquaredTo(guard.GlobalPosition))
             .Take(_guardWarnCount).ToList();
-        GD.Print("Progress: " + _npc.PathFollow.ProgressRatio);
+        //GD.Print("Progress: " + _npc.PathFollow.ProgressRatio);
 
         foreach (Guard guard in nearestGuards)
         {
@@ -31,7 +31,7 @@ public partial class GivingAlarmRunningState : NPCMovingStateBase
     {
         base.OnPhysicsProcess(delta);
         
-        GD.Print("Progress: " + _npc.PathFollow.ProgressRatio);
+        //GD.Print("Progress: " + _npc.PathFollow.ProgressRatio);
     }
 
     public override void End()
