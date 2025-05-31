@@ -133,8 +133,9 @@ _interconectionDetector = NodePath("../../InterconnectionDetector")
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("6_fqqah")
 
-[node name="AttackState" type="Node" parent="StateMachine"]
+[node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
 script = ExtResource("8_wn5av")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
 
 [node name="InterconnectionDetector" type="Area2D" parent="."]
 collision_layer = 128
