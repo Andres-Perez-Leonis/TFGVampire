@@ -13,6 +13,8 @@ public partial class NPC : Entity, IFading
 
     // Array which contein the routine. The routine are spiciefied by a sequence of Waypoints
     [Export] private Array<MarkerPathSwitch> _routine;
+
+    [Export] public Personality _personality { get; set; }
     // Index to track the current Waypoint/Task of the routine
     private int _indexRoutine = 0;
     protected MarkerPathSwitch _destination;
