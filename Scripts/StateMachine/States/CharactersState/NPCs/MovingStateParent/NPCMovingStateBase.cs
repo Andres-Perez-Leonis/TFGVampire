@@ -31,7 +31,13 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
     {
         base.Start();
         CheckOrientation(_npc.CurrentAction.GlobalPosition);
+        _npc.GetNode<VillagerDetector>("VillagerDetector").BodyEntered += ReturnToIdleState;
     }
+
+    private void ReturnToIdleState(Node2D node) {
+        StateMachine.ChangeState(NpcStateNames.Idle);
+    }
+
 
 
     private void CallDeferredReady()
