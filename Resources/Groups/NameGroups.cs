@@ -15,4 +15,5 @@ public partial class NameGroups : Resource
 	public const string GuardGroup = "Guards";
 	public const string CorpsePoint = "CorpsePoint";
 	public const string Vampire = "Vampire";
+	public const string Villagers = "Villagers";
 }
