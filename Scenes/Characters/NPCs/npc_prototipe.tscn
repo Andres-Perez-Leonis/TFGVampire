@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvkwkx1hkss5t"]
+[gd_scene load_steps=19 format=3 uid="uid://bvkwkx1hkss5t"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2h5l3c0hfo" path="res://Assests/VillagerPrototipe/MiniGatherer.png" id="1_121g8"]
 [ext_resource type="Script" path="res://Scripts/Characters/NPC.cs" id="1_xkiir"]
@@ -87,7 +87,10 @@ size = Vector2(8, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
 size = Vector2(19, 20)
 
-[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine", "_animationPlayer")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8apkf"]
+radius = 5.67646
+
+[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine", "_animationPlayer") groups=["Villagers"]]
 position = Vector2(-1, -20)
 scale = Vector2(3, 3)
 collision_layer = 4
@@ -167,3 +170,11 @@ rotation = -1.5708
 angle_deg = 45
 ray_count = 20
 collision_layer_mask = 2
+
+[node name="VillagerDetector" type="Area2D" parent="."]
+position = Vector2(15, 0)
+collision_layer = 128
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VillagerDetector"]
+shape = SubResource("CircleShape2D_8apkf")
