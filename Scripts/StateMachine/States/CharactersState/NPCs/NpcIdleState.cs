@@ -6,6 +6,7 @@ public partial class NpcIdleState : VillagerStateBase
     {
         base.Start();
         //_npc.AnimationPlayer.Play(AnimationNameNPC.Idle);
+        if(_npc.GetNode<VillagerDetector>("VillagerDetector").Villager != null) StateMachine.ChangeState(NpcStateNames.Talking);
     }
 
 
