@@ -3,13 +3,29 @@ using System;
 
 public partial class Mediator : Node
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public void TalkRequest(VillagerTalkingState stateSender, VillagerTalkingState stateRecipiest)
 	{
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		Villager senderVillager = stateSender.Villager;
+		Villager recipiestVillager = stateRecipiest.Villager;
+
+
+		if (!senderVillager.AvailableToTalk) return;
+		if (senderVillager.SuspiciousSystem.iSuspechOf(recipiestVillager)) return;
+
+		
+		if (!recipiestVillager.AvailableToTalk || recipiestVillager.SuspiciousSystem.iSuspechOf(senderVillager))
+		{
+			stateSender.RejectConversation(recipiestVillager);
+		}
+
+
+		
+
+		//sender.Mediator = recipiest.Mediator = this;
+
+		stateSender.InitConversation(recipiestVillager);
+		stateRecipiest.InitConversation(senderVillager);
+		
 	}
 }

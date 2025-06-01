@@ -21,12 +21,14 @@ project/assembly_name="TFG_Vampire"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 
 InterconnectionRoute=""
 Guards=""
+Vampire=""
+Villagers=""
 
 [input]
 
