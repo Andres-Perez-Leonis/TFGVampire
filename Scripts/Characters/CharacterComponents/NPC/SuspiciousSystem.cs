@@ -16,6 +16,7 @@ public partial class SuspiciousSystem : Node
 		CallDeferred("CallDeferedReady");
 	}
 
+
 	private void CallDeferredReady()
 	{
 		VillagerListCreator creator = GetTree().Root.GetNode<VillagerListCreator>("./VillagerListCreator");
