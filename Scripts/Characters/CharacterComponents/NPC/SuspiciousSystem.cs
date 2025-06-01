@@ -1,15 +1,35 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class SuspiciousSystem : Node
 {
-	// Called when the node enters the scene tree for the first time.
+
+	private Dictionary<Villager, int> _amountOfSuspision;
+
+	[Export] private int _thresholdSuspision;
+	[Export] private int _thresholdTalkAGuard;
+
 	public override void _Ready()
 	{
+		base._Ready();
+		CallDeferred("CallDeferedReady");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	private void CallDeferredReady()
 	{
+		VillagerListCreator creator = GetTree().Root.GetNode<VillagerListCreator>("./VillagerListCreator");
+		List<Villager> villagers = creator.ListOfVillagers;
+
+		foreach (Villager villager in villagers)
+		{
+			_amountOfSuspision.Add(villager, 0);
+		}
+	}
+
+	public bool iSuspechOf(Villager villager)
+	{
+		int suspision = _amountOfSuspision[villager];
+		return _thresholdSuspision > suspision;
 	}
 }
