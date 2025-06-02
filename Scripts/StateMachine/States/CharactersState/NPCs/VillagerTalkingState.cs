@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class VillagerTalkingState : VillagerStateBase
 {
@@ -34,9 +35,21 @@ public partial class VillagerTalkingState : VillagerStateBase
 			EmitSignal(SignalName.TalkRequest, this, recipient);
 		}
 	*/
+
+	[Signal] public delegate void ISendSuspisionEventHandler(Villager[] villagersInSuspech);
 	public void InitConversation(Villager villager)
 	{
-		_villager.Destination = villager.PathFollow.LastPassMarker;
+		if (_villager.Personality.Gossipy)
+		{
+			Villager[] villagersInSuspech = _villager.SuspiciousSystem.VillagerInSuspech(3);
+			EmitSignal(SignalName.ISendSuspision, villagersInSuspech);
+		}
+
+	}
+
+	public void HeardSuspisions(Villager[] villagersInSuspech, bool thinkIsAVampire)
+	{
+		
 	}
 
 	public void RejectConversation(Villager villager)
