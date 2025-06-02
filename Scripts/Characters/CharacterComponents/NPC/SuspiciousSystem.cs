@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class SuspiciousSystem : Node
 {
@@ -26,6 +27,21 @@ public partial class SuspiciousSystem : Node
 		{
 			_amountOfSuspision.Add(villager, 0);
 		}
+	}
+
+	public Villager[] VillagerInSuspech(int villagerAmountToTell)
+	{
+		Villager[] villagers = new Villager[villagerAmountToTell];
+		Dictionary<Villager, int> aux = _amountOfSuspision.OrderByDescending(villager => villager.Value).Take(villagerAmountToTell).ToDictionary(villager => villager.Key, villager => villager.Value);
+		int i = 0;
+		foreach (Villager villager in aux.Keys)
+		{
+			villagers[i] = villager;
+			i++;
+		}
+
+		return villagers;
+
 	}
 
 	public bool iSuspechOf(Villager villager)
