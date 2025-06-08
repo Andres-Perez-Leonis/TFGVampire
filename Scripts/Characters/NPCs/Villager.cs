@@ -8,6 +8,7 @@ public partial class Villager : NPC
     private Personality _personality;
     [Export] private SuspiciousSystem _suspiciousSystem;
 
+    [Signal] public delegate void InMadnessEventHandler();
 
     public override void _Ready()
     {
