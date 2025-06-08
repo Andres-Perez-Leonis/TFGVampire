@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvkwkx1hkss5t"]
+[gd_scene load_steps=22 format=3 uid="uid://bvkwkx1hkss5t"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2h5l3c0hfo" path="res://Assests/VillagerPrototipe/MiniGatherer.png" id="1_121g8"]
 [ext_resource type="Script" path="res://Scripts/Characters/NPCs/Villager.cs" id="1_v8rrr"]
@@ -7,9 +7,12 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcMovingState.cs" id="5_e8j52"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_1818n"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmState.cs" id="7_ik3ko"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/VillagerTalkingState.cs" id="7_r1ses"]
 [ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="7_u4ft1"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmRunningState.cs" id="8_3yhd5"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="8_btwrq"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/VillagerDetector/VillagerDetector.cs" id="11_t0va4"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/SuspisiousSystem/SuspiciousSystem.cs" id="13_f2773"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
 
@@ -90,13 +93,15 @@ size = Vector2(19, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8apkf"]
 radius = 5.67646
 
-[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine") groups=["Villagers"]]
+[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_suspiciousSystem", "_routine") groups=["Villagers"]]
 position = Vector2(-1, -20)
 scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_v8rrr")
+_suspiciousSystem = NodePath("SuspiciousSystem")
 _routine = []
+_speed = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tvjq2")
@@ -131,7 +136,9 @@ _interconectionDetector = NodePath("../../InterconnectionDetector")
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("6_1818n")
 
-[node name="TalkingState" type="Node" parent="StateMachine"]
+[node name="TalkingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
+script = ExtResource("7_r1ses")
+_detector = NodePath("../../VillagerDetector")
 
 [node name="GivingAlarmState" type="Node" parent="StateMachine"]
 script = ExtResource("7_ik3ko")
@@ -169,9 +176,14 @@ ray_count = 20
 collision_layer_mask = 2
 
 [node name="VillagerDetector" type="Area2D" parent="."]
-position = Vector2(15, 0)
+position = Vector2(20, 0)
 collision_layer = 128
-collision_mask = 6
+collision_mask = 4
+monitorable = false
+script = ExtResource("11_t0va4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagerDetector"]
 shape = SubResource("CircleShape2D_8apkf")
+
+[node name="SuspiciousSystem" type="Node" parent="."]
+script = ExtResource("13_f2773")

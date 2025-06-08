@@ -8,17 +8,18 @@ public partial class Villager : NPC
     private Personality _personality;
     [Export] private SuspiciousSystem _suspiciousSystem;
 
+
     public override void _Ready()
     {
         base._Ready();
         Random random = new Random(GetHashCode());
         _personality = new Personality(
-            easyInfluenced: random.Next(0, 1) == 1,
-            believeInMisticysm: random.Next(0, 1) == 1,
-            gossipy: random.Next(0, 1) == 1,
-            brave: random.Next(0, 1) == 1,
-            prudent: random.Next(0, 1) == 1
-        );  
+            easyInfluenced: random.Next(0, 2) == 1,
+            believeInMisticysm: random.Next(0, 2) == 1,
+            gossipy: random.Next(0, 2) == 1,
+            brave: random.Next(0, 2) == 1,
+            prudent: random.Next(0, 2) == 1
+        );
     }
     
     public Personality Personality { get => _personality; }
