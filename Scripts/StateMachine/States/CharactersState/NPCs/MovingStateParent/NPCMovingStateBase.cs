@@ -30,8 +30,8 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
     public override void Start()
     {
         base.Start();
-        CheckOrientation(_npc.CurrentAction.GlobalPosition);
-        _npc.GetNode<VillagerDetector>("VillagerDetector").BodyEntered += ReturnToIdleState;
+        if(_npc.PathFollow.ProgressRatio > 0.99 || _npc.PathFollow.ProgressRatio < 0.05f)
+            CheckOrientation(_npc.CurrentAction.GlobalPosition);
     }
 
     private void ReturnToIdleState(Node2D node) {
