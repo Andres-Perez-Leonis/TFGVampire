@@ -1,5 +1,5 @@
 using Godot;
-public partial class NpcDeathState : VillagerStateBase
+public partial class NpcDeathState : NpcStateBase
 {
     public override void Start()
     {
