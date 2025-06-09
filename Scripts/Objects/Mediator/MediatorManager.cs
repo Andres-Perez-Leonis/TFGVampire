@@ -9,6 +9,8 @@ public partial class MediatorManager : Node
 	[Export] private int _initMediators = 5;
 	[Export] private PackedScene _mediatorScene;
 
+	private Dictionary<Villager, Villager> _communicationDataBuffer = new();
+
 	public override void _Ready()
 	{
 		base._Ready();
@@ -21,38 +23,51 @@ public partial class MediatorManager : Node
 		Villager senderVillager = stateSender.Villager;
 		Villager recipiestVillager = stateRecipiest.Villager;
 
+		// Si quien pide la comunicacion no esta dentro del Buffer
+		// Significa que es el primero en pedir la comunicacion
+		// El otro es posible que no haya entrado aun al estado Talking
+		// Por lo que le espera
+		if (!_communicationDataBuffer.ContainsKey(senderVillager) && !_communicationDataBuffer.ContainsValue(senderVillager))
+		{
+			_communicationDataBuffer.Add(senderVillager, recipiestVillager);
+			return;
+		}
 
-		if (!senderVillager.AvailableToTalk) return;
-		if (senderVillager.SuspiciousSystem.iSuspechOf(recipiestVillager)) return;
+		// Si esta dentro del diccionario significa que ambos estan en el estado Talking y estan listos para hablar
+		// Por lo que eliminamos al primero del diccionario
+		// Para el segundo, el que recibe es el primero
+		_communicationDataBuffer.Remove(recipiestVillager);
+
+		bool senderWantsTalk = senderVillager.AvailableToTalk && !senderVillager.SuspicionSystem.iSuspechOf(recipiestVillager);
+		bool recipiestWantsTalk = recipiestVillager.AvailableToTalk && !recipiestVillager.SuspicionSystem.iSuspechOf(senderVillager);
 
 
-		if (!recipiestVillager.AvailableToTalk || recipiestVillager.SuspiciousSystem.iSuspechOf(senderVillager))
+
+		if (!senderWantsTalk || !recipiestWantsTalk)
 		{
 			stateSender.RejectConversation(recipiestVillager);
+			stateRecipiest.RejectConversation(recipiestVillager);
 			return;
 		}
 
 
-		Mediator mediator = (_mediatorsInPool.Count > 0) ? _mediatorsInPool.Dequeue() : new();
+		Mediator mediator = (_mediatorsInPool.Count > 0) ? _mediatorsInPool.Dequeue() : _mediatorScene.Instantiate<Mediator>();
 
-		if (!IsConnected(Mediator.SignalName.FinishConversation, new Callable(this, "CloseConversation"))) mediator.FinishConversation += CloseConversation;
+		mediator.CloseConversation += CloseConversation;
 
 		//_mediatorsWorking.Enqueue(mediator);
 		AddChild(mediator);
 
-		stateSender.Mediator = stateRecipiest.Mediator = mediator;
-
-		mediator.StateSender = stateSender;
-		mediator.StateRecipiest = stateRecipiest;
-
-		stateSender.InitConversation(recipiestVillager);
-		stateRecipiest.InitConversation(senderVillager);
+		mediator.SenderState = stateSender;
+		mediator.RecipiestState = stateRecipiest;
+		mediator.Start();
 	}
 
 	public void CloseConversation(Mediator mediator)
 	{
 		RemoveChild(mediator);
-		mediator.StateSender = mediator.StateRecipiest = null;
+		mediator.SenderState = mediator.RecipiestState = null;
+		mediator.CloseConversation -= CloseConversation;
 		_mediatorsInPool.Enqueue(mediator);
 	}
 }
