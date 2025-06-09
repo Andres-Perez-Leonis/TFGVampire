@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://i6fnr3ensjgw"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Mediator/Mediator.cs" id="1_dqdxe"]
+
+[node name="Mediator" type="Node"]
+script = ExtResource("1_dqdxe")
