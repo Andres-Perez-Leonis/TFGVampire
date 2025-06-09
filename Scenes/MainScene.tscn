@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4aurc32a3148"]
+[gd_scene load_steps=13 format=3 uid="uid://c4aurc32a3148"]
 
 [ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
 [ext_resource type="Texture2D" uid="uid://c06sghlk86wyo" path="res://icon.svg" id="2_mee5d"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://7ym8wmqplqom" path="res://Scenes/Characters/CharacterComponents/NPC/NPCPathFollow.tscn" id="4_tv5px"]
 [ext_resource type="PackedScene" uid="uid://bcvsdw3kouwf7" path="res://Scenes/Characters/NPCs/Guard/Guard.tscn" id="6_jpbrm"]
 [ext_resource type="PackedScene" uid="uid://c6nhv8rgmny24" path="res://Scenes/hiding_place.tscn" id="6_rjyhp"]
+[ext_resource type="Script" path="res://Scripts/Objects/Mediator/MediatorManager.cs" id="8_v43hk"]
+[ext_resource type="PackedScene" uid="uid://i6fnr3ensjgw" path="res://Scenes/Mediator/Mediator.tscn" id="9_yw2wn"]
+[ext_resource type="Script" path="res://Scripts/Objects/VillagerListCreator.cs" id="10_svstx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swa6a"]
 size = Vector2(126.9, 127.051)
@@ -17,7 +20,7 @@ _data = {
 }
 point_count = 6
 
-[node name="Node2D" type="Node2D"]
+[node name="MainScene" type="Node2D"]
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 visible = false
@@ -97,3 +100,10 @@ _lastPassMarker = NodePath("../../../Markers/MarkerConnector3")
 
 [node name="AreaHidingPoint" parent="." instance=ExtResource("6_rjyhp")]
 position = Vector2(767, 191)
+
+[node name="MediatorManager" type="Node" parent="."]
+script = ExtResource("8_v43hk")
+_mediatorScene = ExtResource("9_yw2wn")
+
+[node name="VillagerListCreator" type="Node" parent="."]
+script = ExtResource("10_svstx")
