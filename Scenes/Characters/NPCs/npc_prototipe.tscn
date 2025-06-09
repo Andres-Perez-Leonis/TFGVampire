@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmRunningState.cs" id="8_3yhd5"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="8_btwrq"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/VillagerDetector/VillagerDetector.cs" id="11_t0va4"]
-[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/SuspisiousSystem/SuspiciousSystem.cs" id="13_f2773"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/SuspisiousSystem/SuspicionSystem.cs" id="13_2kyxm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
 
@@ -186,4 +186,4 @@ script = ExtResource("11_t0va4")
 shape = SubResource("CircleShape2D_8apkf")
 
 [node name="SuspiciousSystem" type="Node" parent="."]
-script = ExtResource("13_f2773")
+script = ExtResource("13_2kyxm")
