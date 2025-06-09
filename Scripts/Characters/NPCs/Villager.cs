@@ -6,7 +6,7 @@ public partial class Villager : NPC
 
     private bool _availableToTalk = true;
     private Personality _personality;
-    [Export] private SuspiciousSystem _suspiciousSystem;
+    [Export] private SuspicionSystem _suspicionSystem;
 
     [Signal] public delegate void InMadnessEventHandler();
 
@@ -24,6 +24,6 @@ public partial class Villager : NPC
     }
     
     public Personality Personality { get => _personality; }
-    public SuspiciousSystem SuspiciousSystem { get => _suspiciousSystem; set => _suspiciousSystem = value; }
+    public SuspicionSystem SuspicionSystem { get => _suspicionSystem; set => _suspicionSystem = value; }
     public bool AvailableToTalk { get => _availableToTalk; set => _availableToTalk = value; }
 }
