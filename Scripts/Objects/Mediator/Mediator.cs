@@ -1,31 +1,41 @@
 using Godot;
-using System;
+using System.Collections.Generic;
 
 public partial class Mediator : Node
 {
-	public void TalkRequest(VillagerTalkingState stateSender, VillagerTalkingState stateRecipiest)
+
+	private VillagerTalkingState _senderState;
+	private VillagerTalkingState _recipiestState;
+	[Signal] public delegate void CloseConversationEventHandler(Mediator mediator);
+
+	private int _timesSended = 0;
+
+	public void Start()
 	{
-
-		Villager senderVillager = stateSender.Villager;
-		Villager recipiestVillager = stateRecipiest.Villager;
-
-
-		if (!senderVillager.AvailableToTalk) return;
-		if (senderVillager.SuspiciousSystem.iSuspechOf(recipiestVillager)) return;
-
-		
-		if (!recipiestVillager.AvailableToTalk || recipiestVillager.SuspiciousSystem.iSuspechOf(senderVillager))
-		{
-			stateSender.RejectConversation(recipiestVillager);
-		}
-
-
-		
-
-		//sender.Mediator = recipiest.Mediator = this;
-
-		stateSender.InitConversation(recipiestVillager);
-		stateRecipiest.InitConversation(senderVillager);
-		
+		_senderState.Mediator = _recipiestState.Mediator = this;
+		_senderState.InitConversation(_recipiestState.Villager);
+		_recipiestState.InitConversation(_senderState.Villager);
 	}
+
+	public void SendInfo(VillagerTalkingState whoSend, List<EntitySuspechData> list)
+	{
+		if (whoSend == _senderState) _recipiestState.HeardSuspisions(list, _senderState.Villager);
+		else _senderState.HeardSuspisions(list, _recipiestState.Villager);
+		_timesSended++;
+		if (_timesSended < 2) return;
+		_timesSended = 0;
+		FinishConversation();
+	}
+
+	private void FinishConversation()
+	{
+		_senderState.Mediator = _recipiestState.Mediator = null;
+		_senderState.FinishConversation();
+		_recipiestState.FinishConversation();
+		EmitSignal(SignalName.CloseConversation, this);
+	}
+
+
+	public VillagerTalkingState SenderState { get => _senderState; set => _senderState = value; }
+	public VillagerTalkingState RecipiestState { get => _recipiestState; set => _recipiestState = value; }
 }
