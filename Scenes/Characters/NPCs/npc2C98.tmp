@@ -1,0 +1,189 @@
+[gd_scene load_steps=22 format=3 uid="uid://bvkwkx1hkss5t"]
+
+[ext_resource type="Texture2D" uid="uid://dgm2h5l3c0hfo" path="res://Assests/VillagerPrototipe/MiniGatherer.png" id="1_121g8"]
+[ext_resource type="Script" path="res://Scripts/Characters/NPCs/Villager.cs" id="1_v8rrr"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_ajli7"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcIdleState.cs" id="4_o3w1k"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcMovingState.cs" id="5_e8j52"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_1818n"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmState.cs" id="7_ik3ko"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/VillagerTalkingState.cs" id="7_r1ses"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="7_u4ft1"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmRunningState.cs" id="8_3yhd5"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="8_btwrq"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/VillagerDetector/VillagerDetector.cs" id="11_t0va4"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/SuspisiousSystem/SuspiciousSystem.cs" id="13_f2773"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
+
+[sub_resource type="Animation" id="Animation_toy81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_nkp60"]
+resource_name = "idle"
+length = 0.12
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_va0pm"]
+resource_name = "walk"
+length = 0.19
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_utmdg"]
+_data = {
+"RESET": SubResource("Animation_toy81"),
+"idle": SubResource("Animation_nkp60"),
+"walk": SubResource("Animation_va0pm")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2dl"]
+size = Vector2(8, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
+size = Vector2(19, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8apkf"]
+radius = 5.67646
+
+[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_suspiciousSystem", "_routine") groups=["Villagers"]]
+position = Vector2(-1, -20)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 65
+script = ExtResource("1_v8rrr")
+_suspiciousSystem = NodePath("SuspiciousSystem")
+_routine = []
+_speed = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tvjq2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_121g8")
+offset = Vector2(0, -5.02)
+hframes = 10
+vframes = 7
+frame = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_utmdg")
+}
+speed_scale = 0.4
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
+script = ExtResource("3_ajli7")
+_defaultState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("4_o3w1k")
+
+[node name="WorkingState" type="Node" parent="StateMachine"]
+
+[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_hidingPointDetector", "_interconectionDetector")]
+script = ExtResource("5_e8j52")
+_hidingPointDetector = NodePath("../../HiddingPointsDetector")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("6_1818n")
+
+[node name="TalkingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
+script = ExtResource("7_r1ses")
+_detector = NodePath("../../VillagerDetector")
+
+[node name="GivingAlarmState" type="Node" parent="StateMachine"]
+script = ExtResource("7_ik3ko")
+
+[node name="GivingAlarmRunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("8_3yhd5")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="InterconnectionDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterconnectionDetector"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_xb2dl")
+
+[node name="CorpseDetector" parent="." instance=ExtResource("7_u4ft1")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+
+[node name="HiddingPointsDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+input_pickable = false
+script = ExtResource("8_btwrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+shape = SubResource("RectangleShape2D_vvmd3")
+
+[node name="VampireDetector" parent="." instance=ExtResource("7_u4ft1")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+collision_layer_mask = 2
+
+[node name="VillagerDetector" type="Area2D" parent="."]
+position = Vector2(20, 0)
+collision_layer = 128
+collision_mask = 4
+monitorable = false
+script = ExtResource("11_t0va4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VillagerDetector"]
+shape = SubResource("CircleShape2D_8apkf")
+
+[node name="SuspiciousSystem" type="Node" parent="."]
+script = ExtResource("13_f2773")
