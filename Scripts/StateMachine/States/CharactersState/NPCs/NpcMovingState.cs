@@ -42,6 +42,8 @@ public partial class NpcMovingState : NPCMovingStateBase
         GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered += OnBodyEnteredInVampireDetector;
         GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyExited += OnBodyExitedInVampireDetector;
         GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered += OnBodyEnteredInCorpseVisionCone;
+        _npc.GetNode<VillagerDetector>("VillagerDetector").BodyEntered += ReturnToIdleState;
+
     }
 
     public override void End()
@@ -51,9 +53,13 @@ public partial class NpcMovingState : NPCMovingStateBase
         GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInVampireDetector;
         GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyExited -= OnBodyExitedInVampireDetector;
         GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInCorpseVisionCone;
+        _npc.GetNode<VillagerDetector>("VillagerDetector").BodyEntered -= ReturnToIdleState;
     }
 
-
+    private void ReturnToIdleState(Node2D node)
+    {
+        StateMachine.ChangeState(NpcStateNames.Idle);
+    }
 
 
     private void OnBodyEnteredInVampireDetector(Node2D node)
