@@ -9,7 +9,6 @@ public partial class VillagerDetector : Area2D
 	{
 		base._Ready();
 		BodyEntered += OnVillagerDetected;
-		BodyExited += OnVillagerExitDetected;
 	}
 
 	private void OnVillagerDetected(Node2D node)
@@ -19,7 +18,7 @@ public partial class VillagerDetector : Area2D
 		_villager = (Villager)node;
 	}
 
-	private void OnVillagerExitDetected(Node2D node)
+	public void ResetDetector()
 	{
 		_villager = null;
 	}
