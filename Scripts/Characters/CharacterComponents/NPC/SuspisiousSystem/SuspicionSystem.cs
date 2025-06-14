@@ -108,6 +108,26 @@ public partial class SuspicionSystem : Node
 		}
 	}
 
+	public void IncreaseSuspision(Entity entity)
+	{
+		
+		if (!_dicSuspechData.TryGetValue(entity, out var data))
+		{
+			GD.PrintErr($"[IncreaseSuspicion] Error: No se encontró la entidad '{entity.Name}' en el diccionario.");
+			return;
+		}
+
+		data.AmountOfSuspicion += _increaseSuspisionAmount;
+
+		if (data.AmountOfSuspicion >= 100)
+		{
+			TellingToGuard();
+		}
+		else if (data.AmountOfSuspicion > 90 && _rnd.NextDouble() > 0.5)
+		{
+			TellingToGuard();
+		}
+	}
 
 	public Entity ObteinMostSuspision()
 	{
