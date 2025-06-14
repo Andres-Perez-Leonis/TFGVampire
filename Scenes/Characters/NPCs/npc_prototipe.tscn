@@ -93,13 +93,12 @@ size = Vector2(19, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8apkf"]
 radius = 5.67646
 
-[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_suspiciousSystem", "_routine") groups=["Villagers"]]
+[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine") groups=["Villagers"]]
 position = Vector2(-1, -20)
 scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_v8rrr")
-_suspiciousSystem = NodePath("SuspiciousSystem")
 _routine = []
 _speed = 0.05
 
@@ -126,7 +125,7 @@ _defaultState = NodePath("IdleState")
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("4_o3w1k")
 
-[node name="WorkingState" type="Node" parent="StateMachine"]
+[node name="NotifyingSuspisionState" type="Node" parent="StateMachine"]
 
 [node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_hidingPointDetector", "_interconectionDetector")]
 script = ExtResource("5_e8j52")
