@@ -21,7 +21,14 @@ public partial class Villager : NPC
             brave: random.Next(0, 2) == 1,
             prudent: random.Next(0, 2) == 1
         );
+        _suspicionSystem.ImSureThatIs += NotifyToGuardState;
     }
+
+    private void NotifyToGuardState() {
+        GetNode<StateMachine>("StateMachine").ChangeState(NpcStateNames.NotifyingSuspisionState);
+    }
+
+
     
     public Personality Personality { get => _personality; }
     public SuspicionSystem SuspicionSystem { get => _suspicionSystem; set => _suspicionSystem = value; }
