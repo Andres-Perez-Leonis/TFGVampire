@@ -22,6 +22,12 @@ public partial class EntitySuspechData
     }
 
     public Entity Entity { get => _entity; }
-    public int AmountOfSuspusion { get => _amountOfSuspision; set => Math.Max(_amountOfSuspision + value, 0); }
+    public int AmountOfSuspicion { get => _amountOfSuspision;
+        set
+        {
+            int val = Math.Max(_amountOfSuspision + value, 0);
+            _amountOfSuspision = (val > 100) ? 100 : val;
+        }
+    }
     public bool ThinkIsVampire { get => _thinkIsVampire; set => _thinkIsVampire = value; }
 }
