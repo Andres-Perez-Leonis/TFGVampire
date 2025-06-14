@@ -19,7 +19,8 @@ public partial class GivingAlarmRunningState : NPCMovingStateBase
 
         foreach (Guard guard in nearestGuards)
         {
-            guard.EmitVampireDetectedSignal();
+			if (guard.HasBeenAlerted) continue;
+            guard.ReportVampireDetected();
         }
         rotate();
         _npc.Speed += 0.1f;
