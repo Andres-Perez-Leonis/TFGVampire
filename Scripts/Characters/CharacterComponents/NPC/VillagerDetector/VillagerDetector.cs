@@ -32,7 +32,6 @@ public partial class VillagerDetector : Area2D
 		_villager = null;
 	}
 
-
 	public Villager Villager
 	{
 		get => _villager;
