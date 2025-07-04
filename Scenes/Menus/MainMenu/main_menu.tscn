@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://ne5s7wt1qf84"]
+
+[ext_resource type="Texture2D" uid="uid://b4vcdd1qenth0" path="res://Assests/MainMenu/DebugPanel.jpg" id="1_kud0v"]
+[ext_resource type="PackedScene" uid="uid://bei08gqnbxpgw" path="res://Scenes/Menus/InitMenu/init_menu.tscn" id="2_fsfui"]
+[ext_resource type="PackedScene" uid="uid://b81pwjimeg8ca" path="res://Scenes/Menus/SettingsMenu/settings_menu.tscn" id="3_8xw78"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_plu7n"]
+texture = ExtResource("1_kud0v")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_plu7n")
+
+[node name="InitMenu" parent="." instance=ExtResource("2_fsfui")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsMenu" parent="." instance=ExtResource("3_8xw78")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2

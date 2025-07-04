@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://b81pwjimeg8ca"]
+
+[ext_resource type="FontFile" uid="uid://cxyyfek23kfmx" path="res://Assests/Fuentes/Mirage final.ttf" id="1_vhg5j"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Settings/Volume/Volume.cs" id="2_6gyl8"]
+[ext_resource type="StyleBox" uid="uid://uxxsvxr52i3v" path="res://Styles/Button/Focus/FocusBtn.stylebox" id="2_ohh0v"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Settings/Resolution/Resolutions.cs" id="3_43gmd"]
+[ext_resource type="StyleBox" uid="uid://dw03fdqk2ust4" path="res://Styles/Button/Hover/HoverBtn.stylebox" id="3_f5rt5"]
+[ext_resource type="StyleBox" uid="uid://b87kd5s24fjvg" path="res://Styles/Button/Pressed/PressedBtn.stylebox" id="4_1rmuw"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Settings/Viewmode/ViewMode.cs" id="4_gga2p"]
+[ext_resource type="StyleBox" uid="uid://dnoi2ksciwp3b" path="res://Styles/Button/Normal/NormalBtn.stylebox" id="5_nhjvt"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Settings/Volver/VolverBtn.cs" id="9_8vbsf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neaaj"]
+bg_color = Color(0.317647, 0.317647, 0.317647, 0.568627)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.5
+offset_top = -132.0
+offset_right = 123.5
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VolLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vhg5j")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_neaaj")
+text = "Volumen"
+
+[node name="Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_6gyl8")
+
+[node name="ResolLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vhg5j")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_neaaj")
+text = "Resolución"
+
+[node name="Resolutions" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+selected = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+script = ExtResource("3_43gmd")
+
+[node name="ViewLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vhg5j")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_neaaj")
+text = "Modo de pantalla"
+
+[node name="ViewMode" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+selected = 1
+item_count = 2
+popup/item_0/text = "Windowed"
+popup/item_1/text = "FullScreen"
+popup/item_1/id = 1
+script = ExtResource("4_gga2p")
+
+[node name="VolverBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vhg5j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = ExtResource("2_ohh0v")
+theme_override_styles/hover = ExtResource("3_f5rt5")
+theme_override_styles/pressed = ExtResource("4_1rmuw")
+theme_override_styles/normal = ExtResource("5_nhjvt")
+text = "Volver"
+script = ExtResource("9_8vbsf")
