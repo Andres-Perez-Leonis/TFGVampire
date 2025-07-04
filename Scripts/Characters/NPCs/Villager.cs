@@ -6,6 +6,7 @@ public partial class Villager : NPC
 
     private bool _availableToTalk = true;
     private Personality _personality;
+    private bool _onArrest = false;
     [Export] private SuspicionSystem _suspicionSystem;
 
     [Signal] public delegate void InMadnessEventHandler();
@@ -24,13 +25,15 @@ public partial class Villager : NPC
         _suspicionSystem.ImSureThatIs += NotifyToGuardState;
     }
 
-    private void NotifyToGuardState() {
+    private void NotifyToGuardState()
+    {
         GetNode<StateMachine>("StateMachine").ChangeState(NpcStateNames.NotifyingSuspisionState);
     }
 
 
-    
+
     public Personality Personality { get => _personality; }
     public SuspicionSystem SuspicionSystem { get => _suspicionSystem; set => _suspicionSystem = value; }
     public bool AvailableToTalk { get => _availableToTalk; set => _availableToTalk = value; }
+    public bool OnArrest { get => _onArrest; set => _onArrest = value; }
 }
