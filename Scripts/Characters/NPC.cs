@@ -27,19 +27,27 @@ public partial class NPC : Entity, IFading
     [Export] private Control _actionInterface;
     [Signal] public delegate void IamOnAttackEventHandler();
     [Signal] public delegate void IamOnTargetEventHandler(bool onTarget);
+    [Signal] public delegate void GuardComeForMeEventHandler();
+
 
     public override void _Ready()
     {
         base._Ready();
-        if(_routine?.Count > 0) _destination = _routine[0];
+        if (_routine?.Count > 0) _destination = _routine[0];
         _pathFollow = GetParent<NpcPathFollow>();
         GD.Print("Mi padre es: " + GetParent().Name);
         GD.Print("Este es mi path Follow: " + _pathFollow.Name);
     }
 
 
+    public void StopRightThere()
+    {
+        EmitSignal(SignalName.GuardComeForMe);
+    }
 
-    public void EmitIamOnAttackSignal() {
+
+    public void EmitIamOnAttackSignal()
+    {
         EmitSignal(SignalName.IamOnAttack);
     }
 
