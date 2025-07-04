@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4aurc32a3148"]
+[gd_scene load_steps=16 format=3 uid="uid://c4aurc32a3148"]
 
 [ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
 [ext_resource type="Texture2D" uid="uid://c06sghlk86wyo" path="res://icon.svg" id="2_mee5d"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/Objects/VillagerListCreator.cs" id="10_svstx"]
 [ext_resource type="Texture2D" uid="uid://bay84y635jdxx" path="res://Assests/World/Background/Sky/Background.PNG" id="11_2q1ip"]
 [ext_resource type="Texture2D" uid="uid://5b6i2cmx5jx0" path="res://Assests/World/Fog/Fog1.PNG" id="12_vp2j0"]
+[ext_resource type="Script" path="res://Scripts/IU/Background/FollowingBackground.cs" id="13_bk877"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swa6a"]
 size = Vector2(126.9, 127.051)
@@ -23,6 +24,21 @@ _data = {
 point_count = 6
 
 [node name="MainScene" type="Node2D"]
+
+[node name="Parallax" type="CanvasLayer" parent="."]
+
+[node name="Parallax2D" type="ParallaxBackground" parent="Parallax"]
+layer = -95
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax/Parallax2D"]
+z_index = -4
+
+[node name="Fog1" type="Sprite2D" parent="Parallax/Parallax2D/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.196078)
+z_index = -4
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_vp2j0")
+centered = false
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 visible = false
@@ -38,9 +54,11 @@ shape = SubResource("RectangleShape2D_swa6a")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
 texture = ExtResource("2_mee5d")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_3wo0x")]
+[node name="Vampire" parent="." instance=ExtResource("1_3wo0x")]
 position = Vector2(441, 182)
 scale = Vector2(0.465, 0.465)
+
+[node name="Camera2D" type="Camera2D" parent="Vampire"]
 
 [node name="Markers" type="Node" parent="."]
 
@@ -106,14 +124,12 @@ _mediatorScene = ExtResource("9_yw2wn")
 [node name="VillagerListCreator" type="Node" parent="."]
 script = ExtResource("10_svstx")
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(207, 330)
-scale = Vector2(0.400305, 0.400305)
-texture = ExtResource("11_2q1ip")
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
 
-[node name="Fog1" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.196078)
-position = Vector2(-59, 766)
-scale = Vector2(1, 0.996951)
-texture = ExtResource("12_vp2j0")
+[node name="Background" type="Sprite2D" parent="Background"]
+position = Vector2(-768, -147)
+scale = Vector2(0.403125, 0.403125)
+texture = ExtResource("11_2q1ip")
+centered = false
+script = ExtResource("13_bk877")
