@@ -4,7 +4,7 @@ public partial class Guard : NPC
 {
     private NPC _corpseToCheck;
 
-    private Entity _entityInSuspech;
+    private Entity _entityToArrest;
 
     private bool _hasBeenAlerted  = false;
 
@@ -26,7 +26,11 @@ public partial class Guard : NPC
             return;
         }
         _hasBeenAlerted = true;
-        _entityInSuspech = entity;
+        _entityToArrest = entity;
+        if (entity is Villager v)
+        {
+            v.OnArrest = true;
+        }
         EmitSignal(SignalName.NotifySuspision);
     }
 
@@ -44,6 +48,6 @@ public partial class Guard : NPC
     }
 
     public NPC CorpseToCheck { get => _corpseToCheck; set => _corpseToCheck = value; }
-    public Entity EntityInSuspech { get => _entityInSuspech; set => _entityInSuspech = value; }
+    public Entity EntityInSuspech { get => _entityToArrest; set => _entityToArrest = value; }
     public bool HasBeenAlerted { get => _hasBeenAlerted; set => _hasBeenAlerted = value; }
 }
