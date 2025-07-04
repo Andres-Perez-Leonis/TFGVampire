@@ -56,7 +56,7 @@ public partial class SuspicionSystem : Node
 		if (!_myVillager.Personality.Gossipy) return new();
 		List<EntitySuspechData> entities =_suspechData.Where(e => e.AmountOfSuspicion > 0).Take(entityAmountToTell).ToList();
 		if (_myVillager.Personality.Prudent)
-			entities.Remove(_dicSuspechData[whoItelling]);
+			if(entities.Contains(_dicSuspechData[whoItelling])) entities.Remove(_dicSuspechData[whoItelling]);
 		return entities;
 	}
 
