@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvkwkx1hkss5t"]
+[gd_scene load_steps=23 format=3 uid="uid://bvkwkx1hkss5t"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2h5l3c0hfo" path="res://Assests/VillagerPrototipe/MiniGatherer.png" id="1_121g8"]
 [ext_resource type="Script" path="res://Scripts/Characters/NPCs/Villager.cs" id="1_v8rrr"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_ajli7"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcIdleState.cs" id="4_o3w1k"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NotifyingAboutSuspisionState.cs" id="5_0agaf"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcMovingState.cs" id="5_e8j52"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_1818n"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmState.cs" id="7_ik3ko"]
@@ -93,12 +94,13 @@ size = Vector2(19, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8apkf"]
 radius = 5.67646
 
-[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_routine") groups=["Villagers"]]
+[node name="NPC_Prototipe" type="CharacterBody2D" node_paths=PackedStringArray("_suspicionSystem", "_routine") groups=["Villagers"]]
 position = Vector2(-1, -20)
 scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_v8rrr")
+_suspicionSystem = NodePath("SuspiciousSystem")
 _routine = []
 _speed = 0.05
 
@@ -125,7 +127,9 @@ _defaultState = NodePath("IdleState")
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("4_o3w1k")
 
-[node name="NotifyingSuspisionState" type="Node" parent="StateMachine"]
+[node name="NotifyingSuspisionState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("5_0agaf")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
 
 [node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_hidingPointDetector", "_interconectionDetector")]
 script = ExtResource("5_e8j52")
