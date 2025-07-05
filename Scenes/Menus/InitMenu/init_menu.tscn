@@ -6,7 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://b87kd5s24fjvg" path="res://Styles/Button/Pressed/PressedBtn.stylebox" id="4_qh8gn"]
 [ext_resource type="StyleBox" uid="uid://dnoi2ksciwp3b" path="res://Styles/Button/Normal/NormalBtn.stylebox" id="5_yg0ve"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/Buttons/StartBtn/StartBtn.cs" id="6_o423q"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/Buttons/SettingsBtn/SettingsBtn.cs" id="7_p6ssb"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Buttons/OptionsBtn/SettingsBtn.cs" id="7_p6ssb"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/Buttons/ExitBtn/ExitBtn.cs" id="8_0vc18"]
 
 [node name="InitMenu" type="Control"]

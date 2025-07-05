@@ -80,7 +80,7 @@ text = "Modo de pantalla"
 [node name="ViewMode" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-selected = 1
+selected = 0
 item_count = 2
 popup/item_0/text = "Windowed"
 popup/item_1/text = "FullScreen"
