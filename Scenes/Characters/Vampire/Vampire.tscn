@@ -1,20 +1,253 @@
-[gd_scene load_steps=12 format=3 uid="uid://cditphs3j1pf4"]
+[gd_scene load_steps=74 format=3 uid="uid://cditphs3j1pf4"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
-[ext_resource type="Texture2D" uid="uid://c06sghlk86wyo" path="res://icon.svg" id="2_yly6p"]
+[ext_resource type="Texture2D" uid="uid://cnwjsn2pqx1v2" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_0.png" id="2_ibwk3"]
+[ext_resource type="Texture2D" uid="uid://6n61k3ijthq3" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_1.png" id="3_ah05q"]
+[ext_resource type="Texture2D" uid="uid://cpvpj2w5yje4r" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_2.png" id="4_bfo0y"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="4_wa8dt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireIdleState.cs" id="5_3swxl"]
+[ext_resource type="Texture2D" uid="uid://ctgtex7167ff4" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_3.png" id="5_dujct"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="6_crw70"]
+[ext_resource type="Texture2D" uid="uid://c63lcnctuyrrq" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_4.png" id="6_fi67i"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="6_nja1v"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_trts0"]
+[ext_resource type="Texture2D" uid="uid://c4jshrdjco2fn" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_5.png" id="7_hdjlo"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_yoa4b"]
+[ext_resource type="Texture2D" uid="uid://bqq56jflu13fc" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_6.png" id="8_p4t0d"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="9_5burq"]
+[ext_resource type="Texture2D" uid="uid://44by4pthvp71" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_7.png" id="9_crlt3"]
+[ext_resource type="Texture2D" uid="uid://dxmlndgrt4r64" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_8.png" id="10_v0oxu"]
+[ext_resource type="Texture2D" uid="uid://cdlwyelljpwr6" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_9.png" id="11_2y5uo"]
+[ext_resource type="Texture2D" uid="uid://bxpoctigffmi8" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_10.png" id="12_l2uix"]
+[ext_resource type="Texture2D" uid="uid://xr70je1sb5wf" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_11.png" id="13_abj12"]
+[ext_resource type="Texture2D" uid="uid://cec034rg1b2i6" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W1.png" id="14_futmg"]
+[ext_resource type="Texture2D" uid="uid://cw8j87ucoro4m" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W2.png" id="15_yph00"]
+[ext_resource type="Texture2D" uid="uid://csxy5t6hpuxrk" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W3.png" id="16_kdtxd"]
+[ext_resource type="Texture2D" uid="uid://bnl4p5pkha20y" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W4.png" id="17_tyhai"]
+[ext_resource type="Texture2D" uid="uid://c023143cwmu2p" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W5.png" id="18_d3qlm"]
+[ext_resource type="Texture2D" uid="uid://djxvv2ir5j4ec" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W6.png" id="19_vbfoh"]
+[ext_resource type="Texture2D" uid="uid://dv2o6dr2vpp6y" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W8.png" id="20_r5jhf"]
+[ext_resource type="Texture2D" uid="uid://d2bg0sn3dbafo" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W9.png" id="21_l0mi5"]
+[ext_resource type="Texture2D" uid="uid://cmrkp2t43lqrc" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_1.png" id="22_1axm8"]
+[ext_resource type="Texture2D" uid="uid://brbwut3olpdsk" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_2.png" id="23_n4r83"]
+[ext_resource type="Texture2D" uid="uid://xeuyfdv6j8ee" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_3.png" id="24_wh7pn"]
+[ext_resource type="Texture2D" uid="uid://0p5surb7e8ui" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_4.png" id="25_5ew4t"]
+[ext_resource type="Texture2D" uid="uid://cpdf8rrsgvcng" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_5.png" id="26_r2tst"]
+[ext_resource type="Texture2D" uid="uid://111x7s46dsyk" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_6.png" id="27_b1gai"]
+[ext_resource type="Texture2D" uid="uid://cylrv0rfe5kn0" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_.png" id="28_qa8hs"]
+[ext_resource type="Texture2D" uid="uid://bvds8c1pqk31q" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_8.png" id="29_4im5h"]
+[ext_resource type="Texture2D" uid="uid://ow8pdyqxg527" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_9.png" id="30_fe22q"]
+[ext_resource type="Texture2D" uid="uid://cqbf03ly5clfa" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_10.png" id="31_oyiso"]
+[ext_resource type="Texture2D" uid="uid://craaj5vchi1b3" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_11.png" id="32_k7yst"]
+[ext_resource type="Texture2D" uid="uid://duq431pjp6f3k" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_12.png" id="33_rj2un"]
+[ext_resource type="Texture2D" uid="uid://d283o5j37o66q" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_13.png" id="34_slobt"]
+[ext_resource type="Texture2D" uid="uid://onfnch6rraao" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_14.png" id="35_t6qcl"]
+[ext_resource type="Texture2D" uid="uid://byifsciayqlbx" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_15.png" id="36_itm8n"]
+[ext_resource type="Texture2D" uid="uid://cigeinfti361l" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_16.png" id="37_inss6"]
+[ext_resource type="Texture2D" uid="uid://d4ji6j6ypngti" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_17.png" id="38_edxgw"]
+[ext_resource type="Texture2D" uid="uid://cxjg5667nlhye" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_18.png" id="39_11apj"]
+[ext_resource type="Texture2D" uid="uid://55tsuqdk76kq" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_19.png" id="40_lw1wf"]
+[ext_resource type="Texture2D" uid="uid://bckqyyxqov6sp" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Death/D_Vampire_20.png" id="41_0l017"]
+[ext_resource type="Texture2D" uid="uid://cs8ugs7am0ltu" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Attack/A_Vampire_1.png" id="42_7m7c5"]
+[ext_resource type="Texture2D" uid="uid://b8f1jtywwymb5" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Attack/A_Vampire_2.png" id="43_6085a"]
+[ext_resource type="Texture2D" uid="uid://cvd8v0xtfwg2i" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Attack/A_Vampire_3.png" id="44_ww8mx"]
+[ext_resource type="Texture2D" uid="uid://dfimisdl1agbw" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Attack/A_Vampire_4.png" id="45_g3uhx"]
+[ext_resource type="Texture2D" uid="uid://r463rgrpxjtu" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Attack/A_Vampire_5.png" id="46_aonbj"]
+[ext_resource type="Texture2D" uid="uid://el0a1spg6o8r" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Attack/A_Vampire_6.png" id="47_8vqq2"]
+[ext_resource type="Texture2D" uid="uid://bvts2v3qt1ncv" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_1.png" id="48_u0xmg"]
+[ext_resource type="Texture2D" uid="uid://b5ta703dor8oj" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_2.png" id="49_4ir8i"]
+[ext_resource type="Texture2D" uid="uid://qgrh3ng1foeb" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_3.png" id="50_vefw3"]
+[ext_resource type="Texture2D" uid="uid://c3h7fla5d0a2w" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_4.png" id="51_512y4"]
+[ext_resource type="Texture2D" uid="uid://dln6wmivbmny3" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_5.png" id="52_gkrla"]
+[ext_resource type="Texture2D" uid="uid://c3qxveuof3tht" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_6.png" id="53_yd15u"]
+[ext_resource type="Texture2D" uid="uid://b2y2oncycf3kh" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_7.png" id="54_hkk8d"]
+[ext_resource type="Texture2D" uid="uid://dj4etirtqbdwu" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_8.png" id="55_r0wyv"]
+[ext_resource type="Texture2D" uid="uid://dvyrdkyh6h42k" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_9.png" id="56_nwgq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
 size = Vector2(108, 106)
 
+[sub_resource type="Animation" id="Animation_ec0jq"]
+resource_name = "Attack"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("42_7m7c5"), ExtResource("43_6085a"), ExtResource("44_ww8mx"), ExtResource("45_g3uhx"), ExtResource("46_aonbj"), ExtResource("47_8vqq2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(577, -38)]
+}
+
+[sub_resource type="Animation" id="Animation_123l0"]
+resource_name = "Death"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("22_1axm8"), ExtResource("23_n4r83"), ExtResource("24_wh7pn"), ExtResource("25_5ew4t"), ExtResource("26_r2tst"), ExtResource("27_b1gai"), ExtResource("28_qa8hs"), ExtResource("29_4im5h"), ExtResource("30_fe22q"), ExtResource("31_oyiso"), ExtResource("32_k7yst"), ExtResource("33_rj2un"), ExtResource("34_slobt"), ExtResource("35_t6qcl"), ExtResource("36_itm8n"), ExtResource("37_inss6"), ExtResource("38_edxgw"), ExtResource("39_11apj"), ExtResource("40_lw1wf"), ExtResource("41_0l017")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(385, -44)]
+}
+
+[sub_resource type="Animation" id="Animation_7xye7"]
+resource_name = "Dragging"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("48_u0xmg"), ExtResource("49_4ir8i"), ExtResource("50_vefw3"), ExtResource("51_512y4"), ExtResource("52_gkrla"), ExtResource("53_yd15u"), ExtResource("54_hkk8d"), ExtResource("55_r0wyv"), ExtResource("56_nwgq8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(583, -61)]
+}
+
+[sub_resource type="Animation" id="Animation_kye01"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ibwk3"), ExtResource("3_ah05q"), ExtResource("4_bfo0y"), ExtResource("5_dujct"), ExtResource("6_fi67i"), ExtResource("7_hdjlo"), ExtResource("8_p4t0d"), ExtResource("9_crlt3"), ExtResource("10_v0oxu"), ExtResource("11_2y5uo"), ExtResource("12_l2uix"), ExtResource("13_abj12")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_6clh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ibwk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_tc1sk"]
+resource_name = "Walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_futmg"), ExtResource("15_yph00"), ExtResource("16_kdtxd"), ExtResource("17_tyhai"), ExtResource("18_d3qlm"), ExtResource("19_vbfoh"), ExtResource("19_vbfoh"), ExtResource("20_r5jhf"), ExtResource("21_l0mi5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(408, -80)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38stl"]
+_data = {
+"Attack": SubResource("Animation_ec0jq"),
+"Death": SubResource("Animation_123l0"),
+"Dragging": SubResource("Animation_7xye7"),
+"Idle": SubResource("Animation_kye01"),
+"RESET": SubResource("Animation_6clh0"),
+"Walking": SubResource("Animation_tc1sk")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lh7f"]
 size = Vector2(129, 135)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_40wvp"]
 
 [node name="Vampire" type="CharacterBody2D" node_paths=PackedStringArray("_animationPlayer") groups=["Vampire"]]
 collision_layer = 2
@@ -23,14 +256,21 @@ script = ExtResource("1_oosox")
 _health = 1
 _speed = 200.0
 _force = 10.0
-_animationPlayer = NodePath("AnimationPlayer")
+_animationPlayer = NodePath("Sprite2D/AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_n63uy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yly6p")
+position = Vector2(-57, 2)
+texture = ExtResource("2_ibwk3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_38stl")
+}
+speed_scale = 0.5
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
 script = ExtResource("4_wa8dt")
@@ -53,8 +293,6 @@ _corpseHidingPointDetector = NodePath("../../HiddingPointsDetector")
 
 [node name="Node2" type="Node" parent="StateMachine"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 [node name="DetectorNPC" type="RayCast2D" parent="."]
 target_position = Vector2(100, 0)
 collision_mask = 4
@@ -75,3 +313,8 @@ script = ExtResource("9_5burq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_0lh7f")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_40wvp")
+anim_player = NodePath("../Sprite2D/AnimationPlayer")
