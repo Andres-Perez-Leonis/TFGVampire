@@ -1,11 +1,202 @@
-[gd_scene load_steps=5 format=3 uid="uid://ne5s7wt1qf84"]
+[gd_scene load_steps=70 format=3 uid="uid://ne5s7wt1qf84"]
 
-[ext_resource type="Texture2D" uid="uid://b4vcdd1qenth0" path="res://Assests/MainMenu/DebugPanel.jpg" id="1_kud0v"]
+[ext_resource type="Texture2D" uid="uid://bwg44qdjhqwol" path="res://Assests/Visuals/MainMenu/Sky/cielo.jpg" id="1_wrgfs"]
+[ext_resource type="Texture2D" uid="uid://ctmen2nk5qbh6" path="res://Assests/Visuals/MainMenu/Mountains/montaña1.PNG" id="2_365ew"]
 [ext_resource type="PackedScene" uid="uid://bei08gqnbxpgw" path="res://Scenes/Menus/InitMenu/init_menu.tscn" id="2_fsfui"]
 [ext_resource type="PackedScene" uid="uid://b81pwjimeg8ca" path="res://Scenes/Menus/SettingsMenu/settings_menu.tscn" id="3_8xw78"]
+[ext_resource type="Texture2D" uid="uid://c0xy4cmxi1ayb" path="res://Assests/Visuals/MainMenu/Mountains/montaña2.PNG" id="3_g5tml"]
+[ext_resource type="Texture2D" uid="uid://4nxsgm5mhqhr" path="res://Assests/Visuals/MainMenu/City/ciudad.PNG" id="4_caqii"]
+[ext_resource type="Texture2D" uid="uid://7ci7pdgsj8gv" path="res://Assests/Visuals/MainMenu/Clouds/nubes.PNG" id="5_t2xa1"]
+[ext_resource type="Texture2D" uid="uid://ceic20ovxylhb" path="res://Assests/Visuals/MainMenu/Fog/niebla.PNG" id="6_6f3ne"]
+[ext_resource type="Texture2D" uid="uid://becus7mh2v5wi" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_1.png" id="7_jjlpo"]
+[ext_resource type="Texture2D" uid="uid://bnb62sd7jdu3u" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_2.png" id="8_fll5s"]
+[ext_resource type="Texture2D" uid="uid://ct54ermeufq83" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_3.png" id="9_cuiuj"]
+[ext_resource type="Texture2D" uid="uid://dit5pqdcawaff" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_4.png" id="10_v1axi"]
+[ext_resource type="Texture2D" uid="uid://dpkolqegibh0n" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_5.png" id="11_wh61n"]
+[ext_resource type="Texture2D" uid="uid://cvod1uve015wj" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_6.png" id="12_3q4el"]
+[ext_resource type="Texture2D" uid="uid://b52t11l7s0pc6" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_7.png" id="13_p77a0"]
+[ext_resource type="Texture2D" uid="uid://cnqt5qv2tas0i" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_8.png" id="14_17fxx"]
+[ext_resource type="Texture2D" uid="uid://b5846k85oie0m" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_9.png" id="15_2ejsg"]
+[ext_resource type="Texture2D" uid="uid://yxr40s3vlmmu" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_10.png" id="16_p1lcd"]
+[ext_resource type="Texture2D" uid="uid://bjoyd53ul71fe" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_11.png" id="17_26ipj"]
+[ext_resource type="Texture2D" uid="uid://b2raxcx6cuain" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_12.png" id="18_1b6je"]
+[ext_resource type="Texture2D" uid="uid://c4r75lu3bgpcn" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_13.png" id="18_mqnsn"]
+[ext_resource type="Texture2D" uid="uid://du1vq1gcmugp" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_14.png" id="19_db4re"]
+[ext_resource type="Texture2D" uid="uid://dx87yqbx7ifgq" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_15.png" id="20_st2oe"]
+[ext_resource type="Texture2D" uid="uid://fxhbd6v28lx8" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_16.png" id="21_q4uh0"]
+[ext_resource type="Texture2D" uid="uid://pi6oahreuusy" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_17.png" id="22_wxt36"]
+[ext_resource type="Texture2D" uid="uid://dbmtq4fa8836v" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_18.png" id="23_5lass"]
+[ext_resource type="Texture2D" uid="uid://ci5oj2nhty12d" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_19.png" id="24_mwkw8"]
+[ext_resource type="Texture2D" uid="uid://cmjpbes3lpma8" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_20.png" id="25_gdhpq"]
+[ext_resource type="Texture2D" uid="uid://xyrx0jaa8xsc" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_21.png" id="26_cxeit"]
+[ext_resource type="Texture2D" uid="uid://cysks6en8q7jo" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_22.png" id="27_6u4sg"]
+[ext_resource type="Texture2D" uid="uid://d3pytvpbpfi87" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_23.png" id="28_sulsm"]
+[ext_resource type="Texture2D" uid="uid://cpbwgvb5vrcww" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_24.png" id="29_edydk"]
+[ext_resource type="Texture2D" uid="uid://dhtqb0cjucf4n" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_25.png" id="30_nvrgv"]
+[ext_resource type="Texture2D" uid="uid://dm1q87bc63x2a" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_26.png" id="31_np175"]
+[ext_resource type="Texture2D" uid="uid://c6jefvh5m846a" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_27.png" id="32_x24an"]
+[ext_resource type="Texture2D" uid="uid://dh8mgb30s3x07" path="res://Assests/Visuals/MainMenu/Animation/WaitStart/init_vampire_animation_28.png" id="33_v6cl5"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Animation/MainMenuAnimationController.cs" id="34_3rnwk"]
+[ext_resource type="AudioStream" uid="uid://ftd76ok2melh" path="res://Assests/Audio/SFX/Vampire/Breathing/respiracion.wav" id="36_fiu4t"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_plu7n"]
-texture = ExtResource("1_kud0v")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_op0t5"]
+load_path = "res://.godot/imported/init_vampire_animation_1.png-0fc7491bb034691a1e8812851ca70b24.ctex"
+
+[sub_resource type="Animation" id="Animation_8ryjn"]
+resource_name = "Init_Game"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_jjlpo"), ExtResource("8_fll5s"), ExtResource("9_cuiuj"), ExtResource("10_v1axi"), ExtResource("11_wh61n"), ExtResource("12_3q4el"), ExtResource("13_p77a0"), ExtResource("14_17fxx"), ExtResource("15_2ejsg"), ExtResource("16_p1lcd"), ExtResource("17_26ipj"), ExtResource("18_1b6je"), ExtResource("18_mqnsn"), ExtResource("19_db4re"), ExtResource("20_st2oe"), ExtResource("21_q4uh0"), ExtResource("22_wxt36"), ExtResource("23_5lass"), ExtResource("24_mwkw8"), ExtResource("25_gdhpq"), ExtResource("26_cxeit"), ExtResource("27_6u4sg"), ExtResource("28_sulsm"), ExtResource("29_edydk"), ExtResource("30_nvrgv"), ExtResource("31_np175"), ExtResource("32_x24an"), ExtResource("33_v6cl5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Breath:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("36_fiu4t")]
+}
+
+[sub_resource type="Animation" id="Animation_ca3ov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_op0t5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Breath:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("36_fiu4t")]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s1ln5"]
+load_path = "res://.godot/imported/init_vampire_animation_2.png-568d41930c9c9966d13f9de15c302768.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5q1ud"]
+load_path = "res://.godot/imported/init_vampire_animation_3.png-f2a5a46736a373759f0f0939b589ec87.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_al35n"]
+load_path = "res://.godot/imported/init_vampire_animation_4.png-0d1ed58c78d8d92d88e9a2d26cfa87c0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ip3jd"]
+load_path = "res://.godot/imported/init_vampire_animation_5.png-49dfb687f806c3bea9a9f8aa4c0658bf.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ik17t"]
+load_path = "res://.godot/imported/init_vampire_animation_6.png-de2941980b7bfe837df2ac414c441ded.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ftr66"]
+load_path = "res://.godot/imported/init_vampire_animation_7.png-c7b5b9f2a0afd1b83aea380e2463a2ca.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tawct"]
+load_path = "res://.godot/imported/init_vampire_animation_8.png-3eb6ac7248ac412dc19fcfedec5e5886.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_im0md"]
+load_path = "res://.godot/imported/init_vampire_animation_9.png-d90d2f6157dfca5f5ce5cf968785fb9f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vn0rn"]
+load_path = "res://.godot/imported/init_vampire_animation_10.png-db72b2b63758b5d88d700bd7586e2063.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0lsbg"]
+load_path = "res://.godot/imported/init_vampire_animation_11.png-c73848da3906473c1ba07a2b9c7b9f3a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5mtv"]
+load_path = "res://.godot/imported/init_vampire_animation_13.png-e597db1ad686d0f2614f5aad9b2abcd7.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tkjmh"]
+load_path = "res://.godot/imported/init_vampire_animation_14.png-548533701796267dcc8b9b0c6e4368eb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gu8i3"]
+load_path = "res://.godot/imported/init_vampire_animation_15.png-7a8eb3ee32b0cf501a745f6f3ab20987.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5wv1q"]
+load_path = "res://.godot/imported/init_vampire_animation_16.png-31e56f7d70e2dbf6b9764cf11d3bd735.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ugaq5"]
+load_path = "res://.godot/imported/init_vampire_animation_17.png-470d4de54172bd3a57cdbe6674ccf9ab.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5nsjc"]
+load_path = "res://.godot/imported/init_vampire_animation_18.png-7daaef289298450f6fcf674843f97473.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3xhxr"]
+load_path = "res://.godot/imported/init_vampire_animation_19.png-2838d88dd6b22e1b0db58e3f8ff28254.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_etdws"]
+load_path = "res://.godot/imported/init_vampire_animation_20.png-9ddb4d31a81a6f5adfc30b9c51951b6f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kjbau"]
+load_path = "res://.godot/imported/init_vampire_animation_21.png-cbd686ad9cfe34d53f0d0587ea952203.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ciohn"]
+load_path = "res://.godot/imported/init_vampire_animation_22.png-99a41660f1d10db1ca4ee83a8408526a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cniwt"]
+load_path = "res://.godot/imported/init_vampire_animation_23.png-c98785f674cda25735bbfd7b53b949ba.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lpudk"]
+load_path = "res://.godot/imported/init_vampire_animation_24.png-ee88e1eb75e2c3d79d16196287b6ae94.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fpxqh"]
+load_path = "res://.godot/imported/init_vampire_animation_25.png-b9c954c46f0849653ffc09269a47f9e2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtkoa"]
+load_path = "res://.godot/imported/init_vampire_animation_26.png-cdefbb07d6ce0e7970dee12511085117.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dce3g"]
+load_path = "res://.godot/imported/init_vampire_animation_27.png-2c12655f1156a3d21f8803cc53d48d23.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m6g2s"]
+load_path = "res://.godot/imported/init_vampire_animation_28.png-3711836b3a4b945c29219b731c31c48b.ctex"
+
+[sub_resource type="Animation" id="Animation_71oyu"]
+resource_name = "Waiting_To_Start"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_op0t5"), SubResource("CompressedTexture2D_s1ln5"), SubResource("CompressedTexture2D_5q1ud"), SubResource("CompressedTexture2D_al35n"), SubResource("CompressedTexture2D_ip3jd"), SubResource("CompressedTexture2D_ik17t"), SubResource("CompressedTexture2D_ftr66"), SubResource("CompressedTexture2D_tawct"), SubResource("CompressedTexture2D_im0md"), SubResource("CompressedTexture2D_vn0rn"), SubResource("CompressedTexture2D_0lsbg"), SubResource("CompressedTexture2D_0lsbg"), SubResource("CompressedTexture2D_s5mtv"), SubResource("CompressedTexture2D_tkjmh"), SubResource("CompressedTexture2D_gu8i3"), SubResource("CompressedTexture2D_5wv1q"), SubResource("CompressedTexture2D_ugaq5"), SubResource("CompressedTexture2D_5nsjc"), SubResource("CompressedTexture2D_3xhxr"), SubResource("CompressedTexture2D_etdws"), SubResource("CompressedTexture2D_kjbau"), SubResource("CompressedTexture2D_ciohn"), SubResource("CompressedTexture2D_cniwt"), SubResource("CompressedTexture2D_lpudk"), SubResource("CompressedTexture2D_fpxqh"), SubResource("CompressedTexture2D_rtkoa"), SubResource("CompressedTexture2D_dce3g"), SubResource("CompressedTexture2D_m6g2s")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mw8l"]
+_data = {
+"Init_Game": SubResource("Animation_8ryjn"),
+"RESET": SubResource("Animation_ca3ov"),
+"Waiting_To_Start": SubResource("Animation_71oyu")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,14 +206,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="sky" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_wrgfs")
+expand_mode = 2
+
+[node name="mountain1" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_365ew")
+expand_mode = 2
+
+[node name="mountain2" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("3_g5tml")
+expand_mode = 2
+
+[node name="fog" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -77.0
+offset_right = -122.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("6_6f3ne")
+expand_mode = 2
+
+[node name="city" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("4_caqii")
+expand_mode = 2
+
+[node name="clouds" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("5_t2xa1")
+expand_mode = 2
+
+[node name="animation" type="TextureRect" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_plu7n")
+texture = SubResource("CompressedTexture2D_op0t5")
+expand_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="animation"]
+libraries = {
+"": SubResource("AnimationLibrary_3mw8l")
+}
+speed_scale = 0.7
+script = ExtResource("34_3rnwk")
+
+[node name="Breath" type="AudioStreamPlayer" parent="animation"]
+stream = ExtResource("36_fiu4t")
+
+[node name="Laugh" type="AudioStreamPlayer" parent="animation"]
 
 [node name="InitMenu" parent="." instance=ExtResource("2_fsfui")]
 layout_mode = 1
