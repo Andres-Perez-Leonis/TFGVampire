@@ -1,0 +1,164 @@
+[gd_scene load_steps=25 format=3 uid="uid://djdlerch8v5u5"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_5osbx"]
+[ext_resource type="Texture2D" uid="uid://cec034rg1b2i6" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W1.png" id="2_wfos5"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_yy0se"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireIdleState.cs" id="4_eucew"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="5_abf16"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_yqwwy"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_38cdr"]
+[ext_resource type="Texture2D" uid="uid://cw8j87ucoro4m" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W2.png" id="8_20cr6"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="8_fm2lf"]
+[ext_resource type="Texture2D" uid="uid://csxy5t6hpuxrk" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W3.png" id="9_7yj6t"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="9_p3paj"]
+[ext_resource type="Texture2D" uid="uid://bnl4p5pkha20y" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W4.png" id="10_6pcm7"]
+[ext_resource type="Texture2D" uid="uid://c023143cwmu2p" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W5.png" id="11_t6f0k"]
+[ext_resource type="Texture2D" uid="uid://djxvv2ir5j4ec" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W6.png" id="12_pwrig"]
+[ext_resource type="Texture2D" uid="uid://chdf4chr37k73" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W7.png" id="13_2vicm"]
+[ext_resource type="Texture2D" uid="uid://dv2o6dr2vpp6y" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W8.png" id="14_wfl3c"]
+[ext_resource type="Texture2D" uid="uid://d2bg0sn3dbafo" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W9.png" id="15_hi5tg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
+size = Vector2(109, 299)
+
+[sub_resource type="Animation" id="Animation_pm6rq"]
+resource_name = "Idle"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_s1w3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_wfos5")]
+}
+
+[sub_resource type="Animation" id="Animation_r0175"]
+resource_name = "Walking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_wfos5"), ExtResource("8_20cr6"), ExtResource("9_7yj6t"), ExtResource("10_6pcm7"), ExtResource("11_t6f0k"), ExtResource("12_pwrig"), ExtResource("13_2vicm"), ExtResource("14_wfl3c"), ExtResource("15_hi5tg"), ExtResource("2_wfos5")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqvq2"]
+_data = {
+"Idle": SubResource("Animation_pm6rq"),
+"RESET": SubResource("Animation_s1w3i"),
+"Walking": SubResource("Animation_r0175")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lh7f"]
+size = Vector2(108, 153)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ynlpi"]
+
+[node name="Vampire" type="CharacterBody2D" node_paths=PackedStringArray("_animationPlayer") groups=["Vampire"]]
+collision_layer = 2
+collision_mask = 65
+script = ExtResource("1_5osbx")
+_health = 1
+_speed = 200.0
+_force = 10.0
+_animationPlayer = NodePath("Sprite2D/AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_n63uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(410, -79)
+texture = ExtResource("2_wfos5")
+region_rect = Rect2(476, 713, 7904, 3583)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_rqvq2")
+}
+speed_scale = 0.25
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
+script = ExtResource("3_yy0se")
+_defaultState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("4_eucew")
+
+[node name="MovingState" type="Node" parent="StateMachine"]
+script = ExtResource("5_abf16")
+
+[node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
+script = ExtResource("6_yqwwy")
+_detector = NodePath("../../DetectorNPC")
+
+[node name="DraggingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_corpseHidingPointDetector")]
+script = ExtResource("7_38cdr")
+_detector = NodePath("../../DetectorCorpse")
+_corpseHidingPointDetector = NodePath("../../HiddingPointsDetector")
+
+[node name="Node2" type="Node" parent="StateMachine"]
+
+[node name="DetectorNPC" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collision_mask = 4
+script = ExtResource("8_fm2lf")
+
+[node name="DetectorCorpse" type="RayCast2D" parent="."]
+position = Vector2(0, 62)
+target_position = Vector2(80, 0)
+collision_mask = 8
+script = ExtResource("8_fm2lf")
+
+[node name="HiddingPointsDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+input_pickable = false
+script = ExtResource("9_p3paj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+position = Vector2(-1, -8.5)
+shape = SubResource("RectangleShape2D_0lh7f")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ynlpi")
