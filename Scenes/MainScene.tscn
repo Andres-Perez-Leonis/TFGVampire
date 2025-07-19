@@ -10,8 +10,8 @@
 [ext_resource type="Script" path="res://Scripts/Objects/Mediator/MediatorManager.cs" id="8_v43hk"]
 [ext_resource type="PackedScene" uid="uid://i6fnr3ensjgw" path="res://Scenes/Mediator/Mediator.tscn" id="9_yw2wn"]
 [ext_resource type="Script" path="res://Scripts/Objects/VillagerListCreator.cs" id="10_svstx"]
-[ext_resource type="Texture2D" uid="uid://bay84y635jdxx" path="res://Assests/World/Background/Sky/Background.PNG" id="11_2q1ip"]
-[ext_resource type="Texture2D" uid="uid://5b6i2cmx5jx0" path="res://Assests/World/Fog/Fog1.PNG" id="12_vp2j0"]
+[ext_resource type="Texture2D" uid="uid://bay84y635jdxx" path="res://Assests/Visuals/World/Background/Sky/Background.PNG" id="11_2q1ip"]
+[ext_resource type="Texture2D" uid="uid://5b6i2cmx5jx0" path="res://Assests/Visuals/World/Fog/Fog1.PNG" id="12_vp2j0"]
 [ext_resource type="Script" path="res://Scripts/IU/Background/FollowingBackground.cs" id="13_bk877"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swa6a"]
