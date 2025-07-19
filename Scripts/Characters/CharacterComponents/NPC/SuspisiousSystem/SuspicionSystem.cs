@@ -76,10 +76,10 @@ public partial class SuspicionSystem : Node
 		foreach (EntitySuspechData entityData in entities)
 		{
 			heThinkItsMe = (entityData.Entity == _myVillager);
-			_dicSuspechData[entityData.Entity].AmountOfSuspicion += _increaseSuspisionAmount;
+			IncreaseSuspision(entityData.Entity);
 		}
 
-		if (heThinkItsMe) _dicSuspechData[whoSaidMeThat].AmountOfSuspicion += _increaseSuspisionAmount;
+		if (heThinkItsMe) IncreaseSuspision(whoSaidMeThat);
 
 		HashSet<Entity> hashEntity = new HashSet<Entity>(EntityInSuspech(entities.Count).Select(s => s.Entity));
 		int matches = entities.Count(e => hashEntity.Contains(e.Entity));
