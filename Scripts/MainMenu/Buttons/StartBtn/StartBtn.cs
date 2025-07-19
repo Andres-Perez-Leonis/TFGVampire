@@ -12,6 +12,7 @@ public partial class StartBtn : Button
 
 	private void InitFirstLevel()
 	{
+		//if (Owner is ParentNodeMenu c) c.OnButtonClick();
 		GetTree().ChangeSceneToFile(_levelPath);
 	}
 

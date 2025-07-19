@@ -10,6 +10,7 @@ public partial class ViewMode : OptionButton
 	}
 
 	private void _viewModeSelected(long mode) {
+		//if (Owner is ParentNodeMenu c) c.OnSwitchClick();
 		switch (mode)
 		{
 			case 0:

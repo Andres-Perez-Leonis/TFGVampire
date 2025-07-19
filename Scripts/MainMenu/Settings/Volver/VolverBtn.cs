@@ -12,7 +12,11 @@ public partial class VolverBtn : Button
 
 	private void _onPressed()
 	{
-		if (Owner is Control menu) menu.Visible = false;
+		if (Owner is ParentNodeMenu c)
+		{
+			//c.OnSwitchClick();
+			c.Visible = false;
+		}
 		_initMenu.Visible = true;
 
 	}

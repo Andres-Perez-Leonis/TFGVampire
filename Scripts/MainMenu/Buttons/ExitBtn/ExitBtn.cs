@@ -11,6 +11,7 @@ public partial class ExitBtn : Button
 
 	public void _onPressed()
 	{
+		//if (Owner is ParentNodeMenu c) c.OnButtonClick(); 
 		GetTree().Quit();
 	}
 
