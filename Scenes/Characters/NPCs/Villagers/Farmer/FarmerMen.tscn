@@ -1,0 +1,243 @@
+[gd_scene load_steps=50 format=3 uid="uid://b2xwwiemtb830"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/NPCs/Villager.cs" id="1_guf0h"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="2_jqwas"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcIdleState.cs" id="3_qrk0l"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NotifyingAboutSuspisionState.cs" id="4_e872o"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcMovingState.cs" id="5_dgi37"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_x2wnx"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/VillagerTalkingState.cs" id="7_35r5f"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmState.cs" id="8_tckcs"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmRunningState.cs" id="9_yk12o"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="10_mghlk"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="11_22l48"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/VillagerDetector/VillagerDetector.cs" id="12_uslev"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/SuspisiousSystem/SuspicionSystem.cs" id="13_4hpw6"]
+[ext_resource type="Texture2D" uid="uid://b5dwi563pa1gv" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_1.png" id="14_hajkg"]
+[ext_resource type="Texture2D" uid="uid://chj0luytfsaxs" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_2.png" id="15_0jb5d"]
+[ext_resource type="Texture2D" uid="uid://dmwuwtrquv7dc" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_3.png" id="16_v7y66"]
+[ext_resource type="Texture2D" uid="uid://bdrcf4aotw61a" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_4.png" id="17_p18dm"]
+[ext_resource type="Texture2D" uid="uid://ckphx1mgk33kf" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_5.png" id="18_bxn82"]
+[ext_resource type="Texture2D" uid="uid://drr6kd12kogff" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_6.png" id="19_5l6ey"]
+[ext_resource type="Texture2D" uid="uid://dnihw165f058d" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_7.png" id="20_ef57c"]
+[ext_resource type="Texture2D" uid="uid://p1aik0v75yc5" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_8.png" id="21_3v5vd"]
+[ext_resource type="Texture2D" uid="uid://bwfcnqvrpcij6" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_9.png" id="22_rw0hp"]
+[ext_resource type="Texture2D" uid="uid://cru1o43cytu37" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_10.png" id="23_ratx6"]
+[ext_resource type="Texture2D" uid="uid://rqojcw5meff1" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_11.png" id="24_3l7pb"]
+[ext_resource type="Texture2D" uid="uid://bs3jy6alifwsi" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_12.png" id="25_7e6oq"]
+[ext_resource type="Texture2D" uid="uid://cbd88y18xja6q" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_13.png" id="26_kr3aq"]
+[ext_resource type="Texture2D" uid="uid://dcu6qddf7lwjl" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_14.png" id="27_kg3gr"]
+[ext_resource type="Texture2D" uid="uid://bxyn4d7hika4" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_15.png" id="28_n3gv0"]
+[ext_resource type="Texture2D" uid="uid://d146t250vlt77" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_16.png" id="29_7a0bn"]
+[ext_resource type="Texture2D" uid="uid://jc04c72sqy4e" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_17.png" id="30_tyj8a"]
+[ext_resource type="Texture2D" uid="uid://mj0sqf831ogk" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Idle/I_Farmer_Naranja_18.png" id="31_t8rd1"]
+[ext_resource type="Texture2D" uid="uid://csw70cqxa3tkh" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_1.png" id="32_eyvhv"]
+[ext_resource type="Texture2D" uid="uid://b50ea5t2qo2fd" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_2.png" id="33_xkl32"]
+[ext_resource type="Texture2D" uid="uid://d0poio34t5n50" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_3.png" id="34_6631o"]
+[ext_resource type="Texture2D" uid="uid://reyx0oi8khcq" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_4.png" id="35_2gghd"]
+[ext_resource type="Texture2D" uid="uid://c1byaj3vavjkf" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_5.png" id="36_o6him"]
+[ext_resource type="Texture2D" uid="uid://ccjo8itcbh0c1" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_6.png" id="37_q5u0k"]
+[ext_resource type="Texture2D" uid="uid://dfwxb3w2y0ihf" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_7.png" id="38_f3ofk"]
+[ext_resource type="Texture2D" uid="uid://5uf3oe8j00n0" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_8.png" id="39_bspnp"]
+[ext_resource type="Texture2D" uid="uid://bx4l7o87bdays" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Farmer/Walking/W_Farmer_Naranja_9.png" id="40_y1yhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2dl"]
+size = Vector2(8, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
+size = Vector2(19, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8apkf"]
+radius = 5.67646
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4ee8i"]
+
+[sub_resource type="Animation" id="Animation_xv65j"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_hajkg"), ExtResource("15_0jb5d"), ExtResource("16_v7y66"), ExtResource("17_p18dm"), ExtResource("18_bxn82"), ExtResource("19_5l6ey"), ExtResource("20_ef57c"), ExtResource("21_3v5vd"), ExtResource("22_rw0hp"), ExtResource("23_ratx6"), ExtResource("24_3l7pb"), ExtResource("25_7e6oq"), ExtResource("26_kr3aq"), ExtResource("27_kg3gr"), ExtResource("28_n3gv0"), ExtResource("29_7a0bn"), ExtResource("30_tyj8a"), ExtResource("31_t8rd1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175.667, -152)]
+}
+
+[sub_resource type="Animation" id="Animation_47gho"]
+resource_name = "Walking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_eyvhv"), ExtResource("33_xkl32"), ExtResource("34_6631o"), ExtResource("35_2gghd"), ExtResource("36_o6him"), ExtResource("37_q5u0k"), ExtResource("38_f3ofk"), ExtResource("39_bspnp"), ExtResource("40_y1yhe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-308.667, -169.667)]
+}
+
+[sub_resource type="Animation" id="Animation_prntx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_hajkg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175.667, -152)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7mac"]
+_data = {
+"Idle": SubResource("Animation_xv65j"),
+"RESET": SubResource("Animation_prntx"),
+"Walking": SubResource("Animation_47gho")
+}
+
+[node name="FarmerWomen" type="CharacterBody2D" node_paths=PackedStringArray("_suspicionSystem", "_routine") groups=["Villagers"]]
+position = Vector2(-1, -20)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 65
+script = ExtResource("1_guf0h")
+_suspicionSystem = NodePath("SuspiciousSystem")
+_routine = []
+_speed = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tvjq2")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
+script = ExtResource("2_jqwas")
+_defaultState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_qrk0l")
+
+[node name="NotifyingSuspisionState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("4_e872o")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_hidingPointDetector", "_interconectionDetector")]
+script = ExtResource("5_dgi37")
+_hidingPointDetector = NodePath("../../HiddingPointsDetector")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("6_x2wnx")
+
+[node name="TalkingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
+script = ExtResource("7_35r5f")
+_detector = NodePath("../../VillagerDetector")
+
+[node name="GivingAlarmState" type="Node" parent="StateMachine"]
+script = ExtResource("8_tckcs")
+
+[node name="GivingAlarmRunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("9_yk12o")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="InterconnectionDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterconnectionDetector"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_xb2dl")
+
+[node name="CorpseDetector" parent="." instance=ExtResource("10_mghlk")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+
+[node name="HiddingPointsDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+input_pickable = false
+script = ExtResource("11_22l48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+shape = SubResource("RectangleShape2D_vvmd3")
+
+[node name="VampireDetector" parent="." instance=ExtResource("10_mghlk")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+collision_layer_mask = 2
+
+[node name="VillagerDetector" type="Area2D" parent="."]
+position = Vector2(20, 0)
+collision_layer = 128
+collision_mask = 4
+monitorable = false
+script = ExtResource("12_uslev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VillagerDetector"]
+shape = SubResource("CircleShape2D_8apkf")
+
+[node name="SuspiciousSystem" type="Node" parent="."]
+script = ExtResource("13_4hpw6")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_4ee8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-175.667, -152)
+texture = ExtResource("14_hajkg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_u7mac")
+}

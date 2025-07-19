@@ -1,0 +1,242 @@
+[gd_scene load_steps=49 format=3 uid="uid://2aqtd8tvbci8"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/NPCs/Villager.cs" id="1_iwxir"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="2_ps8nr"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcIdleState.cs" id="3_2pf60"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NotifyingAboutSuspisionState.cs" id="4_x3366"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcMovingState.cs" id="5_dt716"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_axjmh"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/VillagerTalkingState.cs" id="7_r4sy1"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmState.cs" id="8_olev4"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GivingAlarmRunningState.cs" id="9_lt0be"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="10_3kcgk"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="11_at775"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/VillagerDetector/VillagerDetector.cs" id="12_kgk6y"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/SuspisiousSystem/SuspicionSystem.cs" id="13_7phwv"]
+[ext_resource type="Texture2D" uid="uid://c70pvromajjwv" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_1.png" id="14_5vd2e"]
+[ext_resource type="Texture2D" uid="uid://cbfnmdjxk47tb" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_2.png" id="15_0e6tf"]
+[ext_resource type="Texture2D" uid="uid://beaplk5ahk0ne" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_3.png" id="16_y2cdh"]
+[ext_resource type="Texture2D" uid="uid://c7q6gjlip5clp" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_4.png" id="17_nkmo2"]
+[ext_resource type="Texture2D" uid="uid://dvb4a3uye07oh" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_5.png" id="18_wbs3a"]
+[ext_resource type="Texture2D" uid="uid://cikyiml0ccs6a" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_6.png" id="19_y00e2"]
+[ext_resource type="Texture2D" uid="uid://bk1kjsih55yt5" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_7.png" id="20_dbd51"]
+[ext_resource type="Texture2D" uid="uid://dswv6akc4r0jv" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_8.png" id="21_3v702"]
+[ext_resource type="Texture2D" uid="uid://ddn2d2s5mkr2s" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_9.png" id="22_h24d0"]
+[ext_resource type="Texture2D" uid="uid://ccp1ymr1u6w6v" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_10.png" id="23_wsnap"]
+[ext_resource type="Texture2D" uid="uid://bfjy7sc6v7cdd" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_11.png" id="24_7lmgl"]
+[ext_resource type="Texture2D" uid="uid://dposfei52hmu2" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_12.png" id="25_84omk"]
+[ext_resource type="Texture2D" uid="uid://d3dud3aj2k7s5" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_13.png" id="26_0gh62"]
+[ext_resource type="Texture2D" uid="uid://do7vq616eqixk" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_14.png" id="27_80mhm"]
+[ext_resource type="Texture2D" uid="uid://bsi0kio6b6ay4" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_15.png" id="28_12l7n"]
+[ext_resource type="Texture2D" uid="uid://dmx26j1v0w727" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_16.png" id="29_b1nxk"]
+[ext_resource type="Texture2D" uid="uid://dw88eccxxe114" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Idle/I_Noble_Naranja_17.png" id="30_slo62"]
+[ext_resource type="Texture2D" uid="uid://dmx0hn85eudv3" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_1.png" id="31_nnqs1"]
+[ext_resource type="Texture2D" uid="uid://fx1txbj6f6fa" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_2.png" id="32_ss2n3"]
+[ext_resource type="Texture2D" uid="uid://c3p8i7pbl3n6c" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_3.png" id="33_e3lvn"]
+[ext_resource type="Texture2D" uid="uid://d16jtoaqal2r" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_4.png" id="34_qodoc"]
+[ext_resource type="Texture2D" uid="uid://bge1scwksiaxl" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_5.png" id="35_kd70q"]
+[ext_resource type="Texture2D" uid="uid://dk6d8mheaatrd" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_6.png" id="36_12rfc"]
+[ext_resource type="Texture2D" uid="uid://cetjlnncgtyf1" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_7.png" id="37_5wsnt"]
+[ext_resource type="Texture2D" uid="uid://btvfhuijovlkx" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_8.png" id="38_kby72"]
+[ext_resource type="Texture2D" uid="uid://d0hl600f4wyan" path="res://Assests/Visuals/Characters/NPCs/Villagers/Men/Noble/Walking/W_Noble_Naranja_9.png" id="39_u8wuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2dl"]
+size = Vector2(8, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
+size = Vector2(19, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8apkf"]
+radius = 5.67646
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4ee8i"]
+
+[sub_resource type="Animation" id="Animation_t0pv7"]
+resource_name = "Idle"
+length = 0.55
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-174.333, -147)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_5vd2e"), ExtResource("15_0e6tf"), ExtResource("16_y2cdh"), ExtResource("17_nkmo2"), ExtResource("18_wbs3a"), ExtResource("19_y00e2"), ExtResource("20_dbd51"), ExtResource("21_3v702"), ExtResource("22_h24d0"), ExtResource("23_wsnap"), ExtResource("24_7lmgl"), ExtResource("25_84omk"), ExtResource("26_0gh62"), ExtResource("27_80mhm"), ExtResource("28_12l7n"), ExtResource("29_b1nxk"), ExtResource("30_slo62")]
+}
+
+[sub_resource type="Animation" id="Animation_1daia"]
+resource_name = "Walking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-301.667, -151.667)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("31_nnqs1"), ExtResource("32_ss2n3"), ExtResource("33_e3lvn"), ExtResource("34_qodoc"), ExtResource("35_kd70q"), ExtResource("36_12rfc"), ExtResource("37_5wsnt"), ExtResource("38_kby72"), ExtResource("39_u8wuq")]
+}
+
+[sub_resource type="Animation" id="Animation_ppu8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-174.333, -147)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_5vd2e")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q3e66"]
+_data = {
+"Idle": SubResource("Animation_t0pv7"),
+"RESET": SubResource("Animation_ppu8y"),
+"Walking": SubResource("Animation_1daia")
+}
+
+[node name="NobleWomen" type="CharacterBody2D" node_paths=PackedStringArray("_suspicionSystem", "_routine") groups=["Villagers"]]
+position = Vector2(-1, -20)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 65
+script = ExtResource("1_iwxir")
+_suspicionSystem = NodePath("SuspiciousSystem")
+_routine = []
+_speed = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tvjq2")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
+script = ExtResource("2_ps8nr")
+_defaultState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_2pf60")
+
+[node name="NotifyingSuspisionState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("4_x3366")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_hidingPointDetector", "_interconectionDetector")]
+script = ExtResource("5_dt716")
+_hidingPointDetector = NodePath("../../HiddingPointsDetector")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("6_axjmh")
+
+[node name="TalkingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
+script = ExtResource("7_r4sy1")
+_detector = NodePath("../../VillagerDetector")
+
+[node name="GivingAlarmState" type="Node" parent="StateMachine"]
+script = ExtResource("8_olev4")
+
+[node name="GivingAlarmRunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("9_lt0be")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="InterconnectionDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterconnectionDetector"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_xb2dl")
+
+[node name="CorpseDetector" parent="." instance=ExtResource("10_3kcgk")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+
+[node name="HiddingPointsDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+input_pickable = false
+script = ExtResource("11_at775")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+shape = SubResource("RectangleShape2D_vvmd3")
+
+[node name="VampireDetector" parent="." instance=ExtResource("10_3kcgk")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+collision_layer_mask = 2
+
+[node name="VillagerDetector" type="Area2D" parent="."]
+position = Vector2(20, 0)
+collision_layer = 128
+collision_mask = 4
+monitorable = false
+script = ExtResource("12_kgk6y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VillagerDetector"]
+shape = SubResource("CircleShape2D_8apkf")
+
+[node name="SuspiciousSystem" type="Node" parent="."]
+script = ExtResource("13_7phwv")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_4ee8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-174.333, -147)
+texture = ExtResource("14_5vd2e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_q3e66")
+}
