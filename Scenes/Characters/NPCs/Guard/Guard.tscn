@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bcvsdw3kouwf7"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/NPCs/Guard.cs" id="1_rtvgo"]
-[ext_resource type="Texture2D" uid="uid://dxj2y3u7srotj" path="res://Assests/VillagerPrototipe/MiniHunter.png" id="2_r1o27"]
+[ext_resource type="Texture2D" uid="uid://dxj2y3u7srotj" path="res://Assests/Visuals/Characters/VillagerPrototipe/MiniHunter.png" id="2_r1o27"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_cmvpa"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardIdleState.cs" id="5_1cypj"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardDraggingState.cs" id="5_tkspg"]
