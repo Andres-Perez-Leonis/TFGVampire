@@ -21,6 +21,7 @@ public partial class VampireIdleState : VampireStateBase
     public override void Start()
     {
         base.Start();
+        _vampire.AnimationStateMachine?.Travel(AnimationNameVampire.Idle);
         //_vampire.AnimationPlayer.Play(AnimationNameVampire.Idle);
     }
 

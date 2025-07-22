@@ -7,13 +7,14 @@ public partial class VampireAttackState : VampireStateBase
   public override void _Ready()
   {
     base._Ready();
-    _vampire.AnimationPlayer.AnimationFinished += OnAnimationFinished;
+    //_vampire.AnimationPlayer.AnimationFinished += OnAnimationFinished;
   }
 
 
   public override void Start()
   {
-    //_vampire.AnimationPlayer.Play(AnimationNameVampire.Attacking);
+    _vampire.AnimationTree.AnimationFinished += OnAnimationFinished;
+    _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Attacking);
     NPC npc = _detector.NPCDetected;
     if(npc == null) { StateMachine.ChangeState(VampireStateNames.Idle); return;}
     if(npc.IsDeath) return;
@@ -28,7 +29,7 @@ public partial class VampireAttackState : VampireStateBase
 
   public override void End()
   {
-
+    _vampire.AnimationTree.AnimationFinished += OnAnimationFinished;
   }
 
 

@@ -61,6 +61,7 @@ public partial class VampireDraggingState : VampireStateBase
 
     _corpseNPC = _detector.NPCDetected;
     _isStatingState = true;
+    _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Dragging);
   }
 
   public override void _Ready()

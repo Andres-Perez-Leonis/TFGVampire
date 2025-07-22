@@ -32,6 +32,13 @@ public partial class VampireMovingState : VampireStateBase
         _currentSpeed = _vampire.Speed;
     }
 
+    public override void Start()
+    {
+        base.Start();
+        _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Moving);
+    }
+
+
     /***
      * Called during the physics process step.
      * Handles the vampire's movement, direction, speed, and state changes.
@@ -46,7 +53,19 @@ public partial class VampireMovingState : VampireStateBase
         _direction = Input.GetAxis("ui_left", "ui_right");
 
         // If no movement is detected, switch to the idle state
-        if (_direction == 0) StateMachine.ChangeState(VampireStateNames.Idle);
+        if (_direction == 0)
+        {
+            StateMachine.ChangeState(VampireStateNames.Idle);
+            return;
+        }
+        GD.Print($"Direction: {_direction}, Scale.X: {_vampire.Scale.X}, ShouldFlip: {Mathf.Sign(_direction) != Mathf.Sign(_vampire.Scale.X)}");
+        //_vampire.GetNode<Sprite2D>("Sprite2D2").FlipH = _direction < 0;
+
+        if (Mathf.Sign(_direction) != Mathf.Sign(_vampire.Scale.X))
+        {
+            rotate();
+        }
+
 
         // Check if the run key (Shift) is pressed
         _isRunning = Input.IsKeyPressed(Key.Shift);
@@ -61,4 +80,11 @@ public partial class VampireMovingState : VampireStateBase
         _vampire.Velocity = _velocity;
         _vampire.MoveAndSlide();
     }
+
+    public void rotate()
+    {
+        _vampire.Scale = new Vector2(-_vampire.Scale.X, _vampire.Scale.Y);
+        GD.Print("Nueva Scale del vampiro: "+  _vampire.Scale);
+    }
+
 }
