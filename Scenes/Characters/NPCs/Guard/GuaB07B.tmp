@@ -1,0 +1,398 @@
+[gd_scene load_steps=139 format=3 uid="uid://bcvsdw3kouwf7"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/NPCs/Guard.cs" id="1_rtvgo"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_cmvpa"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardIdleState.cs" id="5_1cypj"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardDraggingState.cs" id="5_tkspg"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/NpcDeathState.cs" id="6_fqqah"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardMovingState.cs" id="6_j3m6a"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="7_xsusl"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="8_jb6kk"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/NPCs/GuardStates/GuardAttackState.cs" id="8_wn5av"]
+[ext_resource type="Texture2D" uid="uid://cb34b1jbe8cfk" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_1.png" id="10_mbdbr"]
+[ext_resource type="Texture2D" uid="uid://bkrb0vjvnv5w0" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_1.png" id="11_3g6qe"]
+[ext_resource type="Texture2D" uid="uid://8yb16o720rnj" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_2.png" id="11_3k0cg"]
+[ext_resource type="Texture2D" uid="uid://bf08hgt6ffe6f" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_1.png" id="11_75qyx"]
+[ext_resource type="Texture2D" uid="uid://dwu0vt1rhl3xq" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_2.png" id="12_bdmsx"]
+[ext_resource type="Texture2D" uid="uid://6r6b08ykpmrc" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_2.png" id="12_bggn7"]
+[ext_resource type="Texture2D" uid="uid://crov3cmg5t3ux" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_3.png" id="12_v00lp"]
+[ext_resource type="Texture2D" uid="uid://b5uqeimo4p71f" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_3.png" id="13_1yekh"]
+[ext_resource type="Texture2D" uid="uid://hm2ves5islq0" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_3.png" id="13_bdc7f"]
+[ext_resource type="Texture2D" uid="uid://bf6q78vimqxdj" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_4.png" id="13_ocv88"]
+[ext_resource type="Texture2D" uid="uid://prlh8140pw8d" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_4.png" id="14_buekb"]
+[ext_resource type="Texture2D" uid="uid://dablj70u2mm1a" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_5.png" id="14_lngpn"]
+[ext_resource type="Texture2D" uid="uid://q0gvj70e8vyu" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_4.png" id="14_nk2cw"]
+[ext_resource type="Texture2D" uid="uid://b6xytq1iwepyn" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_5.png" id="15_0qgfq"]
+[ext_resource type="Texture2D" uid="uid://d3367ojytaxwm" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_6.png" id="15_nsc8c"]
+[ext_resource type="Texture2D" uid="uid://ddd3qll0os56p" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_5.png" id="15_oov6p"]
+[ext_resource type="Texture2D" uid="uid://dapeb5423puew" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_6.png" id="16_edgru"]
+[ext_resource type="Texture2D" uid="uid://ddydopxp42aoh" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_7.png" id="16_gt684"]
+[ext_resource type="Texture2D" uid="uid://iytp328fjjab" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_6.png" id="16_udlau"]
+[ext_resource type="Texture2D" uid="uid://b1ddy7yltv4fc" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_7.png" id="17_25skb"]
+[ext_resource type="Texture2D" uid="uid://uhi3lqstkej6" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_8.png" id="17_43fg2"]
+[ext_resource type="Texture2D" uid="uid://c3dnxwppe4632" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_7.png" id="17_toy0k"]
+[ext_resource type="Texture2D" uid="uid://dd6xhygp434hh" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_8.png" id="18_0iskj"]
+[ext_resource type="Texture2D" uid="uid://wd0bbha3flfy" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_9.png" id="18_3mbru"]
+[ext_resource type="Texture2D" uid="uid://bls305sxju2k8" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_8.png" id="18_hk0af"]
+[ext_resource type="Texture2D" uid="uid://c8628i3m5qh86" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_10.png" id="19_b42je"]
+[ext_resource type="Texture2D" uid="uid://b1ih4j330lvoc" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_9.png" id="19_buxqj"]
+[ext_resource type="Texture2D" uid="uid://b0ad1nh3qk1c6" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_9.png" id="19_t24hl"]
+[ext_resource type="Texture2D" uid="uid://bxl424ptjt7re" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_10.png" id="20_8qepi"]
+[ext_resource type="Texture2D" uid="uid://dxe0o7gtmwa25" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_10.png" id="20_jvrb6"]
+[ext_resource type="Texture2D" uid="uid://brqwdp2u8vx7i" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_11.png" id="20_xacbt"]
+[ext_resource type="Texture2D" uid="uid://d1iyqm1crvjru" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_12.png" id="21_mcgtk"]
+[ext_resource type="Texture2D" uid="uid://bmlstaeh08qkl" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_11.png" id="21_nyd1x"]
+[ext_resource type="Texture2D" uid="uid://dcpf4hdtkh675" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_11.png" id="21_qhbyf"]
+[ext_resource type="Texture2D" uid="uid://ctq6r5toyf7bi" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_13.png" id="22_10nng"]
+[ext_resource type="Texture2D" uid="uid://b1yln8bk3maht" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_12.png" id="22_qu3h3"]
+[ext_resource type="Texture2D" uid="uid://vr0u2bydqjlr" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_12.png" id="22_xygdl"]
+[ext_resource type="Texture2D" uid="uid://c6h2ce822mxa8" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_13.png" id="23_2j2yf"]
+[ext_resource type="Texture2D" uid="uid://46rpxvmg0pht" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_13.png" id="23_i5umr"]
+[ext_resource type="Texture2D" uid="uid://c6m0xmgjuy4cm" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_14.png" id="23_se2n0"]
+[ext_resource type="Texture2D" uid="uid://rgakmr3wk6io" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_14.png" id="24_euoxu"]
+[ext_resource type="Texture2D" uid="uid://b0ag22qj8qirl" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_14.png" id="24_npfp7"]
+[ext_resource type="Texture2D" uid="uid://dtwye468wxyv" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_15.png" id="24_vdkx4"]
+[ext_resource type="Texture2D" uid="uid://q8wtouj3ofoa" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_15.png" id="25_nwfs4"]
+[ext_resource type="Texture2D" uid="uid://cxql56neg1by6" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_16.png" id="25_qwtpj"]
+[ext_resource type="Texture2D" uid="uid://cdeovgx5jtg7i" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_15.png" id="25_wlf0i"]
+[ext_resource type="Texture2D" uid="uid://bwkkt0kvaa2y2" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_16.png" id="26_1f3ns"]
+[ext_resource type="Texture2D" uid="uid://bhxs76o2hpyg0" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_16.png" id="26_1ro8k"]
+[ext_resource type="Texture2D" uid="uid://7j4ydqel8rqq" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_17.png" id="26_mju7k"]
+[ext_resource type="Texture2D" uid="uid://tqb3w0jmbw86" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_17.png" id="27_0axn2"]
+[ext_resource type="Texture2D" uid="uid://bw1w0n1s4w3vw" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_17.png" id="27_org5u"]
+[ext_resource type="Texture2D" uid="uid://d4do2bg3v2bcu" path="res://Assests/Visuals/Characters/NPCs/Guard/Idle/I_Guard_18.png" id="27_rtdr1"]
+[ext_resource type="Texture2D" uid="uid://cyfa3e7svfw3p" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_18.png" id="28_3mo7m"]
+[ext_resource type="Texture2D" uid="uid://s4wcwlxd1vv" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_18.png" id="28_8xqcj"]
+[ext_resource type="Texture2D" uid="uid://ds0anoonugobi" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_1.png" id="28_lvedr"]
+[ext_resource type="Texture2D" uid="uid://06jxqppfka3a" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_19.png" id="29_457ua"]
+[ext_resource type="Texture2D" uid="uid://b0aunispjvk4c" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_19.png" id="29_p4mdb"]
+[ext_resource type="Texture2D" uid="uid://dlgq63lnc7o2n" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_2.png" id="29_y5ddd"]
+[ext_resource type="Texture2D" uid="uid://jktw1w0isysk" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_20.png" id="30_kf0nv"]
+[ext_resource type="Texture2D" uid="uid://dajk2ke38dt4m" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_20.png" id="30_um417"]
+[ext_resource type="Texture2D" uid="uid://drjueli86hxan" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_3.png" id="30_xvs07"]
+[ext_resource type="Texture2D" uid="uid://cq28qajjuxs2e" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_21.png" id="31_5vwy5"]
+[ext_resource type="Texture2D" uid="uid://07k5ddtm6vsv" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_21.png" id="31_28m35"]
+[ext_resource type="Texture2D" uid="uid://dybk1efcup1lv" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_4.png" id="31_ottli"]
+[ext_resource type="Texture2D" uid="uid://cibxv2emjmqfa" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_5.png" id="32_ko0ii"]
+[ext_resource type="Texture2D" uid="uid://b63pag2ijgfl0" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_22.png" id="32_sre2e"]
+[ext_resource type="Texture2D" uid="uid://doguhxq0ap03m" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_22.png" id="32_w2r0o"]
+[ext_resource type="Texture2D" uid="uid://3b5gk7vdyvke" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_23.png" id="33_p4etb"]
+[ext_resource type="Texture2D" uid="uid://b17qxgii1spiw" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_23.png" id="33_tesev"]
+[ext_resource type="Texture2D" uid="uid://cbk87lldlaq8r" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_6.png" id="33_uyhib"]
+[ext_resource type="Texture2D" uid="uid://bwxaj1n2cytuc" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_8.png" id="34_2vwtb"]
+[ext_resource type="Texture2D" uid="uid://c6vuv3m6wphyu" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_24.png" id="34_ge7p4"]
+[ext_resource type="Texture2D" uid="uid://c6rpeu5fi36pj" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_24.png" id="34_tp3y8"]
+[ext_resource type="Texture2D" uid="uid://cffipocpwsyf5" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_25.png" id="35_3x7gl"]
+[ext_resource type="Texture2D" uid="uid://1qwixy8x748n" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_9.png" id="35_d20sn"]
+[ext_resource type="Texture2D" uid="uid://d2r5eqfehq4sb" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_25.png" id="35_iiq2u"]
+[ext_resource type="Texture2D" uid="uid://d27g712ovaio3" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_26.png" id="36_lmr61"]
+[ext_resource type="Texture2D" uid="uid://f4o8odhbt3ck" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_26.png" id="36_q3av2"]
+[ext_resource type="Texture2D" uid="uid://boxvrwkjyw70h" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_10.png" id="36_ra0md"]
+[ext_resource type="Texture2D" uid="uid://7ircbha6nnr2" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_27.png" id="37_5kecs"]
+[ext_resource type="Texture2D" uid="uid://ddaw5n4cu1ern" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_11.png" id="37_475x8"]
+[ext_resource type="Texture2D" uid="uid://73fq77kcw6cn" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_27.png" id="37_aat3t"]
+[ext_resource type="Texture2D" uid="uid://dadtbial8vb36" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_28.png" id="38_c6y67"]
+[ext_resource type="Texture2D" uid="uid://dleaqe64ibkuo" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_12.png" id="38_cayvs"]
+[ext_resource type="Texture2D" uid="uid://chhwceyfqnv41" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_28.png" id="38_te3i7"]
+[ext_resource type="Texture2D" uid="uid://tq86dksrimrb" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_29.png" id="39_c0br4"]
+[ext_resource type="Texture2D" uid="uid://cx7awc3m4ajj5" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_13.png" id="39_llppj"]
+[ext_resource type="Texture2D" uid="uid://xc55vd0cjj22" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_29.png" id="39_tg3ev"]
+[ext_resource type="Texture2D" uid="uid://b2xjuoemouim5" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_14.png" id="40_5wr7u"]
+[ext_resource type="Texture2D" uid="uid://c3p5wdwuuv4dk" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_30.png" id="40_741iu"]
+[ext_resource type="Texture2D" uid="uid://bqdqmn1nkofh3" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_30.png" id="40_uo1yr"]
+[ext_resource type="Texture2D" uid="uid://duy63dp78vo52" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_31.png" id="41_fk7rb"]
+[ext_resource type="Texture2D" uid="uid://dg452oj8gjb5n" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_31.png" id="41_jc4l1"]
+[ext_resource type="Texture2D" uid="uid://kt34aaiye0vt" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_15.png" id="41_qnxf2"]
+[ext_resource type="Texture2D" uid="uid://bgbvajolhsv3d" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_32.png" id="42_38di4"]
+[ext_resource type="Texture2D" uid="uid://dx78mywg4ukd" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_16.png" id="42_d68rb"]
+[ext_resource type="Texture2D" uid="uid://b5b826vwibkxu" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_32.png" id="42_ntpgq"]
+[ext_resource type="Texture2D" uid="uid://drmn7nt6tb60o" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Left/A_L_Guard_33.png" id="43_02t3x"]
+[ext_resource type="Texture2D" uid="uid://ebyu2xbqwq53" path="res://Assests/Visuals/Characters/NPCs/Guard/Attack/Right/A_R_Guard_33.png" id="43_4jqx0"]
+[ext_resource type="Texture2D" uid="uid://dnr8xpu277oyi" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_17.png" id="43_drbjq"]
+[ext_resource type="Texture2D" uid="uid://bwglh57abd8dj" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Right/W_R_Guard_18.png" id="44_1rc1c"]
+[ext_resource type="Texture2D" uid="uid://cfiyeh1am1ka" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_1.png" id="45_ev1ln"]
+[ext_resource type="Texture2D" uid="uid://dk2c2yn2xv3s8" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_2.png" id="46_rjboc"]
+[ext_resource type="Texture2D" uid="uid://vbx3lk3de7gk" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_3.png" id="47_4xtda"]
+[ext_resource type="Texture2D" uid="uid://c4gfgj3u3ydxc" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_5.png" id="48_j76h7"]
+[ext_resource type="Texture2D" uid="uid://dfgup4o0ec3fm" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_6.png" id="49_by1mb"]
+[ext_resource type="Texture2D" uid="uid://bpjw3bd26x7lu" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_7.png" id="50_sr2q0"]
+[ext_resource type="Texture2D" uid="uid://kaq3x7lmyoc4" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_8.png" id="51_mkykq"]
+[ext_resource type="Texture2D" uid="uid://dey1542g1wt2k" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_9.png" id="52_p7k3r"]
+[ext_resource type="Texture2D" uid="uid://dq48ndl4q2tdd" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_10.png" id="53_nu1ch"]
+[ext_resource type="Texture2D" uid="uid://sfmjddoayqnv" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_11.png" id="54_cvg5o"]
+[ext_resource type="Texture2D" uid="uid://c4j628f17gp1x" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_12.png" id="55_4f2sh"]
+[ext_resource type="Texture2D" uid="uid://5owxap5ngg7x" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_13.png" id="56_qfvek"]
+[ext_resource type="Texture2D" uid="uid://bl24kqhqsnsdp" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_14.png" id="57_5j6ig"]
+[ext_resource type="Texture2D" uid="uid://8om50qgxukw6" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_15.png" id="58_40wse"]
+[ext_resource type="Texture2D" uid="uid://c6lmsy4qg0l5b" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_16.png" id="59_n5axf"]
+[ext_resource type="Texture2D" uid="uid://bib1kkvycamsq" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_17.png" id="60_6syi2"]
+[ext_resource type="Texture2D" uid="uid://rhtpcsqqpj4j" path="res://Assests/Visuals/Characters/NPCs/Guard/Walking/Left/W_L_Guard_18.png" id="61_ig4yt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2dl"]
+size = Vector2(8, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
+size = Vector2(19, 20)
+
+[sub_resource type="Animation" id="Animation_ai842"]
+resource_name = "Attack_Left"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(296.333, -152.333)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_3g6qe"), ExtResource("12_bggn7"), ExtResource("13_bdc7f"), ExtResource("14_nk2cw"), ExtResource("15_0qgfq"), ExtResource("16_edgru"), ExtResource("17_toy0k"), ExtResource("18_hk0af"), ExtResource("19_t24hl"), ExtResource("20_8qepi"), ExtResource("21_qhbyf"), ExtResource("22_xygdl"), ExtResource("23_i5umr"), ExtResource("24_euoxu"), ExtResource("25_nwfs4"), ExtResource("26_1ro8k"), ExtResource("27_org5u"), ExtResource("28_3mo7m"), ExtResource("29_457ua"), ExtResource("30_um417"), ExtResource("31_5vwy5"), ExtResource("32_w2r0o"), ExtResource("33_tesev"), ExtResource("34_ge7p4"), ExtResource("35_3x7gl"), ExtResource("36_lmr61"), ExtResource("37_aat3t"), ExtResource("38_c6y67"), ExtResource("39_tg3ev"), ExtResource("40_uo1yr"), ExtResource("41_jc4l1"), ExtResource("42_ntpgq"), ExtResource("43_02t3x")]
+}
+
+[sub_resource type="Animation" id="Animation_3wjdx"]
+resource_name = "Attack_Right"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-296.333, -152.333)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_75qyx"), ExtResource("12_bdmsx"), ExtResource("13_1yekh"), ExtResource("14_buekb"), ExtResource("15_oov6p"), ExtResource("16_udlau"), ExtResource("17_25skb"), ExtResource("18_0iskj"), ExtResource("19_buxqj"), ExtResource("20_jvrb6"), ExtResource("21_nyd1x"), ExtResource("22_qu3h3"), ExtResource("23_2j2yf"), ExtResource("24_npfp7"), ExtResource("25_wlf0i"), ExtResource("26_1f3ns"), ExtResource("27_0axn2"), ExtResource("28_8xqcj"), ExtResource("29_p4mdb"), ExtResource("30_kf0nv"), ExtResource("31_28m35"), ExtResource("32_sre2e"), ExtResource("33_p4etb"), ExtResource("34_tp3y8"), ExtResource("35_iiq2u"), ExtResource("36_q3av2"), ExtResource("37_5kecs"), ExtResource("38_te3i7"), ExtResource("39_c0br4"), ExtResource("40_741iu"), ExtResource("41_fk7rb"), ExtResource("42_38di4"), ExtResource("43_4jqx0")]
+}
+
+[sub_resource type="Animation" id="Animation_7lxsd"]
+resource_name = "Idle"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_mbdbr"), ExtResource("11_3k0cg"), ExtResource("12_v00lp"), ExtResource("13_ocv88"), ExtResource("14_lngpn"), ExtResource("15_nsc8c"), ExtResource("16_gt684"), ExtResource("17_43fg2"), ExtResource("18_3mbru"), ExtResource("19_b42je"), ExtResource("20_xacbt"), ExtResource("21_mcgtk"), ExtResource("22_10nng"), ExtResource("23_se2n0"), ExtResource("24_vdkx4"), ExtResource("25_qwtpj"), ExtResource("26_mju7k"), ExtResource("27_rtdr1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175.667, -143.667)]
+}
+
+[sub_resource type="Animation" id="Animation_qf1b0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_mbdbr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175.667, -143.667)]
+}
+
+[sub_resource type="Animation" id="Animation_qsk6v"]
+resource_name = "Walking_Left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(297.667, -153.667)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("45_ev1ln"), ExtResource("46_rjboc"), ExtResource("47_4xtda"), ExtResource("47_4xtda"), ExtResource("48_j76h7"), ExtResource("49_by1mb"), ExtResource("50_sr2q0"), ExtResource("51_mkykq"), ExtResource("52_p7k3r"), ExtResource("53_nu1ch"), ExtResource("54_cvg5o"), ExtResource("55_4f2sh"), ExtResource("56_qfvek"), ExtResource("57_5j6ig"), ExtResource("58_40wse"), ExtResource("59_n5axf"), ExtResource("60_6syi2"), ExtResource("61_ig4yt")]
+}
+
+[sub_resource type="Animation" id="Animation_rmnwy"]
+resource_name = "Walking_Right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-299, -152.333)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("28_lvedr"), ExtResource("29_y5ddd"), ExtResource("30_xvs07"), ExtResource("31_ottli"), ExtResource("32_ko0ii"), ExtResource("33_uyhib"), ExtResource("33_uyhib"), ExtResource("34_2vwtb"), ExtResource("35_d20sn"), ExtResource("36_ra0md"), ExtResource("37_475x8"), ExtResource("38_cayvs"), ExtResource("39_llppj"), ExtResource("40_5wr7u"), ExtResource("41_qnxf2"), ExtResource("42_d68rb"), ExtResource("43_drbjq"), ExtResource("44_1rc1c")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7hy0"]
+_data = {
+"Attack_Left": SubResource("Animation_ai842"),
+"Attack_Right": SubResource("Animation_3wjdx"),
+"Idle": SubResource("Animation_7lxsd"),
+"RESET": SubResource("Animation_qf1b0"),
+"Walking_Left": SubResource("Animation_qsk6v"),
+"Walking_Right": SubResource("Animation_rmnwy")
+}
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d3vk7"]
+
+[node name="Guard" type="CharacterBody2D" node_paths=PackedStringArray("_routine") groups=["Guards"]]
+position = Vector2(0, -20)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 65
+script = ExtResource("1_rtvgo")
+_routine = []
+_speed = 0.08
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tvjq2")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
+script = ExtResource("3_cmvpa")
+_defaultState = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("5_1cypj")
+
+[node name="DraggingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("5_tkspg")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_corpseDetector", "_interconectionDetector")]
+script = ExtResource("6_j3m6a")
+_corpseDetector = NodePath("../../RayCast2D")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("6_fqqah")
+
+[node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
+script = ExtResource("8_wn5av")
+_interconectionDetector = NodePath("../../InterconnectionDetector")
+
+[node name="InterconnectionDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterconnectionDetector"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_xb2dl")
+
+[node name="CorpseDetector" parent="." instance=ExtResource("7_xsusl")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+
+[node name="HiddingPointsDetector" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+input_pickable = false
+script = ExtResource("8_jb6kk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+shape = SubResource("RectangleShape2D_vvmd3")
+
+[node name="VampireDetector" parent="." instance=ExtResource("7_xsusl")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 20
+collision_layer_mask = 2
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+rotation = -1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 8
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-175.667, -143.667)
+texture = ExtResource("10_mbdbr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_v7hy0")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_d3vk7")
