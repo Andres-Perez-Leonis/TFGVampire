@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cditphs3j1pf4"]
+[gd_scene load_steps=98 format=3 uid="uid://cditphs3j1pf4"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
 [ext_resource type="Texture2D" uid="uid://cnwjsn2pqx1v2" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_0.png" id="2_ibwk3"]
@@ -66,6 +66,109 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
 size = Vector2(108, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lh7f"]
+size = Vector2(129, 135)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wa7js"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_is7jq"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_m1ikr"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_wa7js")
+nodes/Animation/position = Vector2(467.5, 289.3)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_is7jq")
+nodes/TimeScale/position = Vector2(680, 280)
+nodes/output/position = Vector2(880, 300)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l5c7f"]
+animation = &"Death"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_jfajc"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eprsi"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_l5c7f")
+nodes/Animation/position = Vector2(380.6, 237.6)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_jfajc")
+nodes/TimeScale/position = Vector2(591.8, 293.7)
+nodes/output/position = Vector2(820, 320)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hwykc"]
+animation = &"Dragging"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_jgj03"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hlnyb"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_hwykc")
+nodes/Animation/position = Vector2(448.8, 272.8)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_jgj03")
+nodes/TimeScale/position = Vector2(645.7, 319)
+nodes/output/position = Vector2(840, 320)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1dkkv"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_m5gbs"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8o426"]
+graph_offset = Vector2(-375.911, 15.9952)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_1dkkv")
+nodes/Animation/position = Vector2(-245.202, 301.395)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_m5gbs")
+nodes/TimeScale/position = Vector2(40, 220)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xqpkg"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5slxe"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xuxfx"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_xqpkg")
+nodes/Animation/position = Vector2(580.8, 210.1)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5slxe")
+nodes/TimeScale/position = Vector2(770, 258.5)
+nodes/output/position = Vector2(960, 280)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_061rt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lk1o8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_23qyo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ejl28"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a2fxw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w828k"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vfbg1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xqyfa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h20f3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_40wvp"]
+states/Attack/node = SubResource("AnimationNodeBlendTree_m1ikr")
+states/Attack/position = Vector2(529, 104)
+states/Death/node = SubResource("AnimationNodeBlendTree_eprsi")
+states/Death/position = Vector2(370, 256)
+states/Dragging/node = SubResource("AnimationNodeBlendTree_hlnyb")
+states/Dragging/position = Vector2(523, 324)
+states/End/position = Vector2(370, 365)
+states/Idle/node = SubResource("AnimationNodeBlendTree_8o426")
+states/Idle/position = Vector2(523, 175)
+states/Start/position = Vector2(383, 175)
+states/Walking/node = SubResource("AnimationNodeBlendTree_xuxfx")
+states/Walking/position = Vector2(670, 170)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_061rt"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_lk1o8"), "Idle", "Dragging", SubResource("AnimationNodeStateMachineTransition_23qyo"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_ejl28"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_a2fxw"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_w828k"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_vfbg1"), "Dragging", "Idle", SubResource("AnimationNodeStateMachineTransition_xqyfa"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_h20f3")]
 
 [sub_resource type="Animation" id="Animation_ec0jq"]
 resource_name = "Attack"
@@ -153,6 +256,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_kye01"]
 resource_name = "Idle"
+length = 0.45
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -208,6 +312,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_tc1sk"]
 resource_name = "Walking"
+length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -244,33 +349,18 @@ _data = {
 "Walking": SubResource("Animation_tc1sk")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lh7f"]
-size = Vector2(129, 135)
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_40wvp"]
-
-[node name="Vampire" type="CharacterBody2D" node_paths=PackedStringArray("_animationPlayer") groups=["Vampire"]]
+[node name="Vampire" type="CharacterBody2D" node_paths=PackedStringArray("_animationTree") groups=["Vampire"]]
 collision_layer = 2
 collision_mask = 65
 script = ExtResource("1_oosox")
 _health = 1
 _speed = 200.0
 _force = 10.0
-_animationPlayer = NodePath("Sprite2D/AnimationPlayer")
+_animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_n63uy")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-57, 2)
-texture = ExtResource("2_ibwk3")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_38stl")
-}
-speed_scale = 0.5
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
 script = ExtResource("4_wa8dt")
@@ -315,6 +405,21 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_0lh7f")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../Sprite2D")
+root_node = NodePath("../Sprite2D2")
 tree_root = SubResource("AnimationNodeStateMachine_40wvp")
-anim_player = NodePath("../Sprite2D/AnimationPlayer")
+anim_player = NodePath("../Sprite2D2/AnimationPlayer")
+parameters/Attack/TimeScale/scale = 0.2
+parameters/Death/TimeScale/scale = 0.2
+parameters/Dragging/TimeScale/scale = 0.2
+parameters/Idle/TimeScale/scale = 0.2
+parameters/Walking/TimeScale/scale = 0.2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-57, 2)
+texture = ExtResource("2_ibwk3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_38stl")
+}
+speed_scale = 0.5
