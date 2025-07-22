@@ -1,0 +1,529 @@
+[gd_scene load_steps=83 format=3 uid="uid://1kmj015b6617"]
+
+[ext_resource type="Texture2D" uid="uid://bwg44qdjhqwol" path="res://Assests/Visuals/MainMenu/Sky/cielo.jpg" id="1_ae6ib"]
+[ext_resource type="Texture2D" uid="uid://ctmen2nk5qbh6" path="res://Assests/Visuals/MainMenu/Mountains/montaña1.PNG" id="2_bgmdu"]
+[ext_resource type="Texture2D" uid="uid://c0xy4cmxi1ayb" path="res://Assests/Visuals/MainMenu/Mountains/montaña2.PNG" id="3_0d22e"]
+[ext_resource type="Texture2D" uid="uid://cg6yu4d4luytr" path="res://Assests/Visuals/MainMenu/Fog/fog.PNG" id="4_mxvex"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Animation/FogAnimationPlayerController.cs" id="5_hpyum"]
+[ext_resource type="Texture2D" uid="uid://4nxsgm5mhqhr" path="res://Assests/Visuals/MainMenu/City/ciudad.PNG" id="6_ahenk"]
+[ext_resource type="Texture2D" uid="uid://7ci7pdgsj8gv" path="res://Assests/Visuals/MainMenu/Clouds/nubes.PNG" id="7_v4p7k"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Animation/CloudAnimationController.cs" id="8_s08wc"]
+[ext_resource type="Texture2D" uid="uid://rndmflqv8711" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_1.png" id="9_pcjc4"]
+[ext_resource type="Texture2D" uid="uid://cobiq85dkppdm" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_2.png" id="10_c881a"]
+[ext_resource type="Texture2D" uid="uid://wwhp0drpypwy" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_3.png" id="11_0nxdg"]
+[ext_resource type="Texture2D" uid="uid://dhcrcf10yxlyj" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_4.png" id="12_kqaot"]
+[ext_resource type="Texture2D" uid="uid://b0xbwtj7rmr3y" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_5.png" id="13_4e4ir"]
+[ext_resource type="Texture2D" uid="uid://3cxd5rduypar" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_6.png" id="14_ujj1j"]
+[ext_resource type="Texture2D" uid="uid://cpw2ubqipbirc" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_7.png" id="15_hd7ca"]
+[ext_resource type="Texture2D" uid="uid://d048xvxutcn6n" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_8.png" id="16_0ei08"]
+[ext_resource type="Texture2D" uid="uid://dsmxwvlwniuq1" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_9.png" id="17_g0dj2"]
+[ext_resource type="Texture2D" uid="uid://dvs4rh76yj71e" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_10.png" id="18_sx8qt"]
+[ext_resource type="Texture2D" uid="uid://mhbj28eomi1f" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_11.png" id="19_fn7c3"]
+[ext_resource type="Texture2D" uid="uid://c6cxl2rtestle" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_12.png" id="20_uio28"]
+[ext_resource type="Texture2D" uid="uid://b61wfta8jw5ks" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_13.png" id="21_ggcpv"]
+[ext_resource type="Texture2D" uid="uid://bmejohqslp3pp" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_14.png" id="22_dkmb6"]
+[ext_resource type="Texture2D" uid="uid://c6elswltx4qt4" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_15.png" id="23_yttgk"]
+[ext_resource type="Texture2D" uid="uid://cx34gka31vhyt" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_16.png" id="24_d08eu"]
+[ext_resource type="Texture2D" uid="uid://ds4n70dbc73tm" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_17.png" id="25_0e25k"]
+[ext_resource type="Texture2D" uid="uid://b6fs7mqrbqex3" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_18.png" id="26_ilc2i"]
+[ext_resource type="Texture2D" uid="uid://cdc15wh0djede" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_19.png" id="27_68wfh"]
+[ext_resource type="Texture2D" uid="uid://nghenuj7vqxv" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_20.png" id="28_yg8py"]
+[ext_resource type="Texture2D" uid="uid://7dm5jrr6momx" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_21.png" id="29_345pq"]
+[ext_resource type="Texture2D" uid="uid://dx1jj3on0ru7j" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_22.png" id="30_myigb"]
+[ext_resource type="Texture2D" uid="uid://gpol18vtnp68" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_23.png" id="31_i84e4"]
+[ext_resource type="Texture2D" uid="uid://l14xeigaaajg" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_24.png" id="32_xsoi6"]
+[ext_resource type="Texture2D" uid="uid://bd3wsv6bbn5yc" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_25.png" id="33_1c45h"]
+[ext_resource type="Texture2D" uid="uid://ctliylyt4poga" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_26.png" id="34_55dni"]
+[ext_resource type="Texture2D" uid="uid://cljlgi2ig5wr0" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_27.png" id="35_tjjjw"]
+[ext_resource type="Texture2D" uid="uid://5t1nv7t17qu" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_28.png" id="36_ahgya"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Animation/MainMenuAnimationController.cs" id="37_u6dvk"]
+[ext_resource type="AudioStream" uid="uid://l6wt2pk0q8e2" path="res://Assests/Audio/Instrumental/Inicio_TodoElRato.wav" id="38_tnimq"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/AuxiliarScript/Song.cs" id="39_sysbu"]
+[ext_resource type="AudioStream" uid="uid://6snnn2dafjf3" path="res://Assests/Audio/SFX/Vampire/Laugh/laughFINAL.wav" id="40_4l177"]
+[ext_resource type="PackedScene" uid="uid://bei08gqnbxpgw" path="res://Scenes/Menus/InitMenu/init_menu.tscn" id="41_ateea"]
+[ext_resource type="PackedScene" uid="uid://b81pwjimeg8ca" path="res://Scenes/Menus/SettingsMenu/settings_menu.tscn" id="42_iu7t8"]
+
+[sub_resource type="Animation" id="Animation_2w3k2"]
+resource_name = "Movement"
+length = 5.0
+step = 0.0333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 0, 3),
+"points": PackedFloat32Array(-10341, -0.25, 0, 0.25, 0, 1280, -0.25, 0, 0.25, 0, 1281, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 4.995, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 1),
+"points": PackedFloat32Array(-60, -0.25, 0, 0.25, 0, -60, -0.25, 0, 0.25, 0, -60, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 4.995, 5)
+}
+
+[sub_resource type="Animation" id="Animation_0rrtx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-12904, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-265, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkodu"]
+_data = {
+"Movement": SubResource("Animation_2w3k2"),
+"RESET": SubResource("Animation_0rrtx")
+}
+
+[sub_resource type="Animation" id="Animation_s2vt3"]
+resource_name = "Movement"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3),
+"points": PackedFloat32Array(-4530, -0.25, 0, 0.25, 0, 5812, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-60, -0.25, 0, 0.25, 0, -60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+
+[sub_resource type="Animation" id="Animation_dif1d"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4530, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l8sgu"]
+_data = {
+"Movement": SubResource("Animation_s2vt3"),
+"RESET": SubResource("Animation_dif1d")
+}
+
+[sub_resource type="Animation" id="Animation_xtxve"]
+resource_name = "Movement"
+length = 5.0
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1280, 720)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-860, -0.25, 0, 0.25, 0, 1132, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.9)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.9)
+}
+
+[sub_resource type="Animation" id="Animation_xib2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1280, 720)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-868, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bpgt4"]
+_data = {
+"Movement": SubResource("Animation_xtxve"),
+"RESET": SubResource("Animation_xib2h")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_op0t5"]
+load_path = "res://.godot/imported/init_vampire_animation_1.png-0fc7491bb034691a1e8812851ca70b24.ctex"
+
+[sub_resource type="Animation" id="Animation_8ryjn"]
+resource_name = "Init_Game"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_pcjc4"), ExtResource("10_c881a"), ExtResource("11_0nxdg"), ExtResource("12_kqaot"), ExtResource("13_4e4ir"), ExtResource("14_ujj1j"), ExtResource("15_hd7ca"), ExtResource("16_0ei08"), ExtResource("17_g0dj2"), ExtResource("18_sx8qt"), ExtResource("19_fn7c3"), ExtResource("20_uio28"), ExtResource("21_ggcpv"), ExtResource("22_dkmb6"), ExtResource("23_yttgk"), ExtResource("24_d08eu"), ExtResource("25_0e25k"), ExtResource("26_ilc2i"), ExtResource("27_68wfh"), ExtResource("28_yg8py"), ExtResource("29_345pq"), ExtResource("30_myigb"), ExtResource("31_i84e4"), ExtResource("32_xsoi6"), ExtResource("33_1c45h"), ExtResource("34_55dni"), ExtResource("35_tjjjw"), ExtResource("36_ahgya")]
+}
+
+[sub_resource type="Animation" id="Animation_ca3ov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_op0t5")]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s1ln5"]
+load_path = "res://.godot/imported/init_vampire_animation_2.png-568d41930c9c9966d13f9de15c302768.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5q1ud"]
+load_path = "res://.godot/imported/init_vampire_animation_3.png-f2a5a46736a373759f0f0939b589ec87.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_al35n"]
+load_path = "res://.godot/imported/init_vampire_animation_4.png-0d1ed58c78d8d92d88e9a2d26cfa87c0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ip3jd"]
+load_path = "res://.godot/imported/init_vampire_animation_5.png-49dfb687f806c3bea9a9f8aa4c0658bf.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ik17t"]
+load_path = "res://.godot/imported/init_vampire_animation_6.png-de2941980b7bfe837df2ac414c441ded.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ftr66"]
+load_path = "res://.godot/imported/init_vampire_animation_7.png-c7b5b9f2a0afd1b83aea380e2463a2ca.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tawct"]
+load_path = "res://.godot/imported/init_vampire_animation_8.png-3eb6ac7248ac412dc19fcfedec5e5886.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_im0md"]
+load_path = "res://.godot/imported/init_vampire_animation_9.png-d90d2f6157dfca5f5ce5cf968785fb9f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vn0rn"]
+load_path = "res://.godot/imported/init_vampire_animation_10.png-db72b2b63758b5d88d700bd7586e2063.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0lsbg"]
+load_path = "res://.godot/imported/init_vampire_animation_11.png-c73848da3906473c1ba07a2b9c7b9f3a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5mtv"]
+load_path = "res://.godot/imported/init_vampire_animation_13.png-e597db1ad686d0f2614f5aad9b2abcd7.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tkjmh"]
+load_path = "res://.godot/imported/init_vampire_animation_14.png-548533701796267dcc8b9b0c6e4368eb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gu8i3"]
+load_path = "res://.godot/imported/init_vampire_animation_15.png-7a8eb3ee32b0cf501a745f6f3ab20987.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5wv1q"]
+load_path = "res://.godot/imported/init_vampire_animation_16.png-31e56f7d70e2dbf6b9764cf11d3bd735.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ugaq5"]
+load_path = "res://.godot/imported/init_vampire_animation_17.png-470d4de54172bd3a57cdbe6674ccf9ab.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5nsjc"]
+load_path = "res://.godot/imported/init_vampire_animation_18.png-7daaef289298450f6fcf674843f97473.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3xhxr"]
+load_path = "res://.godot/imported/init_vampire_animation_19.png-2838d88dd6b22e1b0db58e3f8ff28254.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_etdws"]
+load_path = "res://.godot/imported/init_vampire_animation_20.png-9ddb4d31a81a6f5adfc30b9c51951b6f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kjbau"]
+load_path = "res://.godot/imported/init_vampire_animation_21.png-cbd686ad9cfe34d53f0d0587ea952203.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ciohn"]
+load_path = "res://.godot/imported/init_vampire_animation_22.png-99a41660f1d10db1ca4ee83a8408526a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cniwt"]
+load_path = "res://.godot/imported/init_vampire_animation_23.png-c98785f674cda25735bbfd7b53b949ba.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lpudk"]
+load_path = "res://.godot/imported/init_vampire_animation_24.png-ee88e1eb75e2c3d79d16196287b6ae94.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fpxqh"]
+load_path = "res://.godot/imported/init_vampire_animation_25.png-b9c954c46f0849653ffc09269a47f9e2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtkoa"]
+load_path = "res://.godot/imported/init_vampire_animation_26.png-cdefbb07d6ce0e7970dee12511085117.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dce3g"]
+load_path = "res://.godot/imported/init_vampire_animation_27.png-2c12655f1156a3d21f8803cc53d48d23.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m6g2s"]
+load_path = "res://.godot/imported/init_vampire_animation_28.png-3711836b3a4b945c29219b731c31c48b.ctex"
+
+[sub_resource type="Animation" id="Animation_71oyu"]
+resource_name = "Waiting_To_Start"
+length = 1.93334
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 1.26667, 1.33333, 1.4, 1.46667, 1.53333, 1.6, 1.66667, 1.73333, 1.8, 1.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_op0t5"), SubResource("CompressedTexture2D_s1ln5"), SubResource("CompressedTexture2D_5q1ud"), SubResource("CompressedTexture2D_al35n"), SubResource("CompressedTexture2D_ip3jd"), SubResource("CompressedTexture2D_ik17t"), SubResource("CompressedTexture2D_ftr66"), SubResource("CompressedTexture2D_tawct"), SubResource("CompressedTexture2D_im0md"), SubResource("CompressedTexture2D_vn0rn"), SubResource("CompressedTexture2D_0lsbg"), SubResource("CompressedTexture2D_0lsbg"), SubResource("CompressedTexture2D_s5mtv"), SubResource("CompressedTexture2D_tkjmh"), SubResource("CompressedTexture2D_gu8i3"), SubResource("CompressedTexture2D_5wv1q"), SubResource("CompressedTexture2D_ugaq5"), SubResource("CompressedTexture2D_5nsjc"), SubResource("CompressedTexture2D_3xhxr"), SubResource("CompressedTexture2D_etdws"), SubResource("CompressedTexture2D_kjbau"), SubResource("CompressedTexture2D_ciohn"), SubResource("CompressedTexture2D_cniwt"), SubResource("CompressedTexture2D_lpudk"), SubResource("CompressedTexture2D_fpxqh"), SubResource("CompressedTexture2D_rtkoa"), SubResource("CompressedTexture2D_dce3g"), SubResource("CompressedTexture2D_m6g2s")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mw8l"]
+_data = {
+"Init_Game": SubResource("Animation_8ryjn"),
+"RESET": SubResource("Animation_ca3ov"),
+"Waiting_To_Start": SubResource("Animation_71oyu")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sky" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_ae6ib")
+expand_mode = 2
+
+[node name="mountain1" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_bgmdu")
+expand_mode = 2
+
+[node name="mountain2" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("3_0d22e")
+expand_mode = 2
+
+[node name="fog2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -12904.0
+offset_top = -265.0
+offset_right = -7092.0
+offset_bottom = 815.0
+scale = Vector2(1, 0.5)
+texture = ExtResource("4_mxvex")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fog2"]
+libraries = {
+"": SubResource("AnimationLibrary_dkodu")
+}
+speed_scale = 0.2
+script = ExtResource("5_hpyum")
+
+[node name="fog" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -4530.0
+offset_top = -60.0
+offset_right = 1282.0
+offset_bottom = 1020.0
+scale = Vector2(1, 0.5)
+texture = ExtResource("4_mxvex")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fog"]
+libraries = {
+"": SubResource("AnimationLibrary_l8sgu")
+}
+speed_scale = 0.2
+script = ExtResource("5_hpyum")
+
+[node name="city" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("6_ahenk")
+expand_mode = 2
+
+[node name="clouds" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1508.0
+offset_top = -360.0
+offset_right = -228.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_v4p7k")
+expand_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="clouds"]
+libraries = {
+"": SubResource("AnimationLibrary_bpgt4")
+}
+speed_scale = 0.1
+script = ExtResource("8_s08wc")
+
+[node name="animation" type="TextureRect" parent="."]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_op0t5")
+expand_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="animation" node_paths=PackedStringArray("_song", "_laugh")]
+libraries = {
+"": SubResource("AnimationLibrary_3mw8l")
+}
+speed_scale = 0.7
+script = ExtResource("37_u6dvk")
+_song = NodePath("../Song")
+_laugh = NodePath("../Laugh")
+
+[node name="Song" type="AudioStreamPlayer" parent="animation"]
+stream = ExtResource("38_tnimq")
+volume_db = -25.0
+script = ExtResource("39_sysbu")
+
+[node name="Laugh" type="AudioStreamPlayer" parent="animation"]
+stream = ExtResource("40_4l177")
+
+[node name="InitMenu" parent="." instance=ExtResource("41_ateea")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsMenu" parent="." instance=ExtResource("42_iu7t8")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
