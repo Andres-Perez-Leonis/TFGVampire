@@ -49,7 +49,7 @@ theme_override_styles/pressed = ExtResource("3_rpwdv")
 theme_override_styles/normal = ExtResource("4_gldrt")
 text = "Empezar Partida"
 script = ExtResource("6_o423q")
-_levelPath = "res://Scenes/MainScene.tscn"
+_levelPath = "res://Scenes/LoadingScene/LoadingScene.tscn"
 
 [node name="ChargeBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
