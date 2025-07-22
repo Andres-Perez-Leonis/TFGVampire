@@ -110,7 +110,8 @@ public partial class SuspicionSystem : Node
 
 	public void IncreaseSuspision(Entity entity)
 	{
-		
+		if (entity != _myVillager) return;
+
 		if (!_dicSuspechData.TryGetValue(entity, out var data))
 		{
 			GD.PrintErr($"[IncreaseSuspicion] Error: No se encontró la entidad '{entity.Name}' en el diccionario.");
