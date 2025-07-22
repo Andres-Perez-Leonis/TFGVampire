@@ -15,36 +15,58 @@ public abstract partial class Entity : CharacterBody2D
 	// Entity force value
 	[Export] private float _force;
 	// Entity animation player object (for animations)
-    [Export] private AnimationPlayer _animationPlayer;
+	[Export] private AnimationTree _animationTree;
+	private AnimationNodeStateMachinePlayback _animationStateMachine;
 	private bool _iDeath = false;
 
+	public override void _Ready()
+	{
+		base._Ready();
+		CallDeferred("_callDeferedReady");
+	}
+
+	private void _callDeferedReady()
+	{
+		_animationStateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
+	}
+
 	#region Getters y Setters
-		// Get - Set entity health value
-		public int Health {
-			get => _health;
-			set => _health = Mathf.Max(0, value);
-		}
+	// Get - Set entity health value
+	public int Health
+	{
+		get => _health;
+		set => _health = Mathf.Max(0, value);
+	}
 
-		// Get - Set entity speed value
-		public float Speed {
-			get => _speed;
-			set => _speed = value;
-		}
+	// Get - Set entity speed value
+	public float Speed
+	{
+		get => _speed;
+		set => _speed = value;
+	}
 
-		// Get - Set entity force value
-		public float Force {
-			get => _force;
-			set => _force = value;
-		}
+	// Get - Set entity force value
+	public float Force
+	{
+		get => _force;
+		set => _force = value;
+	}
 
-		// Get entity animation player object
-		public AnimationPlayer AnimationPlayer {
-			get => _animationPlayer;
-		}
+	// Get entity animation player object
 
-		public bool IsDeath { get => _iDeath; set => _iDeath = value;}
+	public AnimationTree AnimationTree
+	{
+		get => _animationTree;
+	}
+
+	public AnimationNodeStateMachinePlayback AnimationStateMachine
+	{
+		get => _animationStateMachine;
+	}
+
+	public bool IsDeath { get => _iDeath; set => _iDeath = value; }
 	#endregion
 
-	
+
 
 }
