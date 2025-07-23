@@ -25,7 +25,7 @@ public partial class GuardDraggingState : GuardMovingStateBase
         _guard.AddChild(_draggingCorpse.PathFollow);
         _draggingCorpse.PathFollow.GlobalPosition = new Vector2(_guard.PathFollow.GlobalPosition.X + _nextToGuardOffset, _guard.PathFollow.GlobalPosition.Y - 20);
 
-
+        _guard.AnimationStateMachine.Travel((_guard.Scale.X > 0) ?  AnimationNameGuard.Dragging_Right : AnimationNameGuard.Dragging_Left);
         //GD.Print("Posicion Guardia: " + _guard.GlobalPosition);
         //GD.Print("Posicion Cadaver: " + _draggingCorpse.GlobalPosition);
         //GD.Print("Posicion local guardia: " + _guard.Position);

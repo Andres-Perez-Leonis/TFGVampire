@@ -35,6 +35,7 @@ public partial class GuardAttackState : GuardMovingStateBase
 	private void _nearVampire(Node2D node2D)
 	{
 		// GAME OVER
+		_guard.AnimationStateMachine.Travel((_guard.Scale.X > 0) ? AnimationNameGuard.Attack_Right : AnimationNameGuard.Attack_Left);
 		GetTree().Quit();
 	}
 

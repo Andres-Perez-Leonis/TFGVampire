@@ -11,6 +11,7 @@ public partial class GuardIdleState : GuardStateBase
     public override void Start()
     {
         base.Start();
+        _guard.AnimationStateMachine.Travel(AnimationNameGuard.Idle);
         _guard.VampireDetected += VampireDetected;
     }
 
