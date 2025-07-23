@@ -405,20 +405,22 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_0lh7f")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../Sprite2D2")
+root_node = NodePath("../Pivot/Sprite2D2")
 tree_root = SubResource("AnimationNodeStateMachine_40wvp")
-anim_player = NodePath("../Sprite2D2/AnimationPlayer")
+anim_player = NodePath("../Pivot/Sprite2D2/AnimationPlayer")
 parameters/Attack/TimeScale/scale = 0.2
 parameters/Death/TimeScale/scale = 0.2
 parameters/Dragging/TimeScale/scale = 0.2
 parameters/Idle/TimeScale/scale = 0.2
 parameters/Walking/TimeScale/scale = 0.2
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Pivot"]
 position = Vector2(-57, 2)
 texture = ExtResource("2_ibwk3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Sprite2D2"]
 libraries = {
 "": SubResource("AnimationLibrary_38stl")
 }
