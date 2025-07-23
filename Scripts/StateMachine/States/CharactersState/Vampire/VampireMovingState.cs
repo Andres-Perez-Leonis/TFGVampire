@@ -58,7 +58,7 @@ public partial class VampireMovingState : VampireStateBase
             StateMachine.ChangeState(VampireStateNames.Idle);
             return;
         }
-        GD.Print($"Direction: {_direction}, Scale.X: {_vampire.Scale.X}, ShouldFlip: {Mathf.Sign(_direction) != Mathf.Sign(_vampire.Scale.X)}");
+        //GD.Print($"Direction: {_direction}, Scale.X: {_vampire.Scale.X}, ShouldFlip: {Mathf.Sign(_direction) != Mathf.Sign(_vampire.Scale.X)}");
         //_vampire.GetNode<Sprite2D>("Sprite2D2").FlipH = _direction < 0;
 
         if (Mathf.Sign(_direction) != Mathf.Sign(_vampire.GetNode<Node2D>("Pivot").Scale.X))
@@ -85,7 +85,7 @@ public partial class VampireMovingState : VampireStateBase
     {
         _vampire.GetNode<Node2D>("Pivot").Scale = new Vector2(Mathf.Sign(_direction), 1);
         //_vampire.Scale = new Vector2(-_vampire.Scale.X, Mathf.Abs(_vampire.Scale.Y));
-        GD.Print("Nueva Scale del vampiro: "+  _vampire.Scale);
+        //GD.Print("Nueva Scale del vampiro: "+  _vampire.Scale);
     }
 
 }
