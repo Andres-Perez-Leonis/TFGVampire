@@ -210,7 +210,6 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rww5n"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_reuli"]
-graph_offset = Vector2(-200.209, 18.1783)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_xnvvd")
 nodes/Animation/position = Vector2(140, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rww5n")
@@ -248,40 +247,28 @@ node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kfhyw"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2cw88"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_is6kv"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_em7w5"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_goarc"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sx6o7"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7g6wv"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_paxqq"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vyajh"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tdbrn"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dslpb"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qo6mb"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ooyrh"]
 advance_mode = 2
@@ -307,6 +294,7 @@ states/Walking_Left/position = Vector2(579, 122)
 states/Walking_Right/node = SubResource("AnimationNodeBlendTree_42p6t")
 states/Walking_Right/position = Vector2(556, 242)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ga3sb"), "Idle", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_kfhyw"), "Idle", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_2cw88"), "Walking_Right", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_is6kv"), "Walking_Left", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_em7w5"), "Walking_Left", "Idle", SubResource("AnimationNodeStateMachineTransition_goarc"), "Walking_Right", "Idle", SubResource("AnimationNodeStateMachineTransition_sx6o7"), "Attack_Left", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_7g6wv"), "Walking_Right", "Attack_Right", SubResource("AnimationNodeStateMachineTransition_paxqq"), "Walking_Left", "Dragging_Left", SubResource("AnimationNodeStateMachineTransition_vyajh"), "Walking_Right", "Dragging_Right", SubResource("AnimationNodeStateMachineTransition_tdbrn"), "Dragging_Left", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_dslpb"), "Dragging_Right", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_qo6mb"), "Attack_Right", "End", SubResource("AnimationNodeStateMachineTransition_ooyrh"), "Attack_Left", "End", SubResource("AnimationNodeStateMachineTransition_elwjh")]
+graph_offset = Vector2(70.5348, 0)
 
 [sub_resource type="Animation" id="Animation_ai842"]
 resource_name = "Attack_Left"
