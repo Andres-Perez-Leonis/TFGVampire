@@ -22,7 +22,7 @@ public partial class Villager : NPC
             brave: random.Next(0, 2) == 1,
             prudent: random.Next(0, 2) == 1
         );
-        _suspicionSystem.ImSureThatIs += NotifyToGuardState;
+        //_suspicionSystem.ImSureThatIs += NotifyToGuardState;
     }
 
     private void NotifyToGuardState()

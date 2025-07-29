@@ -10,7 +10,7 @@ public partial class AnimationNameVampire : Resource
 {
 	public const string Idle = "Idle";
 	public const string Moving = "Walking";
-	public const string Attacking = "Attacking";
+	public const string Attacking = "Attack";
 	public const string Dragging = "Dragging";
 	public const string Fleeing = "Fleeing";
 	public const string Death = "Death";

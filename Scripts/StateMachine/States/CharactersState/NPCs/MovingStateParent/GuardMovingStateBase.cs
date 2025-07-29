@@ -37,7 +37,7 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
         _guard.Destination = _guard.CorpseToCheck.PathFollow.LastPassMarker;
         
         CheckOrientation(_guard.CorpseToCheck.GlobalPosition);
-        _guard.AnimationStateMachine.Travel(AnimationNameNPC.Moving);
+        _guard.AnimationStateMachine.Travel((_guard.Scale.X > 0) ? AnimationNameGuard.Walking_Right : AnimationNameGuard.Walking_Left);
     }
 
 

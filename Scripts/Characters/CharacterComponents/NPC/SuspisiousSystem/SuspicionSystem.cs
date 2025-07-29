@@ -9,7 +9,7 @@ public partial class SuspicionSystem : Node
 	private List<EntitySuspechData> _suspechData = new();
 	private Dictionary<Entity, EntitySuspechData> _dicSuspechData;
 
-	[Signal] public delegate void ImSureThatIsEventHandler(); 
+	//[Signal] public delegate void ImSureThatIsEventHandler(); 
 
 	[Export] private int _thresholdSuspision = 90;
 	[Export] private int _thresholdTalkAGuard = 90;
@@ -119,6 +119,7 @@ public partial class SuspicionSystem : Node
 		}
 
 		data.AmountOfSuspicion += _increaseSuspisionAmount;
+		GD.Print("SOSPECHA:" + data.AmountOfSuspicion);
 
 		if (data.AmountOfSuspicion >= 100)
 		{
@@ -137,7 +138,7 @@ public partial class SuspicionSystem : Node
 
 	private void TellingToGuard()
 	{
-		EmitSignal(SignalName.ImSureThatIs);
+		//EmitSignal(SignalName.ImSureThatIs);
 	}
 
 

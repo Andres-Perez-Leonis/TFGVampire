@@ -58,6 +58,7 @@ public partial class NpcMovingState : NPCMovingStateBase
 
     private void ReturnToIdleState(Node2D node)
     {
+        if (node == _npc) return;
         StateMachine.ChangeState(NpcStateNames.Idle);
     }
 

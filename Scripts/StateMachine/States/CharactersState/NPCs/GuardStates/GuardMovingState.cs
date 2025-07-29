@@ -12,8 +12,9 @@ public partial class GuardMovingState : GuardMovingStateBase
     {
         base.OnPhysicsProcess(delta);
 
-        bool nextToTheCorpse = _corpseDetector.IsColliding();
-
+        bool nextToTheCorpse = _corpseDetector.IsColliding() || true;
+        GD.Print("InTheSamePath: " + _inTheSamePath);
+        GD.Print("nextToTheCorpse: " + nextToTheCorpse);
         if (!_inTheSamePath) CheckPath();
         if (nextToTheCorpse && _inTheSamePath)
             StateMachine.ChangeState(GuardStateNames.Drag);

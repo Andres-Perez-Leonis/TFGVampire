@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cditphs3j1pf4"]
+[gd_scene load_steps=105 format=3 uid="uid://cditphs3j1pf4"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
 [ext_resource type="Texture2D" uid="uid://cnwjsn2pqx1v2" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_0.png" id="2_ibwk3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="6_nja1v"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_trts0"]
 [ext_resource type="Texture2D" uid="uid://c4jshrdjco2fn" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_5.png" id="7_hdjlo"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDeathState.cs" id="7_nf4i5"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_yoa4b"]
 [ext_resource type="Texture2D" uid="uid://bqq56jflu13fc" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_6.png" id="8_p4t0d"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="9_5burq"]
@@ -63,12 +64,17 @@
 [ext_resource type="Texture2D" uid="uid://b2y2oncycf3kh" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_7.png" id="54_hkk8d"]
 [ext_resource type="Texture2D" uid="uid://dj4etirtqbdwu" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_8.png" id="55_r0wyv"]
 [ext_resource type="Texture2D" uid="uid://dvyrdkyh6h42k" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Dragging/Dr_Vampire_9.png" id="56_nwgq8"]
+[ext_resource type="AudioStream" uid="uid://dcnnx68ukx05o" path="res://Assests/Audio/SFX/Drag/drag_corpse.wav" id="64_kfqec"]
+[ext_resource type="AudioStream" uid="uid://cc7fyv1gstkrb" path="res://Assests/Audio/SFX/FootStep/footstep1.wav" id="65_pralf"]
+[ext_resource type="AudioStream" uid="uid://bwb3t3adv54bf" path="res://Assests/Audio/SFX/Vampire/DrinkBlood/Drink_03.wav" id="66_kpsct"]
+[ext_resource type="AudioStream" uid="uid://b43776er68672" path="res://Assests/Audio/SFX/Vampire/Attack/A_Attack.wav" id="67_t61ys"]
+[ext_resource type="AudioStream" uid="uid://bu3ijn72nnjp6" path="res://Assests/Audio/SFX/Vampire/Death/DeathVampire.wav" id="68_lo8fi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n63uy"]
-size = Vector2(108, 106)
+size = Vector2(119, 300)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lh7f"]
-size = Vector2(129, 135)
+size = Vector2(129, 231)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wa7js"]
 animation = &"Attack"
@@ -153,7 +159,8 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xqyfa"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h20f3"]
-advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ks8u"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_40wvp"]
 states/Attack/node = SubResource("AnimationNodeBlendTree_m1ikr")
@@ -168,7 +175,7 @@ states/Idle/position = Vector2(523, 175)
 states/Start/position = Vector2(383, 175)
 states/Walking/node = SubResource("AnimationNodeBlendTree_xuxfx")
 states/Walking/position = Vector2(670, 170)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_061rt"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_lk1o8"), "Idle", "Dragging", SubResource("AnimationNodeStateMachineTransition_23qyo"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_ejl28"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_a2fxw"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_w828k"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_vfbg1"), "Dragging", "Idle", SubResource("AnimationNodeStateMachineTransition_xqyfa"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_h20f3")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_061rt"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_lk1o8"), "Idle", "Dragging", SubResource("AnimationNodeStateMachineTransition_23qyo"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_ejl28"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_a2fxw"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_w828k"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_vfbg1"), "Dragging", "Idle", SubResource("AnimationNodeStateMachineTransition_xqyfa"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_h20f3"), "Walking", "Attack", SubResource("AnimationNodeStateMachineTransition_7ks8u")]
 
 [sub_resource type="Animation" id="Animation_ec0jq"]
 resource_name = "Attack"
@@ -229,6 +236,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_7xye7"]
 resource_name = "Dragging"
+length = 0.35
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -251,7 +260,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(583, -61)]
+"values": [Vector2(593, -47)]
 }
 
 [sub_resource type="Animation" id="Animation_kye01"]
@@ -359,7 +368,8 @@ _force = 10.0
 _animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+visible = false
+position = Vector2(3.5, -8)
 shape = SubResource("RectangleShape2D_n63uy")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
@@ -369,28 +379,35 @@ _defaultState = NodePath("IdleState")
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("5_3swxl")
 
-[node name="MovingState" type="Node" parent="StateMachine"]
+[node name="MovingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_stepAudio")]
 script = ExtResource("6_crw70")
+_stepAudio = NodePath("../../Step")
 
-[node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
+[node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_attackAudio", "_drinkAudio")]
 script = ExtResource("6_trts0")
 _detector = NodePath("../../DetectorNPC")
+_attackAudio = NodePath("../../Attack")
+_drinkAudio = NodePath("../../Drink")
 
-[node name="DraggingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_corpseHidingPointDetector")]
+[node name="DraggingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_corpseHidingPointDetector", "_dragAdio")]
 script = ExtResource("7_yoa4b")
 _detector = NodePath("../../DetectorCorpse")
 _corpseHidingPointDetector = NodePath("../../HiddingPointsDetector")
+_dragAdio = NodePath("../../Dragging")
 
-[node name="Node2" type="Node" parent="StateMachine"]
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("7_nf4i5")
 
 [node name="DetectorNPC" type="RayCast2D" parent="."]
-target_position = Vector2(100, 0)
+visible = false
+target_position = Vector2(134, 0)
 collision_mask = 4
 script = ExtResource("6_nja1v")
 
 [node name="DetectorCorpse" type="RayCast2D" parent="."]
-position = Vector2(0, 62)
-target_position = Vector2(80, 0)
+visible = false
+position = Vector2(0, 140)
+target_position = Vector2(103, 0)
 collision_mask = 8
 script = ExtResource("6_nja1v")
 
@@ -401,7 +418,8 @@ input_pickable = false
 script = ExtResource("9_5burq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
-position = Vector2(-0.5, 0.5)
+visible = false
+position = Vector2(-0.5, 15.5)
 shape = SubResource("RectangleShape2D_0lh7f")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -425,3 +443,18 @@ libraries = {
 "": SubResource("AnimationLibrary_38stl")
 }
 speed_scale = 0.5
+
+[node name="Dragging" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("64_kfqec")
+
+[node name="Step" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("65_pralf")
+
+[node name="Drink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("66_kpsct")
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("67_t61ys")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("68_lo8fi")

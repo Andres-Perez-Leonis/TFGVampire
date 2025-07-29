@@ -18,13 +18,27 @@ public abstract partial class HidingPoint : Area2D
     public override void _Ready()
     {
         base._Ready();
-        _currentFindHiddenNodeProbability =_defaultFindHiddenNodeProbability;
+        _currentFindHiddenNodeProbability = _defaultFindHiddenNodeProbability;
+        BodyEntered += OnBodyEntered;
+        BodyExited += OnBodyExited;
+        
     }
     public abstract int Interact();
 
+    private void OnBodyEntered(Node2D node)
+    {
+        _nodeInArea = true;
+    }
+
+    private void OnBodyExited(Node2D node)
+    {
+        _nodeInArea = false;
+    }
+
+
     public override void _PhysicsProcess(double delta)
     {
-        _nodeInArea = HasOverlappingBodies();
+        //_nodeInArea = HasOverlappingBodies();
         //GD.Print("NodeOverlapping: ", _nodeInArea);
         _interface.Fading(_nodeInArea, delta);
     }

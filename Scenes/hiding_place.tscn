@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6nhv8rgmny24"]
+[gd_scene load_steps=9 format=3 uid="uid://c6nhv8rgmny24"]
 
-[ext_resource type="Texture2D" uid="uid://dy2ho5fss26yy" path="res://icon.svg" id="1_p54u0"]
+[ext_resource type="Texture2D" uid="uid://c06sghlk86wyo" path="res://icon.svg" id="1_p54u0"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/UserInterface/UserInterface.cs" id="2_2827s"]
+[ext_resource type="Texture2D" uid="uid://dp1fm2a3vcynu" path="res://Assests/Visuals/Interface/HideIcon/HideIcon.png" id="4_80p4e"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/ScenaryElements/CorpseHidingPoint/CorpseHidingPoint.cs" id="4_fp5gd"]
+[ext_resource type="FontFile" uid="uid://cxyyfek23kfmx" path="res://Assests/Fuentes/Mirage final.ttf" id="5_drvvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qxyq"]
-size = Vector2(40, 39)
+size = Vector2(76, 124)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqtt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fxev"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 1)
 
 [node name="AreaHidingPoint" type="Area2D" node_paths=PackedStringArray("_animator", "_interface")]
 collision_layer = 32
@@ -17,13 +22,15 @@ _animator = NodePath("AnimatedSprite2D")
 _interface = NodePath("Control")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(1, 15)
 shape = SubResource("RectangleShape2D_4qxyq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_qhqtt")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -31,11 +38,25 @@ offset_bottom = 40.0
 script = ExtResource("2_2827s")
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
+visible = false
 position = Vector2(58, -89)
 scale = Vector2(0.545, 0.545)
 texture = ExtResource("1_p54u0")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Control"]
-position = Vector2(-67, -88)
-scale = Vector2(0.59, 0.59)
-texture = ExtResource("1_p54u0")
+position = Vector2(-3, -131)
+scale = Vector2(0.151, 0.143)
+texture = ExtResource("4_80p4e")
+
+[node name="Label" type="Label" parent="Control/Sprite2D2"]
+offset_left = -172.185
+offset_top = 272.727
+offset_right = 200.815
+offset_bottom = 563.727
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_drvvf")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxFlat_8fxev")
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1

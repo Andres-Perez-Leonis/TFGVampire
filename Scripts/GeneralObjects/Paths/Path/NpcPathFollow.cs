@@ -9,7 +9,7 @@ public partial class NpcPathFollow : PathFollow2D
 {
 
 	[Export] private MarkerPathSwitch _lastPassMarker;
-    // OnChangePath Signal
+	// OnChangePath Signal
 	[Signal] public delegate void OnChangePathEventHandler(Vector2 finalPointOfNextPath);
 	// InMyDestination Signal
 	[Signal] public delegate void InMyDestinationEventHandler();

@@ -1,13 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpsnawgy8r8el"]
+[gd_scene load_steps=23 format=3 uid="uid://cpsnawgy8r8el"]
 
 [ext_resource type="FontFile" uid="uid://cxyyfek23kfmx" path="res://Assests/Fuentes/Mirage final.ttf" id="1_ebptd"]
 [ext_resource type="Script" path="res://Scripts/Loading/LoadingScene.cs" id="1_fxbne"]
+[ext_resource type="Texture2D" uid="uid://crhk44w5ir3nn" path="res://Assests/Visuals/LoadingScene/anim_panCarga_1.png" id="3_hru3q"]
+[ext_resource type="Texture2D" uid="uid://bpobs5tgq1xux" path="res://Assests/Visuals/LoadingScene/anim_panCarga_2.png" id="4_p2x4n"]
+[ext_resource type="Texture2D" uid="uid://b76ngbhniixol" path="res://Assests/Visuals/LoadingScene/anim_panCarga_3.png" id="5_jwgmu"]
+[ext_resource type="Texture2D" uid="uid://0nfplquhm3y1" path="res://Assests/Visuals/LoadingScene/anim_panCarga_4.png" id="6_67gbh"]
+[ext_resource type="Texture2D" uid="uid://bobhpkmgwh6ua" path="res://Assests/Visuals/LoadingScene/anim_panCarga_5.png" id="7_lppxu"]
+[ext_resource type="Texture2D" uid="uid://di1cfjgulek0n" path="res://Assests/Visuals/LoadingScene/anim_panCarga_6.png" id="8_y2uvo"]
+[ext_resource type="Texture2D" uid="uid://g8lmcjs2qrdm" path="res://Assests/Visuals/LoadingScene/anim_panCarga_7.png" id="9_5pwaf"]
+[ext_resource type="Texture2D" uid="uid://u3jcvqshduiv" path="res://Assests/Visuals/LoadingScene/anim_panCarga_8.png" id="10_pwl8o"]
+[ext_resource type="Texture2D" uid="uid://bqwhqh4264evg" path="res://Assests/Visuals/LoadingScene/anim_panCarga_9.png" id="11_8fg5u"]
+[ext_resource type="Texture2D" uid="uid://cmiyf8t8sj7hs" path="res://Assests/Visuals/LoadingScene/anim_panCarga_10.png" id="12_vmqmf"]
+[ext_resource type="Texture2D" uid="uid://cyrx0evolmo1l" path="res://Assests/Visuals/LoadingScene/anim_panCarga_11.png" id="13_b07b2"]
+[ext_resource type="Texture2D" uid="uid://biidup7lueeff" path="res://Assests/Visuals/LoadingScene/anim_panCarga_12.png" id="14_x03so"]
+[ext_resource type="Texture2D" uid="uid://1e07xpgvg1c1" path="res://Assests/Visuals/LoadingScene/anim_panCarga_13.png" id="15_0yrm8"]
+[ext_resource type="Texture2D" uid="uid://g533kp3ow3d7" path="res://Assests/Visuals/LoadingScene/anim_panCarga_14.png" id="16_n1p15"]
+[ext_resource type="Texture2D" uid="uid://lr1nlb3e5858" path="res://Assests/Visuals/LoadingScene/anim_panCarga_15.png" id="17_w5w8g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2xy1"]
 bg_color = Color(0.320974, 0.242785, 0.258863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnwwe"]
 bg_color = Color(0.574069, 0.0900247, 0.116709, 1)
+
+[sub_resource type="Animation" id="Animation_pcixf"]
+resource_name = "Loading"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0666, 0.0999, 0.1332, 0.165694, 0.1998, 0.2331, 0.2664, 0.2997, 0.333, 0.3663, 0.3996, 0.4329, 0.4662),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_hru3q"), ExtResource("4_p2x4n"), ExtResource("5_jwgmu"), ExtResource("6_67gbh"), ExtResource("7_lppxu"), ExtResource("8_y2uvo"), ExtResource("9_5pwaf"), ExtResource("10_pwl8o"), ExtResource("11_8fg5u"), ExtResource("12_vmqmf"), ExtResource("13_b07b2"), ExtResource("14_x03so"), ExtResource("15_0yrm8"), ExtResource("16_n1p15"), ExtResource("17_w5w8g")]
+}
+
+[sub_resource type="Animation" id="Animation_bdlfy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_hru3q")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37jjn"]
+_data = {
+"Loading": SubResource("Animation_pcixf"),
+"RESET": SubResource("Animation_bdlfy")
+}
 
 [node name="LoadingScene" type="Control"]
 layout_mode = 3
@@ -44,3 +97,17 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_ebptd")
 theme_override_styles/background = SubResource("StyleBoxFlat_d2xy1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hnwwe")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("3_hru3q")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_37jjn")
+}
+speed_scale = 0.4

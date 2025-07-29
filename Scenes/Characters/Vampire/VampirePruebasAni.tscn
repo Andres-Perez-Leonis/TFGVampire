@@ -1,16 +1,16 @@
 [gd_scene load_steps=25 format=3 uid="uid://djdlerch8v5u5"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_5osbx"]
+[ext_resource type="Script" uid="uid://dk5yt1aplav73" path="res://Scripts/Characters/Vampire.cs" id="1_5osbx"]
 [ext_resource type="Texture2D" uid="uid://cec034rg1b2i6" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W1.png" id="2_wfos5"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_yy0se"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireIdleState.cs" id="4_eucew"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="5_abf16"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_yqwwy"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_38cdr"]
+[ext_resource type="Script" uid="uid://crwgrr8cu05jd" path="res://Scripts/StateMachine/StateMachine.cs" id="3_yy0se"]
+[ext_resource type="Script" uid="uid://duwhl1uknc3gr" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireIdleState.cs" id="4_eucew"]
+[ext_resource type="Script" uid="uid://b8klyu1xx71wp" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="5_abf16"]
+[ext_resource type="Script" uid="uid://dafwqn8ycn06t" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_yqwwy"]
+[ext_resource type="Script" uid="uid://dot1dx813nxax" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_38cdr"]
 [ext_resource type="Texture2D" uid="uid://cw8j87ucoro4m" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W2.png" id="8_20cr6"]
-[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="8_fm2lf"]
+[ext_resource type="Script" uid="uid://dwy0ocedwcs4m" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="8_fm2lf"]
 [ext_resource type="Texture2D" uid="uid://csxy5t6hpuxrk" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W3.png" id="9_7yj6t"]
-[ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="9_p3paj"]
+[ext_resource type="Script" uid="uid://dvipiaqumymww" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="9_p3paj"]
 [ext_resource type="Texture2D" uid="uid://bnl4p5pkha20y" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W4.png" id="10_6pcm7"]
 [ext_resource type="Texture2D" uid="uid://c023143cwmu2p" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W5.png" id="11_t6f0k"]
 [ext_resource type="Texture2D" uid="uid://djxvv2ir5j4ec" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Walking/W6.png" id="12_pwrig"]
@@ -84,9 +84,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rqvq2"]
 _data = {
-"Idle": SubResource("Animation_pm6rq"),
-"RESET": SubResource("Animation_s1w3i"),
-"Walking": SubResource("Animation_r0175")
+&"Idle": SubResource("Animation_pm6rq"),
+&"RESET": SubResource("Animation_s1w3i"),
+&"Walking": SubResource("Animation_r0175")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lh7f"]

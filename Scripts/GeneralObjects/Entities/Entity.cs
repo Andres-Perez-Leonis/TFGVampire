@@ -22,12 +22,14 @@ public abstract partial class Entity : CharacterBody2D
 	public override void _Ready()
 	{
 		base._Ready();
-		CallDeferred("_callDeferedReady");
+		_animationStateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
+		//CallDeferred("_callDeferedReady");
 	}
 
 	private void _callDeferedReady()
 	{
 		_animationStateMachine = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
+		if(_animationStateMachine == null) GD.Print("Error: NULO");
 	}
 
 	#region Getters y Setters

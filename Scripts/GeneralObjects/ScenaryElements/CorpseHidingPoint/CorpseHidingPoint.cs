@@ -11,9 +11,11 @@ public partial class CorpseHidingPoint : HidingPoint
     }
 
 
+
     internal void HideCorpse(NPC corpseNPC)
     {
-        if(corpseNPC == null) {
+        if (corpseNPC == null)
+        {
             GD.Print("Se intento esconder un cadaver pero no se encuentra el cadaver");
             return;
         }

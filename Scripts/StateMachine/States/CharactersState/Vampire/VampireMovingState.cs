@@ -22,6 +22,9 @@ public partial class VampireMovingState : VampireStateBase
      */
     private bool _isRunning = false;
 
+    [Export] private AudioStreamPlayer _stepAudio;
+
+
     /***
      * Called when the node enters the scene tree for the first time.
      * Initializes the vampire's speed to the current speed.
@@ -36,8 +39,21 @@ public partial class VampireMovingState : VampireStateBase
     {
         base.Start();
         _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Moving);
+        _stepAudio.Play();
+        _stepAudio.Finished += LoopStepAudio;
     }
 
+    public override void End()
+    {
+        base.End();
+        _stepAudio.Finished -= LoopStepAudio;
+    }
+
+
+    private void LoopStepAudio()
+    {
+        _stepAudio.Play();
+    }
 
     /***
      * Called during the physics process step.
@@ -65,7 +81,6 @@ public partial class VampireMovingState : VampireStateBase
         {
             rotate();
         }
-
 
         // Check if the run key (Shift) is pressed
         _isRunning = Input.IsKeyPressed(Key.Shift);

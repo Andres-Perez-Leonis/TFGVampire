@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=3 uid="uid://bcvsdw3kouwf7"]
+[gd_scene load_steps=195 format=3 uid="uid://bcvsdw3kouwf7"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/NPCs/Guard.cs" id="1_rtvgo"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_cmvpa"]
@@ -145,9 +145,10 @@
 [ext_resource type="Texture2D" uid="uid://v1wv1dp5dei0" path="res://Assests/Visuals/Characters/NPCs/Guard/Dragging/Left/Dr_L_Guard_8.png" id="143_spynn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
+size = Vector2(111, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2dl"]
-size = Vector2(8, 6)
+size = Vector2(100, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
 size = Vector2(19, 20)
@@ -210,6 +211,7 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rww5n"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_reuli"]
+graph_offset = Vector2(42.4348, 66.8043)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_xnvvd")
 nodes/Animation/position = Vector2(140, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rww5n")
@@ -276,6 +278,10 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_elwjh"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_854jq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63n7e"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d3vk7"]
 states/Attack_Left/node = SubResource("AnimationNodeBlendTree_te1ko")
 states/Attack_Left/position = Vector2(882, 122)
@@ -284,7 +290,7 @@ states/Attack_Right/position = Vector2(758, 242)
 states/Dragging_Left/node = SubResource("AnimationNodeBlendTree_sq74l")
 states/Dragging_Left/position = Vector2(579, 45)
 states/Dragging_Right/node = SubResource("AnimationNodeBlendTree_3465c")
-states/Dragging_Right/position = Vector2(556, 388)
+states/Dragging_Right/position = Vector2(797, 52)
 states/End/position = Vector2(1043, 186)
 states/Idle/node = SubResource("AnimationNodeBlendTree_reuli")
 states/Idle/position = Vector2(373, 122)
@@ -293,8 +299,8 @@ states/Walking_Left/node = SubResource("AnimationNodeBlendTree_ibvfj")
 states/Walking_Left/position = Vector2(579, 122)
 states/Walking_Right/node = SubResource("AnimationNodeBlendTree_42p6t")
 states/Walking_Right/position = Vector2(556, 242)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ga3sb"), "Idle", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_kfhyw"), "Idle", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_2cw88"), "Walking_Right", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_is6kv"), "Walking_Left", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_em7w5"), "Walking_Left", "Idle", SubResource("AnimationNodeStateMachineTransition_goarc"), "Walking_Right", "Idle", SubResource("AnimationNodeStateMachineTransition_sx6o7"), "Attack_Left", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_7g6wv"), "Walking_Right", "Attack_Right", SubResource("AnimationNodeStateMachineTransition_paxqq"), "Walking_Left", "Dragging_Left", SubResource("AnimationNodeStateMachineTransition_vyajh"), "Walking_Right", "Dragging_Right", SubResource("AnimationNodeStateMachineTransition_tdbrn"), "Dragging_Left", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_dslpb"), "Dragging_Right", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_qo6mb"), "Attack_Right", "End", SubResource("AnimationNodeStateMachineTransition_ooyrh"), "Attack_Left", "End", SubResource("AnimationNodeStateMachineTransition_elwjh")]
-graph_offset = Vector2(70.5348, 0)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ga3sb"), "Idle", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_kfhyw"), "Idle", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_2cw88"), "Walking_Right", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_is6kv"), "Walking_Left", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_em7w5"), "Walking_Left", "Idle", SubResource("AnimationNodeStateMachineTransition_goarc"), "Walking_Right", "Idle", SubResource("AnimationNodeStateMachineTransition_sx6o7"), "Attack_Left", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_7g6wv"), "Walking_Right", "Attack_Right", SubResource("AnimationNodeStateMachineTransition_paxqq"), "Walking_Left", "Dragging_Left", SubResource("AnimationNodeStateMachineTransition_vyajh"), "Walking_Right", "Dragging_Right", SubResource("AnimationNodeStateMachineTransition_tdbrn"), "Dragging_Left", "Walking_Left", SubResource("AnimationNodeStateMachineTransition_dslpb"), "Dragging_Right", "Walking_Right", SubResource("AnimationNodeStateMachineTransition_qo6mb"), "Attack_Right", "End", SubResource("AnimationNodeStateMachineTransition_ooyrh"), "Attack_Left", "End", SubResource("AnimationNodeStateMachineTransition_elwjh"), "Dragging_Left", "Dragging_Right", SubResource("AnimationNodeStateMachineTransition_854jq"), "Dragging_Right", "Dragging_Left", SubResource("AnimationNodeStateMachineTransition_63n7e")]
+graph_offset = Vector2(214.786, 0)
 
 [sub_resource type="Animation" id="Animation_ai842"]
 resource_name = "Attack_Left"
@@ -355,6 +361,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_g5ly4"]
 resource_name = "Dragging_Left"
 length = 0.25
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -383,6 +390,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_gbfe5"]
 resource_name = "Dragging_Right"
 length = 0.25
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -411,6 +419,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_7lxsd"]
 resource_name = "Idle"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -466,6 +475,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_qsk6v"]
 resource_name = "Walking_Left"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -494,6 +504,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_rmnwy"]
 resource_name = "Walking_Right"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -531,16 +542,17 @@ _data = {
 "Walking_Right": SubResource("Animation_rmnwy")
 }
 
-[node name="Guard" type="CharacterBody2D" node_paths=PackedStringArray("_routine") groups=["Guards"]]
-position = Vector2(0, -20)
-scale = Vector2(3, 3)
+[node name="Guard" type="CharacterBody2D" node_paths=PackedStringArray("_routine", "_animationTree") groups=["Guards"]]
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_rtvgo")
 _routine = []
 _speed = 0.08
+_animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2.5, -3)
 shape = SubResource("RectangleShape2D_tvjq2")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
@@ -567,14 +579,16 @@ script = ExtResource("8_wn5av")
 _interconectionDetector = NodePath("../../InterconnectionDetector")
 
 [node name="InterconnectionDetector" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, 130)
 collision_layer = 128
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InterconnectionDetector"]
-position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_xb2dl")
 
 [node name="CorpseDetector" parent="." instance=ExtResource("7_xsusl")]
+visible = false
 rotation = -1.5708
 angle_deg = 45
 ray_count = 20
@@ -589,17 +603,18 @@ script = ExtResource("8_jb6kk")
 shape = SubResource("RectangleShape2D_vvmd3")
 
 [node name="VampireDetector" parent="." instance=ExtResource("7_xsusl")]
+visible = false
 rotation = -1.5708
 angle_deg = 45
 ray_count = 20
 collision_layer_mask = 2
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 100)
 rotation = -1.5708
 exclude_parent = false
-target_position = Vector2(0, 15)
 collision_mask = 8
+hit_from_inside = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Sprite2D")

@@ -36,10 +36,11 @@ public partial class GuardAttackState : GuardMovingStateBase
 	{
 		// GAME OVER
 		_guard.AnimationStateMachine.Travel((_guard.Scale.X > 0) ? AnimationNameGuard.Attack_Right : AnimationNameGuard.Attack_Left);
-		GetTree().Quit();
+		//GetTree().Quit();
 	}
 
-    protected override void InMyDestination()
-    {
+	protected override void InMyDestination()
+	{
+		
     }
 }

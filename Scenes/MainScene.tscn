@@ -1,6 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4aurc32a3148"]
+[gd_scene load_steps=26 format=3 uid="uid://c4aurc32a3148"]
 
 [ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
+[ext_resource type="Script" path="res://Scenes/MainScene.cs" id="1_qjxyp"]
+[ext_resource type="PackedScene" uid="uid://cawa3m0tva7ed" path="res://Scenes/CorpsePoint/CorpseHiddingPoing.tscn" id="1_xjnmh"]
 [ext_resource type="Texture2D" uid="uid://pde1q2sqh4vn" path="res://Assests/Visuals/World/House/HousesBackground.PNG" id="4_rj8ok"]
 [ext_resource type="PackedScene" uid="uid://dx3ste55c3hp4" path="res://Scenes/PathParts/MarkerConnector.tscn" id="4_rjsdd"]
 [ext_resource type="PackedScene" uid="uid://7ym8wmqplqom" path="res://Scenes/Characters/CharacterComponents/NPC/NPCPathFollow.tscn" id="4_tv5px"]
@@ -12,20 +14,61 @@
 [ext_resource type="PackedScene" uid="uid://i6fnr3ensjgw" path="res://Scenes/Mediator/Mediator.tscn" id="9_yw2wn"]
 [ext_resource type="Script" path="res://Scripts/Objects/VillagerListCreator.cs" id="10_svstx"]
 [ext_resource type="Texture2D" uid="uid://bay84y635jdxx" path="res://Assests/Visuals/World/Background/Sky/Background.PNG" id="11_2q1ip"]
-
-[sub_resource type="Curve2D" id="Curve2D_0d16h"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1003, 201, 0, 0, 0, 0, 549, 197, 0, 0, 0, 0, 408, 207, 0, 0, 0, 0, 328, 206, 0, 0, 0, 0, 104, 204, 0, 0, 0, 0, 4, 198.73)
-}
-point_count = 6
+[ext_resource type="PackedScene" uid="uid://yj5ke0q1cxi" path="res://Scenes/Characters/NPCs/Villagers/Farmer/FarmerWomen.tscn" id="13_uvprt"]
+[ext_resource type="AudioStream" uid="uid://l6wt2pk0q8e2" path="res://Assests/Audio/Instrumental/Inicio_TodoElRato.wav" id="15_6guqa"]
+[ext_resource type="AudioStream" uid="uid://ct22sodxwbx16" path="res://Assests/Audio/Instrumental/perder_________.wav" id="16_f3ms8"]
+[ext_resource type="AudioStream" uid="uid://ceupdpdgvicfk" path="res://Assests/Audio/Instrumental/teHanVisto.wav" id="17_gelqs"]
 
 [sub_resource type="Curve2D" id="Curve2D_cxbh3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 101, 1624, 0, 0, 0, 0, 318, 1618, 0, 0, 0, 0, 465, 1624)
+"points": PackedVector2Array(0, 0, 0, 0, 4, 1630, 0, 0, 0, 0, 318, 1630, 0, 0, 0, 0, 467, 1633)
 }
 point_count = 3
 
-[node name="MainScene" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_lg6v6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 80, 1627, 0, 0, 0, 0, 318, 1630, 0, 0, 0, 0, 649, 1628)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_1ubwc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 80, 1627, 0, 0, 0, 0, 318, 1630, 0, 0, 0, 0, 554, 1627)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_qts2p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 42, 1626, 0, 0, 0, 0, 318, 1630, 0, 0, 0, 0, 657, 1627)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_xgod7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -33, 1628, 0, 0, 0, 0, 209, 1631, 0, 0, 0, 0, 613, 1630, 0, 0, 0, 0, 731, 1628, 0, 0, 0, 0, 1078, 1631)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_naq7t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -15, 1637, 0, 0, 0, 0, 210, 1639, 0, 0, 0, 0, 601, 1639, 0, 0, 0, 0, 726, 1639, 0, 0, 0, 0, 1010, 1645)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_y4b2a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -185, 1646, 0, 0, 0, 0, 42, 1642, 0, 0, 0, 0, 198, 1646)
+}
+point_count = 3
+
+[node name="MainScene" type="Node2D" node_paths=PackedStringArray("_audioConstante", "_audioPerder", "_audioTeHanVisto")]
+script = ExtResource("1_qjxyp")
+_audioConstante = NodePath("Constante")
+_audioPerder = NodePath("Perder")
+_audioTeHanVisto = NodePath("TeHanVisto")
+
+[node name="CorpseHiddingPoing" parent="." instance=ExtResource("1_xjnmh")]
+position = Vector2(2426, 1565)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_scale = 0.5
@@ -61,6 +104,7 @@ centered = false
 motion_mirroring = Vector2(4720, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Building"]
+position = Vector2(-16, 12)
 texture = ExtResource("6_6lkx3")
 centered = false
 
@@ -78,52 +122,128 @@ script = ExtResource("10_svstx")
 
 [node name="Markers" type="Node" parent="."]
 
-[node name="MarkerConnector" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="House1" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
 z_index = 2
-position = Vector2(468, 1626)
-_pathInterconectedByMe = [NodePath("")]
-_markersAdjacent = [NodePath("../MarkerConnector2")]
+position = Vector2(472, 1633)
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D"), NodePath("../../Paths/Path2D2")]
+_markersAdjacent = [NodePath("../Final"), NodePath("../House2")]
 
-[node name="MarkerConnector2" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="House2" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
 modulate = Color(0.932801, 0.0204863, 0.272322, 1)
 z_index = 2
-position = Vector2(506, 198)
+position = Vector2(1048, 1627)
 gizmo_extents = 41.4
-_pathInterconectedByMe = [NodePath(""), NodePath("../../Paths/Path2D2")]
-_markersAdjacent = [NodePath("../MarkerConnector"), NodePath("../MarkerConnector3")]
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D2"), NodePath("../../Paths/Path2D3")]
+_markersAdjacent = [NodePath("../House1"), NodePath("../House3")]
 
-[node name="MarkerConnector3" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+[node name="House3" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
 z_index = 2
-position = Vector2(1010, 206)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D2")]
-_markersAdjacent = [NodePath(".")]
+position = Vector2(1533, 1624)
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D3"), NodePath("../../Paths/Path2D4")]
+_markersAdjacent = [NodePath("../House2"), NodePath("../House4")]
+
+[node name="House4" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+z_index = 2
+position = Vector2(2161, 1626)
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D4"), NodePath("../../Paths/Path2D5")]
+_markersAdjacent = [NodePath("../House3"), NodePath("../House5")]
+
+[node name="House5" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+z_index = 2
+position = Vector2(3280, 1633)
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D5"), NodePath("../../Paths/Path2D6")]
+_markersAdjacent = [NodePath("../House4"), NodePath("../House6")]
+
+[node name="House6" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+z_index = 2
+position = Vector2(4312, 1644)
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D6"), NodePath("../../Paths/Path2D7")]
+_markersAdjacent = [NodePath("../House5"), NodePath("../Final2")]
+
+[node name="Final" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+z_index = 2
+position = Vector2(0, 1626)
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D")]
+_markersAdjacent = [NodePath("../House1")]
+
+[node name="Final2" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+z_index = 2
+position = Vector2(4697, 1646)
+_pathInterconectedByMe = [NodePath("../../Paths/Path2D7")]
+_markersAdjacent = [NodePath("../House6")]
+
+[node name="Paths" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_cxbh3")
+
+[node name="NpcPathFollow" parent="Paths/Path2D" node_paths=PackedStringArray("_lastPassMarker") instance=ExtResource("4_tv5px")]
+position = Vector2(110.589, 1630)
+progress = 106.59
+_lastPassMarker = NodePath("../../../Markers/Final")
+
+[node name="Guard" parent="Paths/Path2D/NpcPathFollow" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("6_jpbrm")]
+z_index = 2
+position = Vector2(0, -100)
+_routine = [NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/House5"), NodePath("../../../../Markers/House3"), NodePath("../../../../Markers/House6")]
+_house = NodePath("../../../../Markers/House5")
+
+[node name="Path2D2" type="Path2D" parent="Paths"]
+position = Vector2(400, 0)
+curve = SubResource("Curve2D_lg6v6")
+
+[node name="Path2D3" type="Path2D" parent="Paths"]
+position = Vector2(980, 0)
+curve = SubResource("Curve2D_1ubwc")
+
+[node name="NpcPathFollow" parent="Paths/Path2D3" node_paths=PackedStringArray("_lastPassMarker") instance=ExtResource("4_tv5px")]
+position = Vector2(80, 1627)
+_lastPassMarker = NodePath("../../../Markers/House2")
+
+[node name="FarmerWomen" parent="Paths/Path2D3/NpcPathFollow" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("13_uvprt")]
+position = Vector2(-1, -81.67)
+_routine = [NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/House5"), NodePath("../../../../Markers/House3"), NodePath("../../../../Markers/House6")]
+_house = NodePath("../../../../Markers/House5")
+
+[node name="Path2D4" type="Path2D" parent="Paths"]
+position = Vector2(1500, 0)
+curve = SubResource("Curve2D_qts2p")
+
+[node name="NpcPathFollow" parent="Paths/Path2D4" node_paths=PackedStringArray("_lastPassMarker") instance=ExtResource("4_tv5px")]
+position = Vector2(42, 1626)
+_lastPassMarker = NodePath("../../../Markers/House3")
+
+[node name="FarmerWomen" parent="Paths/Path2D4/NpcPathFollow" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("13_uvprt")]
+position = Vector2(0, -81.67)
+_routine = [NodePath("../../../../Markers/House4"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/House5"), NodePath("../../../../Markers/House3"), NodePath("../../../../Markers/House6")]
+_house = NodePath("../../../../Markers/House5")
+
+[node name="Path2D5" type="Path2D" parent="Paths"]
+position = Vector2(2200, 0)
+curve = SubResource("Curve2D_xgod7")
+
+[node name="Path2D6" type="Path2D" parent="Paths"]
+position = Vector2(3300, 0)
+curve = SubResource("Curve2D_naq7t")
+
+[node name="Path2D7" type="Path2D" parent="Paths"]
+position = Vector2(4500, 0)
+curve = SubResource("Curve2D_y4b2a")
 
 [node name="Vampire" parent="." instance=ExtResource("1_3wo0x")]
 z_index = 15
 z_as_relative = false
-position = Vector2(1301, 1478)
+position = Vector2(1291, 1502)
 
 [node name="Camera2D" type="Camera2D" parent="Vampire"]
 position = Vector2(0, -500)
 zoom = Vector2(0.5, 0.5)
 
-[node name="Paths" type="Node" parent="."]
+[node name="Constante" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_6guqa")
 
-[node name="Path2D2" type="Path2D" parent="Paths"]
-z_index = 2
-position = Vector2(505, 3)
-curve = SubResource("Curve2D_0d16h")
+[node name="Perder" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_f3ms8")
 
-[node name="NpcPathFollow" parent="Paths/Path2D2" node_paths=PackedStringArray("_lastPassMarker") instance=ExtResource("4_tv5px")]
-z_index = 2
-position = Vector2(1003, 201)
-_lastPassMarker = NodePath("../../../Markers/MarkerConnector3")
-
-[node name="Guard" parent="Paths/Path2D2/NpcPathFollow" instance=ExtResource("6_jpbrm")]
-z_index = 2
-
-[node name="Path2D" type="Path2D" parent="Paths"]
-curve = SubResource("Curve2D_cxbh3")
-
-[node name="Path2D3" type="Path2D" parent="Paths"]
-curve = SubResource("Curve2D_cxbh3")
+[node name="TeHanVisto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_gelqs")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4f3n2cn5j6tm"]
+
+[ext_resource type="Texture2D" uid="uid://64uhn1m6rip" path="res://Assests/Visuals/Interface/BiteIcon/BiteIcon.png" id="1_usu12"]
+[ext_resource type="FontFile" uid="uid://cxyyfek23kfmx" path="res://Assests/Fuentes/Mirage final.ttf" id="2_7hg70"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4n4u"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -39)
+scale = Vector2(0.0892548, 0.125866)
+texture = ExtResource("1_usu12")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -168.058
+offset_top = 170.817
+offset_right = 173.942
+offset_bottom = 341.817
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7hg70")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_w4n4u")
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1

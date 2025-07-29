@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://yj5ke0q1cxi"]
+[gd_scene load_steps=77 format=3 uid="uid://yj5ke0q1cxi"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/NPCs/Villager.cs" id="1_dcty3"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_4s310"]
@@ -39,11 +39,14 @@
 [ext_resource type="Texture2D" uid="uid://b3gebe6cxe8xr" path="res://Assests/Visuals/Characters/NPCs/Villagers/Girls/Farmer/Walking/W10.png" id="37_0wtw6"]
 [ext_resource type="Texture2D" uid="uid://666xpcke5n6l" path="res://Assests/Visuals/Characters/NPCs/Villagers/Girls/Farmer/Walking/W11.png" id="38_06sck"]
 [ext_resource type="Texture2D" uid="uid://dwkrdi3dnver0" path="res://Assests/Visuals/Characters/NPCs/Villagers/DeadVillager/D_Villager.PNG" id="39_kjvge"]
+[ext_resource type="PackedScene" uid="uid://d4f3n2cn5j6tm" path="res://Scenes/Characters/CharacterComponents/NPC/UserInterface.tscn" id="40_212a5"]
+[ext_resource type="Texture2D" uid="uid://c44raxvufeskp" path="res://Assests/Visuals/Interface/Exclamacion/exclamacion.png" id="41_o3yfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
+size = Vector2(148, 222)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2dl"]
-size = Vector2(8, 6)
+size = Vector2(79, 53)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmd3"]
 size = Vector2(19, 20)
@@ -244,13 +247,16 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_56a6i"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3bsw3"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jjhkp"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_acdky"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tndql"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ur477"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m6hyr"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lux4g"]
 states/Death/node = SubResource("AnimationNodeBlendTree_qfw4s")
@@ -265,19 +271,20 @@ states/Idle/position = Vector2(325, 132)
 states/Start/position = Vector2(158, 132)
 states/Walking/node = SubResource("AnimationNodeBlendTree_c3ffn")
 states/Walking/position = Vector2(495, 132)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c52x7"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_r5rbq"), "Walking", "GivingAlarm", SubResource("AnimationNodeStateMachineTransition_652ep"), "Walking", "GivingAlarmRunning", SubResource("AnimationNodeStateMachineTransition_5ojco"), "GivingAlarmRunning", "Idle", SubResource("AnimationNodeStateMachineTransition_56a6i"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_3bsw3"), "GivingAlarm", "Walking", SubResource("AnimationNodeStateMachineTransition_jjhkp"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_acdky"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_tndql")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_c52x7"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_r5rbq"), "Walking", "GivingAlarm", SubResource("AnimationNodeStateMachineTransition_652ep"), "Walking", "GivingAlarmRunning", SubResource("AnimationNodeStateMachineTransition_5ojco"), "GivingAlarmRunning", "Idle", SubResource("AnimationNodeStateMachineTransition_56a6i"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_3bsw3"), "GivingAlarm", "Walking", SubResource("AnimationNodeStateMachineTransition_jjhkp"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_acdky"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_tndql"), "Walking", "Death", SubResource("AnimationNodeStateMachineTransition_ur477"), "GivingAlarm", "Death", SubResource("AnimationNodeStateMachineTransition_m6hyr")]
 
-[node name="FarmerWomen" type="CharacterBody2D" node_paths=PackedStringArray("_suspicionSystem", "_routine") groups=["Villagers"]]
-position = Vector2(-1, -20)
-scale = Vector2(3, 3)
+[node name="FarmerWomen" type="CharacterBody2D" node_paths=PackedStringArray("_suspicionSystem", "_routine", "_animationTree") groups=["Villagers"]]
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_dcty3")
 _suspicionSystem = NodePath("SuspiciousSystem")
 _routine = []
 _speed = 0.05
+_animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, -8)
 shape = SubResource("RectangleShape2D_tvjq2")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_defaultState")]
@@ -303,25 +310,31 @@ script = ExtResource("7_ri32a")
 script = ExtResource("8_mw3yg")
 _detector = NodePath("../../VillagerDetector")
 
-[node name="GivingAlarmState" type="Node" parent="StateMachine"]
+[node name="GivingAlarmState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_exclamacion")]
 script = ExtResource("9_xy6rc")
+_detector = NodePath("../../VillagerDetector")
+_exclamacion = NodePath("../../Exclamacion")
 
 [node name="GivingAlarmRunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
 script = ExtResource("10_esr7q")
 _interconectionDetector = NodePath("../../InterconnectionDetector")
 
 [node name="InterconnectionDetector" type="Area2D" parent="."]
+position = Vector2(0, 100)
 collision_layer = 128
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InterconnectionDetector"]
-position = Vector2(0, 8)
+visible = false
 shape = SubResource("RectangleShape2D_xb2dl")
 
 [node name="CorpseDetector" parent="." instance=ExtResource("11_b7gkp")]
+visible = false
 rotation = -1.5708
 angle_deg = 45
 ray_count = 20
+debug_lines = false
+debug_shape = false
 
 [node name="HiddingPointsDetector" type="Area2D" parent="."]
 collision_layer = 128
@@ -330,13 +343,17 @@ input_pickable = false
 script = ExtResource("12_a0huo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HiddingPointsDetector"]
+visible = false
 shape = SubResource("RectangleShape2D_vvmd3")
 
 [node name="VampireDetector" parent="." instance=ExtResource("11_b7gkp")]
+visible = false
 rotation = -1.5708
 angle_deg = 45
 ray_count = 20
 collision_layer_mask = 2
+debug_lines = false
+debug_shape = false
 
 [node name="VillagerDetector" type="Area2D" parent="."]
 position = Vector2(20, 0)
@@ -346,6 +363,7 @@ monitorable = false
 script = ExtResource("13_0058e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagerDetector"]
+visible = false
 shape = SubResource("CircleShape2D_8apkf")
 
 [node name="SuspiciousSystem" type="Node" parent="."]
@@ -369,3 +387,18 @@ parameters/GivingAlarm/TimeScale/scale = 0.2
 parameters/GivingAlarmRunning/TimeScale/scale = 0.2
 parameters/Idle/TimeScale/scale = 0.2
 parameters/Walking/TimeScale/scale = 0.2
+
+[node name="UserInterface" parent="." instance=ExtResource("40_212a5")]
+visible = false
+offset_top = -150.0
+offset_bottom = -150.0
+
+[node name="Exclamacion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(193, -249)
+texture = ExtResource("41_o3yfn")
+
+[node name="Timer" type="Timer" parent="Exclamacion"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0

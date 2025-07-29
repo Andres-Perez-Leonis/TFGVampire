@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://ctmen2nk5qbh6" path="res://Assests/Visuals/MainMenu/Mountains/montaña1.PNG" id="2_bgmdu"]
 [ext_resource type="Texture2D" uid="uid://c0xy4cmxi1ayb" path="res://Assests/Visuals/MainMenu/Mountains/montaña2.PNG" id="3_0d22e"]
 [ext_resource type="Texture2D" uid="uid://cg6yu4d4luytr" path="res://Assests/Visuals/MainMenu/Fog/fog.PNG" id="4_mxvex"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/Animation/FogAnimationPlayerController.cs" id="5_hpyum"]
+[ext_resource type="Script" uid="uid://duy1jbsj57mua" path="res://Scripts/MainMenu/Animation/FogAnimationPlayerController.cs" id="5_hpyum"]
 [ext_resource type="Texture2D" uid="uid://4nxsgm5mhqhr" path="res://Assests/Visuals/MainMenu/City/ciudad.PNG" id="6_ahenk"]
 [ext_resource type="Texture2D" uid="uid://7ci7pdgsj8gv" path="res://Assests/Visuals/MainMenu/Clouds/nubes.PNG" id="7_v4p7k"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/Animation/CloudAnimationController.cs" id="8_s08wc"]
+[ext_resource type="Script" uid="uid://o7d2g0dwfau" path="res://Scripts/MainMenu/Animation/CloudAnimationController.cs" id="8_s08wc"]
 [ext_resource type="Texture2D" uid="uid://rndmflqv8711" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_1.png" id="9_pcjc4"]
 [ext_resource type="Texture2D" uid="uid://cobiq85dkppdm" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_2.png" id="10_c881a"]
 [ext_resource type="Texture2D" uid="uid://wwhp0drpypwy" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_3.png" id="11_0nxdg"]
@@ -36,9 +36,9 @@
 [ext_resource type="Texture2D" uid="uid://ctliylyt4poga" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_26.png" id="34_55dni"]
 [ext_resource type="Texture2D" uid="uid://cljlgi2ig5wr0" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_27.png" id="35_tjjjw"]
 [ext_resource type="Texture2D" uid="uid://5t1nv7t17qu" path="res://Assests/Visuals/MainMenu/Animation/OnStart/start_vampire_animation_28.png" id="36_ahgya"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/Animation/MainMenuAnimationController.cs" id="37_u6dvk"]
+[ext_resource type="Script" uid="uid://diuakhf4s41qh" path="res://Scripts/MainMenu/Animation/MainMenuAnimationController.cs" id="37_u6dvk"]
 [ext_resource type="AudioStream" uid="uid://l6wt2pk0q8e2" path="res://Assests/Audio/Instrumental/Inicio_TodoElRato.wav" id="38_tnimq"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/AuxiliarScript/Song.cs" id="39_sysbu"]
+[ext_resource type="Script" uid="uid://dnal5dhk7luem" path="res://Scripts/MainMenu/AuxiliarScript/Song.cs" id="39_sysbu"]
 [ext_resource type="AudioStream" uid="uid://6snnn2dafjf3" path="res://Assests/Audio/SFX/Vampire/Laugh/laughFINAL.wav" id="40_4l177"]
 [ext_resource type="PackedScene" uid="uid://bei08gqnbxpgw" path="res://Scenes/Menus/InitMenu/init_menu.tscn" id="41_ateea"]
 [ext_resource type="PackedScene" uid="uid://b81pwjimeg8ca" path="res://Scenes/Menus/SettingsMenu/settings_menu.tscn" id="42_iu7t8"]
@@ -97,8 +97,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dkodu"]
 _data = {
-"Movement": SubResource("Animation_2w3k2"),
-"RESET": SubResource("Animation_0rrtx")
+&"Movement": SubResource("Animation_2w3k2"),
+&"RESET": SubResource("Animation_0rrtx")
 }
 
 [sub_resource type="Animation" id="Animation_s2vt3"]
@@ -155,8 +155,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l8sgu"]
 _data = {
-"Movement": SubResource("Animation_s2vt3"),
-"RESET": SubResource("Animation_dif1d")
+&"Movement": SubResource("Animation_s2vt3"),
+&"RESET": SubResource("Animation_dif1d")
 }
 
 [sub_resource type="Animation" id="Animation_xtxve"]
@@ -238,8 +238,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bpgt4"]
 _data = {
-"Movement": SubResource("Animation_xtxve"),
-"RESET": SubResource("Animation_xib2h")
+&"Movement": SubResource("Animation_xtxve"),
+&"RESET": SubResource("Animation_xib2h")
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_op0t5"]
@@ -373,9 +373,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3mw8l"]
 _data = {
-"Init_Game": SubResource("Animation_8ryjn"),
-"RESET": SubResource("Animation_ca3ov"),
-"Waiting_To_Start": SubResource("Animation_71oyu")
+&"Init_Game": SubResource("Animation_8ryjn"),
+&"RESET": SubResource("Animation_ca3ov"),
+&"Waiting_To_Start": SubResource("Animation_71oyu")
 }
 
 [node name="MainMenu" type="Control"]

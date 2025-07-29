@@ -269,15 +269,14 @@ _data = {
 "Walking": SubResource("Animation_47gho")
 }
 
-[node name="FarmerWomen" type="CharacterBody2D" node_paths=PackedStringArray("_suspicionSystem", "_routine") groups=["Villagers"]]
-position = Vector2(-1, -20)
-scale = Vector2(3, 3)
+[node name="FarmerWomen" type="CharacterBody2D" node_paths=PackedStringArray("_suspicionSystem", "_routine", "_animationTree") groups=["Villagers"]]
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_guf0h")
 _suspicionSystem = NodePath("SuspiciousSystem")
 _routine = []
 _speed = 0.05
+_animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tvjq2")
@@ -305,8 +304,9 @@ script = ExtResource("6_x2wnx")
 script = ExtResource("7_35r5f")
 _detector = NodePath("../../VillagerDetector")
 
-[node name="GivingAlarmState" type="Node" parent="StateMachine"]
+[node name="GivingAlarmState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector")]
 script = ExtResource("8_tckcs")
+_detector = NodePath("../../VillagerDetector")
 
 [node name="GivingAlarmRunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_interconectionDetector")]
 script = ExtResource("9_yk12o")

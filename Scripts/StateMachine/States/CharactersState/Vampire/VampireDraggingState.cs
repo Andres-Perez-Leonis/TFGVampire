@@ -5,6 +5,7 @@ public partial class VampireDraggingState : VampireStateBase
 {
   [Export] private RayCastNPCDetector _detector;
   [Export] private HidingPointDetector _corpseHidingPointDetector;
+  [Export] private AudioStreamPlayer _dragAdio;
 
 
   private NPC _corpseNPC;
@@ -62,7 +63,24 @@ public partial class VampireDraggingState : VampireStateBase
     _corpseNPC = _detector.NPCDetected;
     _isStatingState = true;
     _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Dragging);
+    _corpseNPC.Visible = false;
+    _dragAdio.Finished += LoopDragAudio;
+    _dragAdio.Play();
   }
+
+
+    public override void End()
+    {
+        base.End();
+        _dragAdio.Finished -= LoopDragAudio;
+    }
+
+
+    private void LoopDragAudio()
+    {
+        _dragAdio.Play();
+    }
+
 
   public override void _Ready()
   {
@@ -84,9 +102,9 @@ public partial class VampireDraggingState : VampireStateBase
 
     // Set the vampire's velocity and apply the movement
     _vampire.Velocity = _velocity;
-    _corpseNPC.Velocity = _velocity;
+    //_corpseNPC.Velocity = _velocity;
     _vampire.MoveAndSlide();
-    _corpseNPC.MoveAndSlide();
+    //_corpseNPC.MoveAndSlide();
 
   }
 

@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cawa3m0tva7ed"]
+
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/ScenaryElements/CorpseHidingPoint/CorpseHidingPoint.cs" id="1_gd744"]
+[ext_resource type="Script" path="res://Scripts/GeneralObjects/UserInterface/UserInterface.cs" id="1_w0i1c"]
+[ext_resource type="Texture2D" uid="uid://c06sghlk86wyo" path="res://icon.svg" id="2_jd558"]
+[ext_resource type="Texture2D" uid="uid://dp1fm2a3vcynu" path="res://Assests/Visuals/Interface/HideIcon/HideIcon.png" id="3_288it"]
+[ext_resource type="FontFile" uid="uid://cxyyfek23kfmx" path="res://Assests/Fuentes/Mirage final.ttf" id="4_hx6le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2a12n"]
+size = Vector2(76, 124)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xw3g7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fuil"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="CorpseHiddingPoing" type="Area2D" node_paths=PackedStringArray("_animator", "_interface")]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_gd744")
+_animator = NodePath("AnimatedSprite2D")
+_interface = NodePath("Control")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, 15)
+shape = SubResource("RectangleShape2D_2a12n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_xw3g7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w0i1c")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+visible = false
+position = Vector2(58, -89)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("2_jd558")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(-2, -228)
+scale = Vector2(0.151, 0.143)
+texture = ExtResource("3_288it")
+
+[node name="Label" type="Label" parent="Control/Sprite2D2"]
+offset_left = -172.185
+offset_top = 272.727
+offset_right = 200.815
+offset_bottom = 563.727
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_hx6le")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxFlat_8fuil")
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
