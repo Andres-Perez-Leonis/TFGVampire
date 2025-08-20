@@ -122,55 +122,39 @@ script = ExtResource("10_svstx")
 
 [node name="Markers" type="Node" parent="."]
 
-[node name="House1" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="House1" parent="Markers" instance=ExtResource("4_rjsdd")]
 z_index = 2
 position = Vector2(472, 1633)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D"), NodePath("../../Paths/Path2D2")]
-_markersAdjacent = [NodePath("../Final"), NodePath("../House2")]
 
-[node name="House2" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="House2" parent="Markers" instance=ExtResource("4_rjsdd")]
 modulate = Color(0.932801, 0.0204863, 0.272322, 1)
 z_index = 2
 position = Vector2(1048, 1627)
 gizmo_extents = 41.4
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D2"), NodePath("../../Paths/Path2D3")]
-_markersAdjacent = [NodePath("../House1"), NodePath("../House3")]
 
-[node name="House3" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+[node name="House3" parent="Markers" groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
 z_index = 2
 position = Vector2(1533, 1624)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D3"), NodePath("../../Paths/Path2D4")]
-_markersAdjacent = [NodePath("../House2"), NodePath("../House4")]
 
-[node name="House4" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+[node name="House4" parent="Markers" groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
 z_index = 2
 position = Vector2(2161, 1626)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D4"), NodePath("../../Paths/Path2D5")]
-_markersAdjacent = [NodePath("../House3"), NodePath("../House5")]
 
-[node name="House5" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+[node name="House5" parent="Markers" groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
 z_index = 2
 position = Vector2(3280, 1633)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D5"), NodePath("../../Paths/Path2D6")]
-_markersAdjacent = [NodePath("../House4"), NodePath("../House6")]
 
-[node name="House6" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+[node name="House6" parent="Markers" groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
 z_index = 2
 position = Vector2(4312, 1644)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D6"), NodePath("../../Paths/Path2D7")]
-_markersAdjacent = [NodePath("../House5"), NodePath("../Final2")]
 
-[node name="Final" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
+[node name="Final" parent="Markers" groups=["CorpsePoint"] instance=ExtResource("4_rjsdd")]
 z_index = 2
 position = Vector2(0, 1626)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D")]
-_markersAdjacent = [NodePath("../House1")]
 
-[node name="Final2" parent="Markers" node_paths=PackedStringArray("_pathInterconectedByMe", "_markersAdjacent") instance=ExtResource("4_rjsdd")]
+[node name="Final2" parent="Markers" instance=ExtResource("4_rjsdd")]
 z_index = 2
 position = Vector2(4697, 1646)
-_pathInterconectedByMe = [NodePath("../../Paths/Path2D7")]
-_markersAdjacent = [NodePath("../House6")]
 
 [node name="Paths" type="Node" parent="."]
 
@@ -182,10 +166,9 @@ position = Vector2(110.589, 1630)
 progress = 106.59
 _lastPassMarker = NodePath("../../../Markers/Final")
 
-[node name="Guard" parent="Paths/Path2D/NpcPathFollow" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("6_jpbrm")]
+[node name="Guard" parent="Paths/Path2D/NpcPathFollow" node_paths=PackedStringArray("_house") instance=ExtResource("6_jpbrm")]
 z_index = 2
 position = Vector2(0, -100)
-_routine = [NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/House5"), NodePath("../../../../Markers/House3"), NodePath("../../../../Markers/House6")]
 _house = NodePath("../../../../Markers/House5")
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
@@ -200,9 +183,8 @@ curve = SubResource("Curve2D_1ubwc")
 position = Vector2(80, 1627)
 _lastPassMarker = NodePath("../../../Markers/House2")
 
-[node name="FarmerWomen" parent="Paths/Path2D3/NpcPathFollow" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("13_uvprt")]
+[node name="FarmerWomen" parent="Paths/Path2D3/NpcPathFollow" node_paths=PackedStringArray("_house") instance=ExtResource("13_uvprt")]
 position = Vector2(-1, -81.67)
-_routine = [NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/House5"), NodePath("../../../../Markers/House3"), NodePath("../../../../Markers/House6")]
 _house = NodePath("../../../../Markers/House5")
 
 [node name="Path2D4" type="Path2D" parent="Paths"]
@@ -213,9 +195,8 @@ curve = SubResource("Curve2D_qts2p")
 position = Vector2(42, 1626)
 _lastPassMarker = NodePath("../../../Markers/House3")
 
-[node name="FarmerWomen" parent="Paths/Path2D4/NpcPathFollow" node_paths=PackedStringArray("_routine", "_house") instance=ExtResource("13_uvprt")]
+[node name="FarmerWomen" parent="Paths/Path2D4/NpcPathFollow" node_paths=PackedStringArray("_house") instance=ExtResource("13_uvprt")]
 position = Vector2(0, -81.67)
-_routine = [NodePath("../../../../Markers/House4"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/Final2"), NodePath("../../../../Markers/Final"), NodePath("../../../../Markers/House5"), NodePath("../../../../Markers/House3"), NodePath("../../../../Markers/House6")]
 _house = NodePath("../../../../Markers/House5")
 
 [node name="Path2D5" type="Path2D" parent="Paths"]
