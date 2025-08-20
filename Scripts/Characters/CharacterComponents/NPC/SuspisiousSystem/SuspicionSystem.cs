@@ -38,7 +38,7 @@ public partial class SuspicionSystem : Node
 
 		foreach (Entity entity in villagers)
 		{
-			if(entity != _myVillager) _suspechData.Add(new(entity, 10));
+			if (entity != _myVillager) _suspechData.Add(new(entity, 10));
 		}
 		_suspechData.Add(new(GetTree().GetFirstNodeInGroup(NameGroups.Vampire) as Entity)); // Vampire
 		_dicSuspechData = _suspechData.ToDictionary(e => e.Entity);
@@ -54,9 +54,9 @@ public partial class SuspicionSystem : Node
 	public List<EntitySuspechData> EntityInSuspech(int entityAmountToTell, Villager whoItelling)
 	{
 		if (!_myVillager.Personality.Gossipy) return new();
-		List<EntitySuspechData> entities =_suspechData.Where(e => e.AmountOfSuspicion > 0).Take(entityAmountToTell).ToList();
+		List<EntitySuspechData> entities = _suspechData.Where(e => e.AmountOfSuspicion > 0).Take(entityAmountToTell).ToList();
 		if (_myVillager.Personality.Prudent)
-			if(entities.Contains(_dicSuspechData[whoItelling])) entities.Remove(_dicSuspechData[whoItelling]);
+			if (entities.Contains(_dicSuspechData[whoItelling])) entities.Remove(_dicSuspechData[whoItelling]);
 		return entities;
 	}
 
@@ -147,6 +147,10 @@ public partial class SuspicionSystem : Node
 	{
 		return _thresholdSuspision < _dicSuspechData[entity].AmountOfSuspicion;
 	}
-	
 
+	public List<EntitySuspechData> SuspechEntities
+	{
+		get => _suspechData;
+		set => _suspechData = value;
+	}
 }
