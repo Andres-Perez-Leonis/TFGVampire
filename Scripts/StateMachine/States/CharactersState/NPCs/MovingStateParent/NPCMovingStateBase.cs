@@ -11,9 +11,9 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 	[Export] protected Area2D _interconectionDetector;
 	protected bool _progressInDown = false;
 
-	private MarkerPathSwitch _markerPathSwitch;
+	private MarkerPathSwitch _objective;
 
-
+	protected static NavigationAgent2D _agent;
 
 
 
@@ -31,12 +31,9 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 	{
 		base.Start();
 		_npc.AnimationStateMachine.Travel(AnimationNameNPC.Moving);
-		if (_npc.PathFollow.ProgressRatio > 0.99 || _npc.PathFollow.ProgressRatio < 0.05f)
-			CheckOrientation(_npc.CurrentAction.GlobalPosition);
+		//CheckOrientation(_npc.CurrentAction.GlobalPosition);
 		
 		_interconectionDetector.AreaEntered += MarkerSwitchDetected;
-		_npc.PathFollow.OnChangePath += CheckOrientation;
-		_npc.PathFollow.InMyDestination += InMyDestination;
 	}
 
 	public override void End()
@@ -44,8 +41,6 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 		base.End();
 		
 		_interconectionDetector.AreaEntered -= MarkerSwitchDetected;
-		_npc.PathFollow.OnChangePath -= CheckOrientation;
-		_npc.PathFollow.InMyDestination -= InMyDestination;
     }
 
 	private void ReturnToIdleState(Node2D node)
@@ -57,12 +52,32 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 
 	private void CallDeferredReady()
 	{
+		_agent = _npc.GetNode<NavigationAgent2D>("NavigationAgent2D");
+		AssignTarget();
 	}
 
 
 	public override void OnPhysicsProcess(double delta)
 	{
 		base.OnPhysicsProcess(delta);
+		if (_agent.IsNavigationFinished())
+		{
+			_npc.Velocity = Vector2.Zero;
+			InMyDestination();
+			return;
+		}
+
+		Vector2 nextPathPosition = _agent.GetNextPathPosition();
+		CheckOrientation(nextPathPosition);
+
+		//nextPathPosition.Y = _npc.GlobalPosition.Y; // Maintain the same Y level for 2D movement
+		Vector2 direction = (nextPathPosition - _npc.GlobalPosition).Normalized();
+		GD.Print($"NPC Position: {_npc.GlobalPosition}, Next Path Position: {nextPathPosition}, Direction: {direction}");
+		_npc.Velocity = direction * _npc.Speed;
+
+		_npc.MoveAndSlide();
+
+		/*
 		// Calculate the progress in the path
 		float progress = (float)delta * _npc.Speed;
 		_npc.PathFollow.ProgressRatio += (_progressInDown) ? -progress : progress;
@@ -71,6 +86,14 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 		// Check if the NPC has reached the end or start of the path to trigger the next path
 		if (_npc.PathFollow.ProgressRatio == 1 || _npc.PathFollow.ProgressRatio == 0) 
 			NextPath();
+		*/
+	}
+
+	private void AssignTarget()
+	{
+		Vector2 position = _npc.CurrentAction.GlobalPosition;
+		position.Y = _npc.GlobalPosition.Y;
+		_agent.SetTargetPosition(position);
 	}
 
 	/***
@@ -79,12 +102,12 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 	 */
 	protected void NextPath()
 	{
-		if (_markerPathSwitch == null)
+		if (_objective == null)
 		{
 			GD.Print("Error: Path Interconnector Undetected");
 			return;
 		}
-		_markerPathSwitch.ChangeTheNPCRoute(_npc.PathFollow, _npc.CurrentAction);
+		//_objective.ChangeTheNPCRoute(_npc.PathFollow, _npc.CurrentAction);
 	}
 
 
@@ -120,11 +143,6 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 		{
 			rotate();
 		}
-
-		_progressInDown = distanceFinal < 50;
-		//GD.Print("InDown: " + _progressInDown);
-		_npc.PathFollow.ProgressRatio = _progressInDown ? 1 : 0;
-		//GD.Print("Proogress Ratio on Change: " + _npc.PathFollow.ProgressRatio);
 	}
 
 	/***
@@ -149,7 +167,7 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 		MarkerPathSwitch markerPath = area2D.GetParent<MarkerPathSwitch>();
 		if (markerPath == _npc.WorkPlace && _npc.WorkPlace == _npc.CurrentAction)
 			StateMachine.ChangeState(NpcStateNames.Working);
-		
-		_markerPathSwitch = markerPath;
+
+		_objective = markerPath;
 	}
 }
