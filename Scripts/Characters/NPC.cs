@@ -18,7 +18,6 @@ public partial class NPC : Entity, IFading
     private int _indexRoutine = 0;
     protected MarkerPathSwitch _destination;
     
-    protected NpcPathFollow _pathFollow;
     private bool _isHide = false;
     // Waypoint which indicate the NPC workplace
     [Export] private MarkerPathSwitch _workPlace;
@@ -34,9 +33,6 @@ public partial class NPC : Entity, IFading
     {
         base._Ready();
         if (_routine?.Count > 0) _destination = _routine[0];
-        _pathFollow = GetParent<NpcPathFollow>();
-        GD.Print("Mi padre es: " + GetParent().Name);
-        GD.Print("Este es mi path Follow: " + _pathFollow.Name);
     }
 
 
@@ -75,7 +71,6 @@ public partial class NPC : Entity, IFading
     public Control ActionInterface { get => _actionInterface; }
 
     public bool IsHide { get => _isHide;  set => _isHide = value; }
-    public NpcPathFollow PathFollow { get => _pathFollow;}
 
         // Get the current action of Routine
         public MarkerPathSwitch CurrentAction { get => _destination; }
