@@ -126,6 +126,7 @@ public partial class NpcMovingState : NPCMovingStateBase
     {
         // Transition to connected states based on destination
         _npc.NextTask();
+        _agent.SetTargetPosition(_npc.CurrentAction.GlobalPosition);
         //NextPath();
         //StateMachine.ChangeState(NpcStateNames.Idle);
     }
