@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System.Linq;
 
-public partial class SavingSystem : Resource
+public partial class SavingSystem : Node
 {
 
     const string SaveFilePath = "user://SaveFiles/SaveGame.tres";
@@ -12,7 +12,7 @@ public partial class SavingSystem : Resource
     {
         this.villagerResources = villagerResources;
         this.gameDataesources = gameDataesources;
-        ResourceSaver.Save(this, SaveFilePath);
+       // ResourceSaver.Save(this, SaveFilePath);
         return 0;
     }
 
