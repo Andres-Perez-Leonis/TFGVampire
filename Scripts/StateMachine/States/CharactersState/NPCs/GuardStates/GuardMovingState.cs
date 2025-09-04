@@ -38,7 +38,6 @@ public partial class GuardMovingState : GuardMovingStateBase
 
     private void CheckPath()
     {
-        _inTheSamePath = _guard.CorpseToCheck.PathFollow.GetParent<Path2D>() == _guard.PathFollow.GetParent<Path2D>();
     }
     
     private void VampireDetected()
@@ -53,10 +52,6 @@ public partial class GuardMovingState : GuardMovingStateBase
 
     protected override void InMyDestination()
     {
-        Path2D nextPath = _guard.CorpseToCheck.PathFollow.GetParent<Path2D>();
-        _guard.PathFollow.EmitOnChangePathSignal(nextPath.ToGlobal(nextPath.Curve.GetPointPosition(nextPath.Curve.PointCount - 1)));
-        _guard.PathFollow.GetParent<Path2D>().RemoveChild(_guard.PathFollow);
-        _guard.CorpseToCheck.PathFollow.GetParent<Path2D>().AddChild(_guard.PathFollow);
     }
 
 }

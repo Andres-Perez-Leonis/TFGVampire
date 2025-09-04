@@ -10,7 +10,7 @@ public partial class NotifyingAboutSuspisionState : NPCMovingStateBase
 		base.Start();
 		List<Node> guards = GetTree().GetNodesInGroup(NameGroups.GuardGroup).ToList();
 		_nearestGuards = guards.OfType<Node2D>().OrderBy(guard => _npc.GlobalPosition.DistanceSquaredTo(guard.GlobalPosition)).Take(2).ToList();
-		_npc.Destination = ((Guard)_nearestGuards[0]).PathFollow.LastPassMarker;
+		
 	}
 
 
