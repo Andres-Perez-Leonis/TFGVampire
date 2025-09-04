@@ -279,7 +279,7 @@ collision_mask = 65
 script = ExtResource("1_dcty3")
 _suspicionSystem = NodePath("SuspiciousSystem")
 _routine = []
-_speed = 0.05
+_speed = 120.0
 _animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -402,3 +402,6 @@ texture = ExtResource("41_o3yfn")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
