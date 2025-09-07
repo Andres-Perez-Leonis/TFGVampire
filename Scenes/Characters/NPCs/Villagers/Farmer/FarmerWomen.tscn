@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://yj5ke0q1cxi"]
+[gd_scene load_steps=78 format=3 uid="uid://yj5ke0q1cxi"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/NPCs/Villager.cs" id="1_dcty3"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_4s310"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://666xpcke5n6l" path="res://Assests/Visuals/Characters/NPCs/Villagers/Girls/Farmer/Walking/W11.png" id="38_06sck"]
 [ext_resource type="Texture2D" uid="uid://dwkrdi3dnver0" path="res://Assests/Visuals/Characters/NPCs/Villagers/DeadVillager/D_Villager.PNG" id="39_kjvge"]
 [ext_resource type="PackedScene" uid="uid://d4f3n2cn5j6tm" path="res://Scenes/Characters/CharacterComponents/NPC/UserInterface.tscn" id="40_212a5"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/NPC/ActionInterface/ActionInterface.cs" id="41_ec7ai"]
 [ext_resource type="Texture2D" uid="uid://c44raxvufeskp" path="res://Assests/Visuals/Interface/Exclamacion/exclamacion.png" id="41_o3yfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvjq2"]
@@ -392,6 +393,7 @@ parameters/Walking/TimeScale/scale = 0.2
 visible = false
 offset_top = -150.0
 offset_bottom = -150.0
+script = ExtResource("41_ec7ai")
 
 [node name="Exclamacion" type="Sprite2D" parent="."]
 visible = false
