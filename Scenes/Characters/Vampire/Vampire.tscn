@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://cditphs3j1pf4"]
+[gd_scene load_steps=106 format=3 uid="uid://cditphs3j1pf4"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Vampire.cs" id="1_oosox"]
 [ext_resource type="Texture2D" uid="uid://cnwjsn2pqx1v2" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_0.png" id="2_ibwk3"]
@@ -9,14 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://ctgtex7167ff4" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_3.png" id="5_dujct"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireMovingState.cs" id="6_crw70"]
 [ext_resource type="Texture2D" uid="uid://c63lcnctuyrrq" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_4.png" id="6_fi67i"]
-[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastNPCDetector.cs" id="6_nja1v"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireAttackState.cs" id="6_trts0"]
 [ext_resource type="Texture2D" uid="uid://c4jshrdjco2fn" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_5.png" id="7_hdjlo"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDeathState.cs" id="7_nf4i5"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/States/CharactersState/Vampire/VampireDraggingState.cs" id="7_yoa4b"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastVillagerDetector.cs" id="8_j77t2"]
 [ext_resource type="Texture2D" uid="uid://bqq56jflu13fc" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_6.png" id="8_p4t0d"]
 [ext_resource type="Script" path="res://Scripts/GeneralObjects/Components/Detector/HidingPointDetector.cs" id="9_5burq"]
 [ext_resource type="Texture2D" uid="uid://44by4pthvp71" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_7.png" id="9_crlt3"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterComponents/Vampire/RayCastCorpseDetector.cs" id="9_uxsub"]
 [ext_resource type="Texture2D" uid="uid://dxmlndgrt4r64" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_8.png" id="10_v0oxu"]
 [ext_resource type="Texture2D" uid="uid://cdlwyelljpwr6" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_9.png" id="11_2y5uo"]
 [ext_resource type="Texture2D" uid="uid://bxpoctigffmi8" path="res://Assests/Visuals/Characters/Vampr/Final/Animaciones/Idle/I_Vampire_10.png" id="12_l2uix"]
@@ -205,6 +206,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(577, -38)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_123l0"]
 resource_name = "Death"
@@ -232,6 +245,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(385, -44)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7xye7"]
@@ -262,6 +287,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(593, -47)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_kye01"]
 resource_name = "Idle"
@@ -289,7 +326,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-57, 2)]
+"values": [Vector2(-75, 12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.225, 1.225)]
 }
 
 [sub_resource type="Animation" id="Animation_6clh0"]
@@ -318,6 +367,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-57, 2)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.335, 1.335)]
+}
 
 [sub_resource type="Animation" id="Animation_tc1sk"]
 resource_name = "Walking"
@@ -345,7 +406,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(408, -80)]
+"values": [Vector2(403, -54)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38stl"]
@@ -385,7 +458,7 @@ _stepAudio = NodePath("../../Step")
 
 [node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_detector", "_attackAudio", "_drinkAudio")]
 script = ExtResource("6_trts0")
-_detector = NodePath("../../DetectorNPC")
+_detector = NodePath("../../DetectorVillager")
 _attackAudio = NodePath("../../Attack")
 _drinkAudio = NodePath("../../Drink")
 
@@ -398,18 +471,17 @@ _dragAdio = NodePath("../../Dragging")
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("7_nf4i5")
 
-[node name="DetectorNPC" type="RayCast2D" parent="."]
-visible = false
+[node name="DetectorVillager" type="RayCast2D" parent="."]
 target_position = Vector2(134, 0)
 collision_mask = 4
-script = ExtResource("6_nja1v")
+script = ExtResource("8_j77t2")
 
 [node name="DetectorCorpse" type="RayCast2D" parent="."]
 visible = false
 position = Vector2(0, 140)
 target_position = Vector2(103, 0)
 collision_mask = 8
-script = ExtResource("6_nja1v")
+script = ExtResource("9_uxsub")
 
 [node name="HiddingPointsDetector" type="Area2D" parent="."]
 collision_layer = 128
@@ -436,6 +508,7 @@ parameters/Walking/TimeScale/scale = 0.2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Pivot"]
 position = Vector2(-57, 2)
+scale = Vector2(1.335, 1.335)
 texture = ExtResource("2_ibwk3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Sprite2D2"]
@@ -458,3 +531,6 @@ stream = ExtResource("67_t61ys")
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("68_lo8fi")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -179)
