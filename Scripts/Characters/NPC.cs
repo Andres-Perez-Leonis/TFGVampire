@@ -23,10 +23,6 @@ public partial class NPC : Entity, IFading
     [Export] private MarkerPathSwitch _workPlace;
     [Export] private MarkerPathSwitch _house;
 
-    [Export] private Control _actionInterface;
-    [Signal] public delegate void IamOnAttackEventHandler();
-    [Signal] public delegate void IamOnTargetEventHandler(bool onTarget);
-    [Signal] public delegate void GuardComeForMeEventHandler();
 
 
     public override void _Ready()
@@ -35,21 +31,6 @@ public partial class NPC : Entity, IFading
         if (_routine?.Count > 0) _destination = _routine[0];
     }
 
-
-    public void StopRightThere()
-    {
-        EmitSignal(SignalName.GuardComeForMe);
-    }
-
-
-    public void EmitIamOnAttackSignal()
-    {
-        EmitSignal(SignalName.IamOnAttack);
-    }
-
-    public void EmitIamOnTargetSignal(bool onTarget) {
-        EmitSignal(SignalName.IamOnTarget, onTarget);
-    }
 
     public void NextTask() {  IndexRoutine = 0; GD.Print("Mi tarea actual: " + CurrentAction.Name); }
 
@@ -68,7 +49,6 @@ public partial class NPC : Entity, IFading
 
     #region Getters and Setters
 
-    public Control ActionInterface { get => _actionInterface; }
 
     public bool IsHide { get => _isHide;  set => _isHide = value; }
 
