@@ -3,7 +3,7 @@ using System;
 
 public partial class VampireStateBaseWithRayCast : VampireStateBase
 {
-  [Export] protected RayCastNPCDetector _detector;
+  [Export] protected RayCastVillagerDetector _detector;
 
   
 }
