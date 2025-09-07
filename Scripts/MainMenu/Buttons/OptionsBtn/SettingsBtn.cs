@@ -12,7 +12,7 @@ public partial class SettingsBtn : Button
 
 	private void _onPressed()
 	{
-		if (Owner is ParentNodeMenu c)
+		if (Owner is SettingsManager c)
 		{
 			//c.OnButtonClick();
 			c.Visible = false;
