@@ -20,7 +20,6 @@ public abstract partial class NpcStateBase : StateBase
     {
         base._Ready();
         _npc = (NPC) ControlledNode;
-        _npc.IamOnAttack += OnAttack;
     }
 
     /***
@@ -31,12 +30,6 @@ public abstract partial class NpcStateBase : StateBase
     {
         base.OnPhysicsProcess(delta);
         //if(_npc.Name == "NPC2")GD.Print("I am " + _npc.Name + " my state is : " + StateMachine.CurrentState.Name);
-    }
-
-
-    private void OnAttack() {
-        if(StateMachine == null) return;
-        StateMachine.ChangeState(NpcStateNames.Death);
     }
 
 
