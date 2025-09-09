@@ -11,6 +11,7 @@ using Godot.Collections;
 public partial class NPC : Entity, IFading
 {
 
+    [Export] public bool debugMode = false;
     // Array which contein the routine. The routine are spiciefied by a sequence of Waypoints
     [Export] private Array<MarkerPathSwitch> _routine;
 
