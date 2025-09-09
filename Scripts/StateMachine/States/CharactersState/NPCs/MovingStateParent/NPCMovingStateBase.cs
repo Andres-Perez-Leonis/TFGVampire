@@ -13,7 +13,7 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 
 	private MarkerPathSwitch _objective;
 
-	protected static NavigationAgent2D _agent;
+	protected NavigationAgent2D _agent;
 
 
 
@@ -34,6 +34,7 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 		//CheckOrientation(_npc.CurrentAction.GlobalPosition);
 		
 		_interconectionDetector.AreaEntered += MarkerSwitchDetected;
+		AssignTarget();
 	}
 
 	public override void End()
@@ -53,7 +54,6 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 	private void CallDeferredReady()
 	{
 		_agent = _npc.GetNode<NavigationAgent2D>("NavigationAgent2D");
-		AssignTarget();
 	}
 
 
@@ -62,17 +62,21 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 		base.OnPhysicsProcess(delta);
 		if (_agent.IsNavigationFinished())
 		{
+			if(_npc.debugMode) GD.Print("He llegado a mi destino");
 			_npc.Velocity = Vector2.Zero;
 			InMyDestination();
 			return;
 		}
 
 		Vector2 nextPathPosition = _agent.GetNextPathPosition();
+		
 		CheckOrientation(nextPathPosition);
 
 		//nextPathPosition.Y = _npc.GlobalPosition.Y; // Maintain the same Y level for 2D movement
 		Vector2 direction = (nextPathPosition - _npc.GlobalPosition).Normalized();
-		GD.Print($"NPC Position: {_npc.GlobalPosition}, Next Path Position: {nextPathPosition}, Direction: {direction}");
+		
+		
+		if (_npc.debugMode) GD.Print($"NPC Position: {_npc.GlobalPosition}, Next Path Position: {nextPathPosition}, Direction: {direction}");
 		_npc.Velocity = direction * _npc.Speed;
 
 		_npc.MoveAndSlide();
@@ -89,10 +93,11 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 		*/
 	}
 
-	private void AssignTarget()
+	protected void AssignTarget()
 	{
 		Vector2 position = _npc.CurrentAction.GlobalPosition;
 		position.Y = _npc.GlobalPosition.Y;
+		if(_npc.debugMode) GD.Print($"Asignando target a {_npc.Name} en la posición {position}");
 		_agent.SetTargetPosition(position);
 	}
 
@@ -126,33 +131,49 @@ public abstract partial class NPCMovingStateBase : VillagerStateBase
 	 * @param intialPointOfCurrentPath The starting point of the current path.
 	 * @param finalPointOfNextPath The endpoint of the next path.
 	 */
-	private void CheckOrientation(Vector2 finalPointOfNextPath)
+	private void CheckOrientation(Vector2 nextPos)
 	{
 		if (GetParent<StateMachine>().CurrentState != this) return;
-		float distanceFinal = _npc.GlobalPosition.DistanceTo(finalPointOfNextPath);
 		//GD.Print($"Distacia desde {_npc.GlobalPosition} al punto final {finalPointOfNextPath}: {distanceFinal}");
-
 
 		float angle, direction;
 
-		angle = _npc.GlobalPosition.AngleToPoint(_npc.CurrentAction.GlobalPosition);
+		angle = _npc.GlobalPosition.AngleToPoint(nextPos);
 		direction = Mathf.Sign(Mathf.Cos(angle));
+		if(_npc.debugMode) {
+			GD.Print("[Debug] Soy " + _npc.Name + " mi direccion: " + direction);
+			GD.Print("[Debug] Soy " + _npc.Name + " mi escala en X: " + _npc.Scale.X);
+		}
+		
+		if (Mathf.Sign(direction) != Mathf.Sign(_npc.GetNode<Sprite2D>("Sprite2D").Scale.X))
+		{
+			if (_npc.debugMode) GD.Print("[Debug] Soy " + _npc.Name + " tengo que rotar");
+			rotate();
+		}
 
+
+/* 
 		float scaleFactor = Mathf.Abs(_npc.Scale.X);
 		if (_npc.Scale.X != direction * scaleFactor)
 		{
 			rotate();
-		}
+		} */
 	}
 
 	/***
 	 * Rotates the NPC to face the opposite direction by flipping its scale on the X-axis.
 	 */
-	public void rotate()
+	private void rotate()
 	{
-		_npc.Scale = new Vector2(_npc.Scale.X * -1, _npc.Scale.Y);
+		_npc.GetNode<Sprite2D>("Sprite2D").Scale = new Vector2(_npc.GetNode<Sprite2D>("Sprite2D").Scale.X * -1, _npc.GetNode<Sprite2D>("Sprite2D").Scale.Y);
+		//Sprite2D sprite = _npc.GetNode<Sprite2D>("Sprite2D");
+		//sprite.FlipH = !sprite.FlipH;
 		_npc.GetNode<Node2D>("CorpseDetector").RotationDegrees *= -1;
 		_npc.GetNode<Node2D>("VampireDetector").RotationDegrees *= -1;
+		_npc.GetNode<Node2D>("HiddingPointsDetector").RotationDegrees *= -1;
+		_npc.GetNode<Node2D>("VillagerDetector").RotationDegrees *= -1;
+		if(_npc.debugMode) GD.Print("[Debug] Soy " + _npc.Name + " he rotado");
+		
 	}
 
 	
