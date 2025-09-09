@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4aurc32a3148"]
+[gd_scene load_steps=20 format=3 uid="uid://c4aurc32a3148"]
 
 [ext_resource type="PackedScene" uid="uid://cditphs3j1pf4" path="res://Scenes/Characters/Vampire/Vampire.tscn" id="1_3wo0x"]
 [ext_resource type="Script" path="res://Scenes/MainScene.cs" id="1_qjxyp"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://l6wt2pk0q8e2" path="res://Assests/Audio/Instrumental/Inicio_TodoElRato.wav" id="15_6guqa"]
 [ext_resource type="AudioStream" uid="uid://ct22sodxwbx16" path="res://Assests/Audio/Instrumental/perder_________.wav" id="16_f3ms8"]
 [ext_resource type="AudioStream" uid="uid://ceupdpdgvicfk" path="res://Assests/Audio/Instrumental/teHanVisto.wav" id="17_gelqs"]
+[ext_resource type="PackedScene" uid="uid://cc0xct5jnt37n" path="res://Scenes/Characters/NPCs/Villagers/Noble/NobleWomen.tscn" id="17_w7krm"]
+[ext_resource type="PackedScene" uid="uid://bcvsdw3kouwf7" path="res://Scenes/Characters/NPCs/Guard/Guard.tscn" id="18_vlcxl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vam8g"]
 vertices = PackedVector2Array(1.64062, 1644, 1.35938, 1636, 9426.65, 1643.99, 4699.23, 1644.93, 5043.01, 1645, 9426.34, 1652.98)
@@ -120,11 +122,11 @@ position = Vector2(4696, 1642)
 [node name="Vampire" parent="." instance=ExtResource("1_3wo0x")]
 z_index = 15
 z_as_relative = false
-position = Vector2(1291, 1502)
+position = Vector2(1291, 1452)
 
 [node name="Camera2D" type="Camera2D" parent="Vampire"]
-position = Vector2(0, -500)
-zoom = Vector2(0.5, 0.5)
+position = Vector2(0, -552.405)
+zoom = Vector2(0.45, 0.45)
 
 [node name="Constante" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_6guqa")
@@ -143,4 +145,14 @@ navigation_polygon = SubResource("NavigationPolygon_vam8g")
 
 [node name="FarmerWomen" parent="." node_paths=PackedStringArray("_routine") instance=ExtResource("13_uvprt")]
 position = Vector2(220, 1553)
-_routine = [NodePath("../Markers/Final2"), NodePath("../Markers/Final"), NodePath("../Markers/House4")]
+_routine = [NodePath("../Markers/Final2"), NodePath("../Markers/House1"), NodePath("../Markers/Final"), NodePath("../Markers/House4")]
+
+[node name="NobleWomen" parent="." node_paths=PackedStringArray("_routine") instance=ExtResource("17_w7krm")]
+position = Vector2(1511, 1535)
+_routine = [NodePath("../Markers/Final")]
+_speed = 120.0
+
+[node name="Guard" parent="." node_paths=PackedStringArray("_routine") instance=ExtResource("18_vlcxl")]
+position = Vector2(913, 1514)
+_routine = [NodePath("../Markers/House1"), null]
+_speed = 120.0

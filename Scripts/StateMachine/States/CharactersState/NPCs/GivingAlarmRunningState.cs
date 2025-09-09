@@ -22,7 +22,7 @@ public partial class GivingAlarmRunningState : NPCMovingStateBase
 			if (guard.HasBeenAlerted) continue;
             guard.ReportVampireDetected();
         }
-        rotate();
+        //rotate();
         _npc.Speed += 0.1f;
         //_progressInDown = !_progressInDown;
         _npc.ToHome();
