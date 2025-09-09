@@ -24,9 +24,8 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
     public override void _Ready()
     {
         base._Ready();
-        
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
-        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
+        _npc.GetNode<Area2D>("VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
+        _npc.GetNode<Area2D>("CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
         CallDeferred("CallDeferredReady");
     }
 
