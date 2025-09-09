@@ -30,18 +30,18 @@ public partial class NpcMovingState : NPCMovingStateBase
         */
 
         base._Ready();
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
-        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
+        _npc.GetNode<Area2D>("VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
+        _npc.GetNode<Area2D>("CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
     }
 
 
     public override void Start()
     {
         base.Start();
-        
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered += OnBodyEnteredInVampireDetector;
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyExited += OnBodyExitedInVampireDetector;
-        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered += OnBodyEnteredInCorpseVisionCone;
+
+        _npc.GetNode<Area2D>("VampireDetector/VisionConeArea").BodyEntered += OnBodyEnteredInVampireDetector;
+        _npc.GetNode<Area2D>("VampireDetector/VisionConeArea").BodyExited += OnBodyExitedInVampireDetector;
+        _npc.GetNode<Area2D>("CorpseDetector/VisionConeArea").BodyEntered += OnBodyEnteredInCorpseVisionCone;
         _npc.GetNode<VillagerDetector>("VillagerDetector").BodyEntered += ReturnToIdleState;
 
     }
@@ -49,10 +49,10 @@ public partial class NpcMovingState : NPCMovingStateBase
     public override void End()
     {
         base.End();
-        
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInVampireDetector;
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").BodyExited -= OnBodyExitedInVampireDetector;
-        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInCorpseVisionCone;
+
+        _npc.GetNode<Area2D>("VampireDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInVampireDetector;
+        _npc.GetNode<Area2D>("VampireDetector/VisionConeArea").BodyExited -= OnBodyExitedInVampireDetector;
+        _npc.GetNode<Area2D>("CorpseDetector/VisionConeArea").BodyEntered -= OnBodyEnteredInCorpseVisionCone;
         _npc.GetNode<VillagerDetector>("VillagerDetector").BodyEntered -= ReturnToIdleState;
     }
 
