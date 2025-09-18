@@ -14,15 +14,16 @@ public partial class VampireAttackState : VampireStateBase
     //_vampire.AnimationPlayer.AnimationFinished += OnAnimationFinished;
   }
 
-
+  Villager villager;
   public override void Start()
   {
-    Villager villager = _detector.VillagerDetected;
+    villager = _detector.VillagerDetected;
     if(villager == null || villager.IsDeath) { StateMachine.ChangeState(VampireStateNames.Idle); return;}
     _vampire.AnimationTree.AnimationFinished += OnAnimationFinished;
     _attackAudio.Play();
     _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Attacking);
     _drinkAudio.Play();
+    villager.Visible = false;
     villager.EmitIamOnAttackSignal();
     _vampire.GlobalPosition = new Vector2(villager.GlobalPosition.X, _vampire.GlobalPosition.Y);
     GetTree().CreateTimer(1.5).Timeout += ReturnToIdleState;
@@ -32,6 +33,8 @@ public partial class VampireAttackState : VampireStateBase
   private void ReturnToIdleState()
   {
     StateMachine.ChangeState(VampireStateNames.Idle);
+    villager.Visible = true;
+
   }
 
   public override void End()
