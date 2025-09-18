@@ -17,7 +17,7 @@ public partial class Mediator : Node
 		_recipiestState.InitConversation(_senderState.Villager);
 	}
 
-	public void SendInfo(VillagerTalkingState whoSend, List<EntitySuspechData> list)
+	public void SendInfo(VillagerTalkingState whoSend, List<Entity> list)
 	{
 		if (whoSend == _senderState) _recipiestState.HeardSuspisions(list, _senderState.Villager);
 		else _senderState.HeardSuspisions(list, _recipiestState.Villager);
