@@ -51,6 +51,19 @@ public partial class SuspicionSystem : Node
 		return (_myVillager.Personality.Gossipy) ? _suspechData.Where(e => e.AmountOfSuspicion > 0).Take(entityAmountToTell).ToList() : new();
 	}
 
+	public List<Entity> EntitiesInSuspech(int entityAmountToTell)
+	{
+		return _suspechData.Where(e => e.AmountOfSuspicion > 0).Take(entityAmountToTell).Select(e => e.Entity).ToList();
+	}
+	public List<Entity> EntitiesInSuspech(int entityAmountToTell, Villager whoItelling)
+	{
+		if (!_myVillager.Personality.Gossipy) return new();
+		List<Entity> entities = _suspechData.Where(e => e.AmountOfSuspicion > 0).Take(entityAmountToTell).Select(e => e.Entity).ToList();
+		if (_myVillager.Personality.Prudent)
+			if (entities.Contains(whoItelling)) entities.Remove(whoItelling);
+		return entities;
+	}
+
 	public List<EntitySuspechData> EntityInSuspech(int entityAmountToTell, Villager whoItelling)
 	{
 		if (!_myVillager.Personality.Gossipy) return new();
@@ -65,7 +78,7 @@ public partial class SuspicionSystem : Node
 		return _suspechData.Where(e => e.AmountOfSuspicion > 0).Take(3).ToList();
 	}
 
-	public void AnalizeSupisions(List<EntitySuspechData> entities, Entity whoSaidMeThat)
+	public void AnalizeSupisions(List<Entity> entities, Entity whoSaidMeThat)
 	{
 		//Comprobamos las sospechas del otro NPC
 		if (!_myVillager.Personality.EasyInfluenced) return;
@@ -73,16 +86,16 @@ public partial class SuspicionSystem : Node
 		bool heThinkItsMe = false;
 
 		//Dictionary<Entity, EntitySuspechData> suspechData = _suspechData.ToDictionary(s => s.Entity);
-		foreach (EntitySuspechData entityData in entities)
+		foreach (Entity entity in entities)
 		{
-			heThinkItsMe = (entityData.Entity == _myVillager);
-			IncreaseSuspision(entityData.Entity);
+			heThinkItsMe |= entity == _myVillager;
+			IncreaseSuspision(entity);
 		}
 
 		if (heThinkItsMe) IncreaseSuspision(whoSaidMeThat);
 
 		HashSet<Entity> hashEntity = new HashSet<Entity>(EntityInSuspech(entities.Count).Select(s => s.Entity));
-		int matches = entities.Count(e => hashEntity.Contains(e.Entity));
+		int matches = hashEntity.Intersect(entities).Count();
 
 		_dicSuspechData[whoSaidMeThat].AmountOfSuspicion -= _reductionSuspisionAmount * matches;
 
