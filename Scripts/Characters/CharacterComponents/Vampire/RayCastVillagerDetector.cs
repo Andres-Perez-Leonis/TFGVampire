@@ -7,10 +7,12 @@ public partial class RayCastVillagerDetector : RayCastDetector
 
     public override void _PhysicsProcess(double delta)
     {
-		if(IsColliding()) {
+		if (IsColliding())
+		{
 			//if(npcDetected == GetCollider()) return;
 			//GD.Print((GetCollider() as Node2D).Name);
-			if(_villagerDetected is not null) {
+			if (_villagerDetected is not null)
+			{
 				_villagerDetected.EmitIamOnTargetSignal(false);
 			}
 
@@ -18,7 +20,12 @@ public partial class RayCastVillagerDetector : RayCastDetector
 			_villagerDetected.EmitIamOnTargetSignal(true);
 			//GD.Print("Estoy colisionando soy: " +  Name);
 
-		} else _villagerDetected = null;
+		}
+		else
+		{
+			_villagerDetected?.EmitIamOnTargetSignal(false);
+			_villagerDetected = null;
+		}
 
     }
 
