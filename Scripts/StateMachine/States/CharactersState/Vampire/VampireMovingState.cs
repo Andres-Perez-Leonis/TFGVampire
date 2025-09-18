@@ -55,6 +55,15 @@ public partial class VampireMovingState : VampireStateBase
         _stepAudio.Play();
     }
 
+    public override void OnInput(InputEvent @event)
+    {
+        base.OnInput(@event);
+        if(Input.IsPhysicalKeyPressed(Key.F))
+        {
+            StateMachine.ChangeState(VampireStateNames.Attack);
+        }
+    }
+
     /***
      * Called during the physics process step.
      * Handles the vampire's movement, direction, speed, and state changes.
