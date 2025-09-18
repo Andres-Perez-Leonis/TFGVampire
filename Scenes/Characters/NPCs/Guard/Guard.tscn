@@ -543,7 +543,7 @@ _data = {
 }
 
 [node name="Guard" type="CharacterBody2D" node_paths=PackedStringArray("_routine", "_animationTree") groups=["Guards"]]
-collision_layer = 4
+collision_layer = 256
 collision_mask = 65
 script = ExtResource("1_rtvgo")
 _routine = []
