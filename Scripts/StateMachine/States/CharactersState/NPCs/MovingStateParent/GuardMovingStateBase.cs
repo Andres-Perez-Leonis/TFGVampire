@@ -24,9 +24,8 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
     public override void _Ready()
     {
         base._Ready();
-        
-        GetNode<Area2D>("../../VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
-        GetNode<Area2D>("../../CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
+        _npc.GetNode<Area2D>("VampireDetector/VisionConeArea").CollisionMask = IntLayerMarks.Vampire;
+        _npc.GetNode<Area2D>("CorpseDetector/VisionConeArea").CollisionMask = IntLayerMarks.Corpse;
         CallDeferred("CallDeferredReady");
     }
 
@@ -34,7 +33,6 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
     public override void Start()
     {
         base.Start();
-        _guard.Destination = _guard.CorpseToCheck.PathFollow.LastPassMarker;
         
         CheckOrientation(_guard.CorpseToCheck.GlobalPosition);
         _guard.AnimationStateMachine.Travel((_guard.Scale.X > 0) ? AnimationNameGuard.Walking_Right : AnimationNameGuard.Walking_Left);
@@ -44,8 +42,6 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
     private void CallDeferredReady() {
         _guard = (Guard) _npc;
         _interconectionDetector.AreaEntered += MarkerSwitchDetected;
-        _npc.PathFollow.OnChangePath += CheckOrientation;
-        _npc.PathFollow.InMyDestination += InMyDestination;
     }
 
 
@@ -54,13 +50,6 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
         base.OnPhysicsProcess(delta);
         // Calculate the progress in the path
         float progress = (float)delta * _npc.Speed;     
-        //GD.Print("Velocidad: " + progress);
-        _npc.PathFollow.ProgressRatio += (_progressInDown) ? -progress : progress;
-        //GD.Print("Proogress Ratio: " + _npc.PathFollow.ProgressRatio);
-
-        // Check if the NPC has reached the end or start of the path to trigger the next path
-        if (_npc.PathFollow.ProgressRatio == 1 || _npc.PathFollow.ProgressRatio == 0) 
-            NextPath();
     }
 
     /***
@@ -75,7 +64,6 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
             return;
         }
         //GD.Print("Pido que me cambien de path");
-        _markerPathSwitch.ChangeTheNPCRoute(_npc.PathFollow, _npc.CurrentAction);
     }
 
 
@@ -112,11 +100,6 @@ public abstract partial class GuardMovingStateBase : GuardStateBase
             rotate();
         }
 
-        _progressInDown = distanceFinal < 50;
-        //GD.Print("InDown: " + _progressInDown);
-        _npc.PathFollow.ProgressRatio = _progressInDown ? 1 : 0;
-        //GD.Print("Proogress Ratio on Change: " + _npc.PathFollow.ProgressRatio);
-        return;
     }
 
     /***

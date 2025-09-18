@@ -77,9 +77,10 @@ dragg={
 
 2d_physics/layer_1="Floor"
 2d_physics/layer_2="Vampire"
-2d_physics/layer_3="NPC"
+2d_physics/layer_3="Villager"
 2d_physics/layer_4="Corpse"
 2d_physics/layer_5="Route"
 2d_physics/layer_6="HiddingPoint"
 2d_physics/layer_7="Wall"
 2d_physics/layer_8="Area"
+2d_physics/layer_9="Guards"

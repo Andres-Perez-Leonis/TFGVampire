@@ -3,7 +3,7 @@ using Godot;
 
 public partial class VampireDraggingState : VampireStateBase
 {
-  [Export] private RayCastNPCDetector _detector;
+  [Export] private RayCastCorpseDetector _detector;
   [Export] private HidingPointDetector _corpseHidingPointDetector;
   [Export] private AudioStreamPlayer _dragAdio;
 
@@ -60,7 +60,7 @@ public partial class VampireDraggingState : VampireStateBase
       //GD.Print("NO COLISIONA");
     }
 
-    _corpseNPC = _detector.NPCDetected;
+    _corpseNPC = _detector.VillagerDetected;
     _isStatingState = true;
     _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Dragging);
     _corpseNPC.Visible = false;
@@ -96,6 +96,10 @@ public partial class VampireDraggingState : VampireStateBase
     // Gets the direction based on player input (left or right arrow keys)
     _direction = Input.GetAxis("ui_left", "ui_right");
 
+    if (Mathf.Sign(_direction) != Mathf.Sign(_vampire.GetNode<Node2D>("Pivot").Scale.X))
+    {
+        rotate();
+    }
 
     // Update the vampire's velocity in the X direction based on input
     _velocity.X = _direction * _currentSpeed;
@@ -108,6 +112,17 @@ public partial class VampireDraggingState : VampireStateBase
 
   }
 
+
+    public void rotate()
+    {
+        Vector2 scale = new Vector2(Mathf.Sign(_direction), 1);
+        _vampire.GetNode<Node2D>("Pivot").Scale = scale;
+        _vampire.GetNode<Node2D>("DetectorCorpse").Scale = scale;
+        _vampire.GetNode<Node2D>("DetectorVillager").Scale = scale;
+        
+        //_vampire.Scale = new Vector2(-_vampire.Scale.X, Mathf.Abs(_vampire.Scale.Y));
+        //GD.Print("Nueva Scale del vampiro: "+  _vampire.Scale);
+    }
 
 
 }

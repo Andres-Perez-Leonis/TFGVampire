@@ -15,7 +15,7 @@ public partial class VillagerResourceData : Resource
         IsHide = villager.IsHide;
         IsDead = villager.IsDeath;
         Personality = villager.Personality;
-        LastPassMarker = villager.PathFollow.LastPassMarker;
+        //LastPassMarker = villager.PathFollow.LastPassMarker;
         EntitySuspechDatas = villager.SuspicionSystem.SuspechEntities;
     }
 }

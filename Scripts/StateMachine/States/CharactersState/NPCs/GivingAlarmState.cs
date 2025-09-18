@@ -63,18 +63,6 @@ public partial class GivingAlarmState : VillagerStateBase
         base.OnPhysicsProcess(delta);
         float progress = (float)delta * _npc.Speed;
 
-        if (_npc.PathFollow.ProgressRatio > 0.8f)
-        {
-            _progressInDown = true;
-            if (_villager.Scale.X > 0) _villager.Scale = new Vector2(-_villager.Scale.X, _villager.Scale.Y);
-        }
-        else if (_npc.PathFollow.ProgressRatio < 0.6f)
-        {
-            _progressInDown = false;
-            if (_villager.Scale.X < 0) _villager.Scale = new Vector2(-_villager.Scale.X, _villager.Scale.Y);
-        }
-
-        _npc.PathFollow.ProgressRatio += (_progressInDown) ? -progress : progress;
     }
 
 }

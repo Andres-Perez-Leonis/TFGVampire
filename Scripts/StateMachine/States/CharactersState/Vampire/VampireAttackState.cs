@@ -2,7 +2,7 @@ using System;
 using Godot;
 public partial class VampireAttackState : VampireStateBase
 {
-  [Export] private RayCastNPCDetector _detector;
+  [Export] private RayCastVillagerDetector _detector;
 
   [Export] private AudioStreamPlayer _attackAudio;
   [Export] private AudioStreamPlayer _drinkAudio;
@@ -14,17 +14,18 @@ public partial class VampireAttackState : VampireStateBase
     //_vampire.AnimationPlayer.AnimationFinished += OnAnimationFinished;
   }
 
-
+  Villager villager;
   public override void Start()
   {
-    NPC npc = _detector.NPCDetected;
-    if(npc == null || npc.IsDeath) { StateMachine.ChangeState(VampireStateNames.Idle); return;}
+    villager = _detector.VillagerDetected;
+    if(villager == null || villager.IsDeath) { StateMachine.ChangeState(VampireStateNames.Idle); return;}
     _vampire.AnimationTree.AnimationFinished += OnAnimationFinished;
     _attackAudio.Play();
     _vampire.AnimationStateMachine.Travel(AnimationNameVampire.Attacking);
     _drinkAudio.Play();
-    npc.EmitIamOnAttackSignal();
-    _vampire.GlobalPosition = new Vector2(npc.GlobalPosition.X, _vampire.GlobalPosition.Y);
+    villager.Visible = false;
+    villager.EmitIamOnAttackSignal();
+    _vampire.GlobalPosition = new Vector2(villager.GlobalPosition.X, _vampire.GlobalPosition.Y);
     GetTree().CreateTimer(1.5).Timeout += ReturnToIdleState;
   }
 
@@ -32,6 +33,8 @@ public partial class VampireAttackState : VampireStateBase
   private void ReturnToIdleState()
   {
     StateMachine.ChangeState(VampireStateNames.Idle);
+    villager.Visible = true;
+
   }
 
   public override void End()

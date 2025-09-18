@@ -55,6 +55,15 @@ public partial class VampireMovingState : VampireStateBase
         _stepAudio.Play();
     }
 
+    public override void OnInput(InputEvent @event)
+    {
+        base.OnInput(@event);
+        if(Input.IsPhysicalKeyPressed(Key.F))
+        {
+            StateMachine.ChangeState(VampireStateNames.Attack);
+        }
+    }
+
     /***
      * Called during the physics process step.
      * Handles the vampire's movement, direction, speed, and state changes.
@@ -98,7 +107,11 @@ public partial class VampireMovingState : VampireStateBase
 
     public void rotate()
     {
-        _vampire.GetNode<Node2D>("Pivot").Scale = new Vector2(Mathf.Sign(_direction), 1);
+        Vector2 scale = new Vector2(Mathf.Sign(_direction), 1);
+        _vampire.GetNode<Node2D>("Pivot").Scale = scale;
+        _vampire.GetNode<Node2D>("DetectorCorpse").Scale = scale;
+        _vampire.GetNode<Node2D>("DetectorVillager").Scale = scale;
+        
         //_vampire.Scale = new Vector2(-_vampire.Scale.X, Mathf.Abs(_vampire.Scale.Y));
         //GD.Print("Nueva Scale del vampiro: "+  _vampire.Scale);
     }

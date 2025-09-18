@@ -30,11 +30,11 @@ public partial class VillagerTalkingState : VillagerStateBase
 
 	public void InitConversation(Villager villager)
 	{
-		List<EntitySuspechData> villagersInSuspech = _villager.SuspicionSystem.EntityInSuspech(3, _villager);
+		List<Entity> villagersInSuspech = _villager.SuspicionSystem.EntitiesInSuspech(3, _villager);
 		_mediator.SendInfo(this, villagersInSuspech);
 	}
 
-	public void HeardSuspisions(List<EntitySuspechData> villagersInSuspech, Villager whoTellMe)
+	public void HeardSuspisions(List<Entity> villagersInSuspech, Villager whoTellMe)
 	{
 		_villager.SuspicionSystem.AnalizeSupisions(villagersInSuspech, whoTellMe);
 	}

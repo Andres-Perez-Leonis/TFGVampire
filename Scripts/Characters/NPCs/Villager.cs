@@ -11,6 +11,12 @@ public partial class Villager : NPC
 
     [Signal] public delegate void InMadnessEventHandler();
 
+
+    [Signal] public delegate void IamOnAttackEventHandler();
+    [Signal] public delegate void IamOnTargetEventHandler(bool onTarget);
+    [Signal] public delegate void GuardComeForMeEventHandler();
+
+
     public override void _Ready()
     {
         base._Ready();
@@ -30,6 +36,20 @@ public partial class Villager : NPC
         GetNode<StateMachine>("StateMachine").ChangeState(NpcStateNames.NotifyingSuspisionState);
     }
 
+    public void StopRightThere()
+    {
+        EmitSignal(SignalName.GuardComeForMe);
+    }
+
+
+    public void EmitIamOnAttackSignal()
+    {
+        EmitSignal(SignalName.IamOnAttack);
+    }
+
+    public void EmitIamOnTargetSignal(bool onTarget) {
+        EmitSignal(SignalName.IamOnTarget, onTarget);
+    }
 
 
     public Personality Personality { get => _personality; }

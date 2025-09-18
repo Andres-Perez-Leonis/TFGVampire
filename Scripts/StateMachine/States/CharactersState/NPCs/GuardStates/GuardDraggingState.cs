@@ -24,7 +24,7 @@ public partial class GuardDraggingState : GuardMovingStateBase
         //_draggingCorpse.Position = new Vector2(0, 0);
         //_draggingCorpse.PathFollow.GetParent<Path2D>().RemoveChild(_draggingCorpse.PathFollow);
         //_guard.AddChild(_draggingCorpse.PathFollow);
-        _draggingCorpse.PathFollow.GlobalPosition = new Vector2(_guard.PathFollow.GlobalPosition.X + _nextToGuardOffset, _guard.PathFollow.GlobalPosition.Y - 20);
+        //_draggingCorpse.PathFollow.GlobalPosition = new Vector2(_guard.PathFollow.GlobalPosition.X + _nextToGuardOffset, _guard.PathFollow.GlobalPosition.Y - 20);
         _draggingCorpse.Visible = false;
         _guard.AnimationStateMachine.Travel((_guard.Scale.X < 0) ? AnimationNameGuard.Dragging_Right : AnimationNameGuard.Dragging_Left);
         //_progressInDown = !_progressInDown;

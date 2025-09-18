@@ -9,7 +9,6 @@ public partial class GuardArretingState : GuardMovingStateBase
 		base.Start();
 		if (_guard.EntityInSuspech is Villager villager)
 		{
-			_guard.Destination = villager.PathFollow.LastPassMarker;
 			villager.StopRightThere();
 			return;
 		}

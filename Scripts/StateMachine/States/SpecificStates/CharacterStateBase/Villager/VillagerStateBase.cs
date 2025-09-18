@@ -9,5 +9,12 @@ public abstract partial class VillagerStateBase : NpcStateBase
     {
         base._Ready();
         _villager = (Villager)_npc;
+        _villager.IamOnAttack += _onAttack;
     }
+
+    private void _onAttack() {
+        if(StateMachine == null) return;
+        StateMachine.ChangeState(NpcStateNames.Death);
+    }
+
 }
